@@ -1,0 +1,18 @@
+{
+    "spotify": {
+        "current": "Escuchado recientemente"
+    },
+    "loading": "Cargando...",
+    "online":{
+        "online": "En línea",
+        "offline": "Desconectado",
+        "dnd": "Ocupado",
+        "since": "Desde"
+    
+    },
+    "birthday":{
+        "age": "edad",
+        "years-old": "años",
+        "time": "dias para mi cumpleaños"
+    }
+}
