@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { SiGithub } from "react-icons/si";
+import { useTranslation } from "react-i18next";
 
-import github from "../assets/images/github.gif";
-import github2 from "../assets/images/giphy.gif";
+import github from "../assets/images/giphy.gif";
 
 export default function GithubCard() {
+  const [t, i18n] = useTranslation("global");
   return (
     <a
       href="https://github.com/orloxx23"
@@ -16,18 +17,20 @@ export default function GithubCard() {
       <div className="relative w-full h-full p-4 md:p-8 bg-[#00000077]">
         <Image
           className="absolute w-full h-full object-cover object-center top-0 left-0 -z-10"
-          src={github2}
+          src={github}
           width={498}
           height={280}
+          alt=""
         />
-        <i class="fa-solid fa-arrow-up-right-from-square absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-white dark:text-[#ffffffaa]"></i>
+        <i className="fa-solid fa-arrow-up-right-from-square absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-white dark:text-[#ffffffaa]"></i>
         <div className="w-full h-full flex flex-col justify-between">
-          <SiGithub color="white" className="text-xs md:text-5xl hidden md:flex"/>
+          <SiGithub
+            color="white"
+            className="text-xs md:text-5xl hidden md:flex"
+          />
           <div className="">
-            <h1 className="text-white text-sm md:text-2xl font-bold">Github</h1>
-            <p className="text-white text-sm md:text-md">
-              My Github profile, where I upload my projects.
-            </p>
+            <h1 className="text-white text-sm md:text-3xl font-bold">Github</h1>
+            <p className="text-white text-sm md:text-2xl">{t("github")}</p>
           </div>
         </div>
       </div>
