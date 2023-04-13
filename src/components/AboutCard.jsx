@@ -20,22 +20,20 @@ export default function AboutCard() {
       />
       <div className="h-full md:w-8/12 absolute top-0 left-0 p-4 md:p-8 flex flex-col justify-end">
         <h1 className="text-3xl md:text-xl lg:text-7xl font-bold text-white mb-4 md:mb-5">
-        👋 {i18n.language === "es" ? "Hola, soy" : "Hi, I'm"} Orlando Mina
+          👋 {i18n.language === "es" ? "Hola, soy" : "Hi, I'm"} Orlando Mina
         </h1>
         <p className="text-md md:text-lg lg:text-2xl text-white">
           {i18n.language === "es" ? (
             <>
               Soy <b>desarrollador frontend</b> con experiencia en <b>React</b>.
-              Soy bueno en <b>CSS</b> y <b>HTML</b>, así como en{" "}
-              <b>JavaScript.</b> Me encanta aprender cosas nuevas y experimentar
+              Soy bueno en <b>CSS</b> y <b>HTML</b>, así como en <b>JavaScript.</b> Me encanta aprender cosas nuevas y experimentar
               con nuevas tecnologías. Tengo buen ojo para los detalles y siempre
               pongo todo de mi en mi trabajo.
             </>
           ) : (
             <>
               I am a <b>frontend developer</b> with experience in <b>React</b>.
-              I'm good at <b>HTML</b> and <b>CSS</b>, as well as{" "}
-              <b>JavaScript</b>. I love learning new things and experimenting
+              I'm good at <b>HTML</b> and <b>CSS</b>, as well as <b>JavaScript</b>. I love learning new things and experimenting
               with new technologies. I have a good eye for details and I always
               put my all into my work.
             </>
