@@ -14,6 +14,7 @@ import {
   ThemeCard,
   TwitterCard,
 } from "@/components";
+import Script from "next/script";
 
 export default function Home() {
   return (
@@ -23,6 +24,10 @@ export default function Home() {
         <meta name="description" content="Orlando Mina personal website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <Script
+          src="https://kit.fontawesome.com/00a734f883.js"
+          crossOrigin="anonymous"
+        ></Script>
       </Head>
       <div className="flex flex-col m-5">
         <div className="grid grid-cols-3 gap-2 md:grid-cols-4 md:gap-4 mt-5 container mx-auto xl:px-20">
@@ -32,11 +37,10 @@ export default function Home() {
           <BirthdayCard />
           <OnlineCard />
           <SpotifyCard />
-          <GithubCard/>
-          <Skills/>
+          <GithubCard />
+          <Skills />
           <TwitterCard />
           <EmailCard />
-          
         </div>
       </div>
     </>
