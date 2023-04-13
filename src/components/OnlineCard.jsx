@@ -54,8 +54,7 @@ export default function OnlineCard() {
     >
       <div className="absolute inset-0 flex items-center justify-center text-base md:text-2xl xl:text-3xl font-bold">
         <div className="flex items-center gap-3">
-          
-          <p className="">{status === "loading" ? t("loading") : t(`online.${status}`)}</p>
+          <p>{status === "loading" ? t("loading") : t(`online.${status}`)}</p>
         </div>
       </div>
 
@@ -63,7 +62,7 @@ export default function OnlineCard() {
         <div className="absolute bottom-0 w-full flex justify-end items-center p-5 gap-5 invisible lg:visible">
           <div className="flex flex-col items-end ">
             <p className="font-bol">{activity?.name}</p>
-            <p c>{`${t("online.since")} ${moment(
+            <p>{`${t("online.since")} ${moment(
               activity?.timestamps?.start
             ).fromNow()}`}</p>
           </div>
