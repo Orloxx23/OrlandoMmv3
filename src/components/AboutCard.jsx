@@ -33,7 +33,7 @@ export default function AboutCard() {
           ) : (
             <>
               I am a <b>frontend developer</b> with experience in <b>React</b>.
-              I'm good at <b>HTML</b> and <b>CSS</b>, as well as <b>JavaScript</b>. I love learning new things and experimenting
+              I&apos;m good at <b>HTML</b> and <b>CSS</b>, as well as <b>JavaScript</b>. I love learning new things and experimenting
               with new technologies. I have a good eye for details and I always
               put my all into my work.
             </>
