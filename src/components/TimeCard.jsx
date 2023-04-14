@@ -30,9 +30,7 @@ export default function TimeCard() {
   }, [data]);
 
   return (
-    <div
-      className={`rounded-3xl flex relative overflow-hidden col-span-2`}
-    >
+    <div className={`rounded-3xl flex relative overflow-hidden col-span-2`}>
       {timeComponent}
     </div>
   );
