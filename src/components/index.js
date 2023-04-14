@@ -10,6 +10,9 @@ import EmailCard from "./EmailCard";
 import Skills from "./Skills";
 import GithubCard from "./GithubCard";
 import TaplyCard from "./TaplyCard";
+import TimeCard from "./TimeCard";
+import DayComponent from "./DayComponent";
+import NightComponent from "./NightComponent";
 
 export {
   OnlineCard,
@@ -24,4 +27,7 @@ export {
   Skills,
   GithubCard,
   TaplyCard,
+  TimeCard,
+  DayComponent,
+  NightComponent,
 };

@@ -12,6 +12,7 @@ import {
   SpotifyCard,
   TaplyCard,
   ThemeCard,
+  TimeCard,
   TwitterCard,
 } from "@/components";
 import Script from "next/script";
@@ -36,7 +37,9 @@ export default function Home() {
           <GithubCard />
           <Skills />
           <TwitterCard />
+          <TimeCard/>
           <EmailCard />
+          <TaplyCard />
         </div>
       </div>
       <Script
