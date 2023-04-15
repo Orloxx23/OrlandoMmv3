@@ -40,6 +40,7 @@ export default function Chat({ open, setOpen }) {
   const handleSubmit = async (e) => {
     e?.preventDefault();
     setLoading(true);
+    setFocus(false);
 
     const query = text;
     setText("");
@@ -150,6 +151,7 @@ export default function Chat({ open, setOpen }) {
                   width={512}
                   height={512}
                   alt="me"
+                  draggable="false"
                 />
               </div>
               <div className="flex flex-col justify-center">
