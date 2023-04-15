@@ -8,9 +8,6 @@ import { useRouter } from "next/router";
 import me from "@/assets/images/me.png";
 
 export default function Chat({ open, setOpen }) {
-  let router = useRouter();
-  const random = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
-  const [showBadge, setShowBadge] = React.useState(true);
   // const [open, setOpen] = React.useState(false);
   const [focus, setFocus] = React.useState(false);
   const [text, setText] = React.useState("");
@@ -24,6 +21,23 @@ export default function Chat({ open, setOpen }) {
   const [loading, setLoading] = React.useState(false);
   const [isTyping, setIsTyping] = React.useState(true);
   const [error, setError] = React.useState(false);
+  const [emotion, setEmotion] = React.useState("normal");
+
+  const emotions = {
+    normal: "🙂",
+    happy: "😄",
+    sad: "😢",
+    surprised: "😲",
+    confused: "😕",
+    pokerface: "😐",
+    exited: "😃",
+    scared: "😨",
+    in_love: "😍",
+    angry: "😠",
+    neutral: "🙂",
+    shy: "😳",
+    nervous: "😅",
+  };
 
   const chatRef = useChatScroll(chat);
 
@@ -52,6 +66,7 @@ export default function Chat({ open, setOpen }) {
 
     setChat((prev) => [...prev, { user: "user", message: query }]);
 
+    let res;
     let message = "";
 
     await axios
@@ -59,10 +74,21 @@ export default function Chat({ open, setOpen }) {
         query: query,
       })
       .then(function (response) {
-        message = response.data.message;
+        console.log(response.data.message);
+
+        const regex = /{(.*)}/;
+        const matches = regex.exec(response.data.message);
+        const stringify = matches[1].replace(/'/g, '"');
+        const objectJson = JSON.parse("{" + stringify + "}");
+
+        res = objectJson;
+
+        message = res.message;
+        setEmotion(res.emotion);
         setLoading(false);
       })
       .catch(function (error) {
+        console.log(error);
         setLoading(false);
         setError(true);
         setIsTyping(false);
@@ -94,9 +120,8 @@ export default function Chat({ open, setOpen }) {
     }
   }, [open]);
 
-   useEffect(() => {
+  useEffect(() => {
     if (isTyping) {
-      console.log("typing");
       if (chatRef.current) {
         setTimeout(() => {
           chatRef.current.scrollTop = chatRef.current.scrollHeight;
@@ -141,9 +166,8 @@ export default function Chat({ open, setOpen }) {
                     : focus
                     ? "😳"
                     : isTyping
-                    ? "😀"
+                    ? emotions[emotion] || "😀"
                     : "🙂"}
-                  {/* "😄" */}
                 </div>
                 <Image
                   className="rounded-full"
