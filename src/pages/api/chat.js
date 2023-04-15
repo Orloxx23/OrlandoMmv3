@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-    console.log(process.env.RAPID_KEY);
   let message = "";
   const query = req.body.query;
 
@@ -7,8 +6,8 @@ export default async function handler(req, res) {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "X-RapidAPI-Key": "009f485739msh2522c13b0e8f9e7p14e54fjsn35e877bf7207",
-      "X-RapidAPI-Host": "openai80.p.rapidapi.com",
+      "X-RapidAPI-Key": process.env.RAPID_KEY,
+      "X-RapidAPI-Host": process.env.RAPID_HOST,
     },
     body: JSON.stringify({
       model: "gpt-3.5-turbo",
