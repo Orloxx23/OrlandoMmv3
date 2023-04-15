@@ -61,23 +61,21 @@ export default function OnlineCard() {
       {status !== "offline" && activity && (
         <div className="absolute bottom-0 w-full flex justify-end items-center p-5 gap-5 invisible lg:visible">
           <div className="flex flex-col items-end ">
-            <p className="font-bol">{activity?.name}</p>
+            <p className="font-bold">{activity?.name}</p>
             <p>{`${t("online.since")} ${moment(
               activity?.timestamps?.start
             ).fromNow()}`}</p>
           </div>
-          <Image
-            className="invisible rounded-md w-10 h-10 lg:visible"
-            src={
-              activity?.assets
-                ? `https://cdn.discordapp.com/app-assets/${activity?.application_id}/${activity?.assets?.large_image}.webp`
-                : ""
-            }
-            width="40"
-            height="40"
-            draggable="false"
-            alt=""
-          />
+          {activity?.assets?.large_image && (
+            <Image
+              className="invisible rounded-md w-10 h-10 lg:visible"
+              src={`https://cdn.discordapp.com/app-assets/${activity?.application_id}/${activity?.assets?.large_image}.webp`}
+              width="40"
+              height="40"
+              draggable="false"
+              alt=""
+            />
+          )}
         </div>
       )}
     </div>
