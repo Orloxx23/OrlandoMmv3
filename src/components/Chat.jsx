@@ -74,7 +74,7 @@ export default function Chat({ open, setOpen }) {
         query: query,
       })
       .then(function (response) {
-        console.log(response.data.message);
+        // console.log(response.data.message);
 
         const regex = /{(.*)}/;
         const matches = regex.exec(response.data.message);
