@@ -14,6 +14,7 @@ import TimeCard from "./TimeCard";
 import DayComponent from "./DayComponent";
 import NightComponent from "./NightComponent";
 import ClonCard from "./ClonCard";
+import Chat from "./Chat";
 
 export {
   OnlineCard,
@@ -32,4 +33,5 @@ export {
   DayComponent,
   NightComponent,
   ClonCard,
+  Chat,
 };

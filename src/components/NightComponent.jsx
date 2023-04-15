@@ -4,9 +4,11 @@ import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 
 import styles from "@/styles/TimeCard.module.css";
+import { useTranslation } from "react-i18next";
 
 export default function NightComponent() {
-  const { data, isLoading } = useSWR(`/api/weather`, (url) =>
+  const [t, i18n] = useTranslation("global");
+  const { data, isLoading } = useSWR(`/api/weather/${i18n.language}`, (url) =>
     axios.get(url).then((res) => res.data)
   );
 

@@ -38,7 +38,7 @@ export default function Home() {
           <GithubCard />
           <Skills />
           <TwitterCard />
-          {/* <TimeCard/> */}
+          <TimeCard/>
           <EmailCard />
           <TaplyCard />
           <ClonCard/>
