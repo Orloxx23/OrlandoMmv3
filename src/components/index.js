@@ -13,6 +13,7 @@ import TaplyCard from "./TaplyCard";
 import TimeCard from "./TimeCard";
 import DayComponent from "./DayComponent";
 import NightComponent from "./NightComponent";
+import ClonCard from "./ClonCard";
 
 export {
   OnlineCard,
@@ -30,4 +31,5 @@ export {
   TimeCard,
   DayComponent,
   NightComponent,
+  ClonCard,
 };

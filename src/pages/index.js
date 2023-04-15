@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.css";
 import {
   AboutCard,
   BirthdayCard,
+  ClonCard,
   EmailCard,
   GithubCard,
   LanguagueCard,
@@ -37,9 +38,10 @@ export default function Home() {
           <GithubCard />
           <Skills />
           <TwitterCard />
-          <TimeCard/>
+          {/* <TimeCard/> */}
           <EmailCard />
           <TaplyCard />
+          <ClonCard/>
         </div>
       </div>
       <Script
