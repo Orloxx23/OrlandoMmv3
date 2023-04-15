@@ -24,13 +24,12 @@ export default function Chat({ open, setOpen }) {
   const [emotion, setEmotion] = React.useState("normal");
 
   const emotions = {
-    normal: "🙂",
     happy: "😄",
     sad: "😢",
     surprised: "😲",
     confused: "😕",
     pokerface: "😐",
-    exited: "😃",
+    exited: "😁",
     scared: "😨",
     in_love: "😍",
     angry: "😠",
