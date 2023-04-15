@@ -6,7 +6,7 @@ import pet from "@/assets/images/me-pet.gif";
 import { Chat } from ".";
 
 export default function ClonCard() {
-  const random = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+  const random = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
   const [showBadge, setShowBadge] = React.useState(true);
   const [open, setOpen] = React.useState(false);
 
