@@ -1,6 +1,4 @@
 import React from "react";
-import birthday from "@/assets/images/birthday.svg";
-import Image from "next/image";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
 
@@ -29,7 +27,9 @@ export default function BirthdayCard() {
       <div className="">
         {/* <Image src={birthday} alt="" width="100" /> */}
         <div className="flex justify-center items-center flex-col">
-          <p className="text-xs md:text-lg uppercase font">{t("birthday.age")}</p>
+          <p className="text-xs md:text-lg uppercase font">
+            {t("birthday.age")}
+          </p>
           <p className="text-4xl md:text-8xl font-bold">{getAge()}</p>
           <p className="text-xs md:text-xl uppercase font-semibold text-center">
             {t("birthday.years-old")}

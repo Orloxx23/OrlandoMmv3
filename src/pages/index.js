@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
+import { motion } from "framer-motion";
 import {
   AboutCard,
   BirthdayCard,
@@ -9,6 +9,7 @@ import {
   LanguagueCard,
   OnlineCard,
   Playgorund,
+  ProjectsCard,
   Skills,
   SpotifyCard,
   TaplyCard,
@@ -17,18 +18,23 @@ import {
   TwitterCard,
 } from "@/components";
 import Script from "next/script";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const [t, i18n] = useTranslation("global");
   return (
     <>
       <Head>
-        <title>Orlando Mina</title>
-        <meta name="description" content="Orlando Mina personal website" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>{t("title")}</title>
       </Head>
-      <div className="flex flex-col m-5">
-        <div className="grid grid-cols-3 gap-2 md:grid-cols-4 md:gap-4 mt-5 container mx-auto xl:px-20">
+      <motion.div
+        initial={{ opacity: 0, y: -2000 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 100, duration: 1 }}
+        transition={{ duration: 2.5, delay: 0.5, type: "spring" }}
+        className="flex flex-col m-5"
+      >
+        <div className="grid grid-cols-3 gap-2 md:grid-cols-4 md:gap-4 my-5 container mx-auto xl:px-20">
           <AboutCard />
           <LanguagueCard />
           <ThemeCard />
@@ -38,12 +44,13 @@ export default function Home() {
           <GithubCard />
           <Skills />
           <TwitterCard />
-          <TimeCard/>
+          <TimeCard />
           <EmailCard />
           <TaplyCard />
-          <ClonCard/>
+          <ClonCard />
+          <ProjectsCard />
         </div>
-      </div>
+      </motion.div>
       <Script
         src="https://kit.fontawesome.com/00a734f883.js"
         crossOrigin="anonymous"

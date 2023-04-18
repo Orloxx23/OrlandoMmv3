@@ -25,6 +25,7 @@ a {
   padding: 0;
   margin: 0;
   transition: background 0.3s ease-in-out;
+  scroll-behavior: smooth;
 }
 
 .noise::before {

@@ -1,4 +1,5 @@
 {
+    "title": "Orlando Mina | Desarrollador Frontend",
     "spotify": {
         "current": "Escuchado recientemente"
     },
@@ -15,5 +16,18 @@
         "years-old": "años",
         "time": "dias para mi cumpleaños"
     },
-    "github": "Mi perfil de Github, donde subo mis proyectos."
+    "github": "Mi perfil de Github, donde subo mis proyectos.",
+    "projectsandtest": {
+        "title": "Proyectos y pruebas",
+        "description": "Aquí puedes encontrar algunos de mis proyectos, pruebas o experimentos."
+    },
+    "projects": {
+        "title": "Proyectos",
+        "all": "Todos",
+        "personal": "Personales",
+        "practice": "Prácticas",
+        "experiments": "Experimentos",
+        "recommended": "Recomendados",
+        "courses": "Cursos"
+    }
 }

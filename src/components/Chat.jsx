@@ -14,7 +14,7 @@ export default function Chat({ open, setOpen }) {
   const [chat, setChat] = React.useState([
     {
       user: "bot",
-      message: "Hola, soy el clon de Orlando, ¿en qué te puedo ayudar?",
+      message: "Hola, soy el clon de Orlando, ¿que quieres saber de mi?",
       animate: true,
     },
   ]);
@@ -134,7 +134,7 @@ export default function Chat({ open, setOpen }) {
       {open && (
         <>
           <motion.div
-            className="fixed inset-0 bg-[#00000085] z-10 cursor-pointer"
+            className="fixed inset-0 bg-[#00000085] z-20 cursor-pointer backdrop-blur-sm transition-all duration-500 ease-in-out"
             initial={{ opacity: 0 }}
             exit={{ opacity: 0 }}
             defaultValue={{ opacity: 0 }}
@@ -147,7 +147,7 @@ export default function Chat({ open, setOpen }) {
             defaultValue={{ opacity: 0, y: 100 }}
             animate={{ opacity: open ? 1 : 0, y: open ? 0 : 100 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="bg-[#f8efff] dark:bg-[#09030e] md:w-5/6 lg:w-2/6 w-5/6 h-5/6 fixed p-4 rounded-xl shadow-xl z-20 top-0.5 left-0.5 right-0.5 bottom-0.5 m-auto flex flex-col"
+            className="bg-[#f8efff] dark:bg-[#09030e] md:w-5/6 lg:w-2/6 w-5/6 h-5/6 fixed p-4 rounded-xl shadow-xl z-30 top-0.5 left-0.5 right-0.5 bottom-0.5 m-auto flex flex-col"
           >
             <div
               className="absolute top-2 right-2 p-2 cursor-pointer"
