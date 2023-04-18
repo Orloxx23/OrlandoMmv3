@@ -290,7 +290,7 @@ function ProjectCard({ project, index }) {
         </p>
         <div className="w-full flex justify-center items-center">
           <Image
-            src={project.images.browser[theme]}
+            src={project.images.browser.dark}
             className="absolute bottom-0 w-11/12 md:w-8/12"
             draggable="false"
             alt={project.title}
