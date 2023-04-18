@@ -8,8 +8,6 @@ import { AiFillCaretUp, AiFillStar } from "react-icons/ai";
 import { BsArrowLeft } from "react-icons/bs";
 import { projects } from "@/data/projects";
 import { useRouter } from "next/router";
-import Typewriter from "typewriter-effect";
-import { useTheme } from "next-themes";
 
 import me from "../../assets/images/me2.png";
 import { LanguagueCard } from "@/components";
@@ -20,9 +18,6 @@ export default function Projects() {
 
   const [categoryActive, setCategoryActive] = useState(0);
   const [projectsFiltered, setProjectsFiltered] = useState(projects);
-  const [projectSelected, setProjectSelected] = useState(null);
-
-  let animated = [];
 
   const categories = [
     "all", // 0
@@ -60,7 +55,7 @@ export default function Projects() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 1 }}
         className="flex flex-col m-5"
       >
         <div className="grid grid-cols-3 gap-2 md:grid-cols-4 md:gap-4 my-5 container mx-auto xl:px-20">
@@ -95,14 +90,10 @@ export default function Projects() {
         </div>
         <motion.div
           layout
-          className="grid grid-cols-3 gap-2 md:grid-cols-4 md:gap-4 mb-5 container mx-auto xl:px-20 "
+          className="grid grid-cols-3 gap-2 md:grid-cols-3 md:gap-4 mb-5 container mx-auto xl:px-20 "
         >
           {projectsFiltered.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              index={index}
-              project={project}
-            />
+            <ProjectCard key={project.id} index={index} project={project} />
           ))}
         </motion.div>
       </motion.div>
@@ -153,17 +144,16 @@ function ProjectButton({
 
 function ProjectCard({ project, index }) {
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
   const [t, i18n] = useTranslation("global");
 
   const [showModal, setShowModal] = useState(false);
-  const [animated, setAnimated] = useState(true);
+  const [isHover, setIsHover] = useState(false);
 
   const colors = {
-    personal: "#58AAD3aa",
-    practice: "#51DA7Baa",
-    experiments: "#58D3CFaa",
-    recommended: "#E1C148aa",
+    personal: "#5183B4aa",
+    practice: "#51B489aa",
+    experiments: "#51B4B3aa",
+    recommended: "#FFCD00aa",
   };
 
   const onCloseModal = () => {
@@ -223,31 +213,9 @@ function ProjectCard({ project, index }) {
                 <div className="flex"></div>
               </div>
               <p className="text-2xl text-[#09030e] dark:text-[#f8efff]">
-                {animated ? (
-                  <Typewriter
-                    options={{
-                      delay: 50,
-                      cursor: "",
-                      loop: false,
-                    }}
-                    onInit={(typewriter) => {
-                      typewriter
-                        .typeString(
-                          i18n.language == "en"
-                            ? project.en?.description
-                            : project.es?.description
-                        )
-                        .callFunction(() => {
-                          setAnimated(false);
-                        })
-                        .start();
-                    }}
-                  />
-                ) : i18n.language == "en" ? (
-                  project.en?.description
-                ) : (
-                  project.es?.description
-                )}
+                {i18n.language == "en"
+                  ? project.en?.description
+                  : project.es?.description}
               </p>
             </div>
           </div>
@@ -266,7 +234,9 @@ function ProjectCard({ project, index }) {
           delay: (index - 1) * 0.15,
           type: "spring",
         }}
-        className={`relative col-span-3 md:col-span-2 h-[350px] md:h-[425px] rounded-3xl overflow-hidden cursor-pointer p-4 ${showModal ? "opacity-0 -z-10" : "opacity-1"}`}
+        className={`relative col-span-3 md:col-span-1 aspect-square rounded-3xl overflow-hidden cursor-pointer p-4 pt-8 dark:text-white text-gray-50 shadow-xl ${
+          showModal ? "opacity-0 -z-10" : "opacity-1"
+        }`}
         style={{ backgroundColor: colors[project.category] }}
         onClick={() => {
           if (!showModal) {
@@ -276,27 +246,31 @@ function ProjectCard({ project, index }) {
             });
           }
         }}
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
       >
-        <p className="text-white font-semibold capitalize text-xl">
-          {project.category}
-        </p>
-        <p className="text-white font-extrabold text-4xl mb-4">
-          {project.title}
-        </p>
-        <p className="truncate text-white font-medium mb-4">
+        <motion.div
+          className={`absolute bottom-0 overflow-hidden rounded-t-3xl transition-all duration-300 ease-in-out ${
+            isHover ? "w-[95%] h-[55%] left-[2.5%]" : "h-full w-full left-0"
+          }`}
+        >
+          <Image
+            src={project.images.main}
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+        <p className="text-xl font-bold">{project.title}</p>
+        <p className="truncate text-lg">
           {i18n.language == "en"
             ? project.en?.description
-            : project.es?.description}
+            : project.es.description}
         </p>
-        <div className="w-full flex justify-center items-center">
-          <Image
-            src={project.images.browser.dark}
-            className="absolute bottom-0 w-11/12 md:w-8/12"
-            draggable="false"
-            alt={project.title}
-            width={1901}
-            height={1124}
-          />
+        <div className="flex gap-2 mt-4">
+          {project.technologies.slice(0, 3).map((tech) => (
+            <p key={tech} className="py-2 px-4 bg-[#000000aa] rounded-3xl">
+              {tech}
+            </p>
+          ))}
         </div>
       </motion.div>
     </>

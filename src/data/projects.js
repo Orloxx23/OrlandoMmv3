@@ -16,12 +16,14 @@ export const projects = [
         dark: vlrstats,
       },
     },
-    technologies: ["Reactjs", "OpenAI API"],
-    category: "practice",
+    technologies: ["Reactjs"],
+    category: "personal",
     es: {
       title: "VLR Stats",
-      description: ""
-    }
+      description: "",
+    },
+    github: "",
+    website: "",
   },
   {
     id: 2,
@@ -39,8 +41,10 @@ export const projects = [
     es: {
       title: "Sitio web de Fusion eSports",
       description:
-      "Creé un sitio web para Fusion Esports utilizando ReactJS, la API de YouTube y Swiper. El objetivo era que los seguidores puedan encontrar contenido del equipo, conocer a los jugadores y logros. Además, adquirí nuevos conocimientos en web scraping y creé una API propia para obtener y presentar datos de otros equipos. En general, este proyecto me permitió mejorar mis habilidades en diseño y desarrollo web, incluyendo el uso de herramientas como ReactJS, Swiper y la API de YouTube."
+        "Creé un sitio web para Fusion Esports utilizando ReactJS, la API de YouTube y Swiper. El objetivo era que los seguidores puedan encontrar contenido del equipo, conocer a los jugadores y logros. Además, adquirí nuevos conocimientos en web scraping y creé una API propia para obtener y presentar datos de otros equipos. En general, este proyecto me permitió mejorar mis habilidades en diseño y desarrollo web, incluyendo el uso de herramientas como ReactJS, Swiper y la API de YouTube.",
     },
+    github: "",
+    website: "",
   },
   {
     id: 3,
@@ -60,5 +64,7 @@ export const projects = [
       description:
         "Una lista de tareas creada con Reactjs y la API de OpenAI GPT-3.",
     },
+    github: "",
+    website: "",
   },
 ];

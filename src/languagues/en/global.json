@@ -29,5 +29,9 @@
         "experiments": "Experiments",
         "recommended": "Recommended",
         "courses": "Courses"
+    },
+    "certificates":{
+        "enlvl": "English level",
+        "platzi": "Full Stack Developer with javascript"
     }
 }

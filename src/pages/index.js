@@ -5,9 +5,12 @@ import {
   BirthdayCard,
   ClonCard,
   EmailCard,
+  EnglishCard,
   GithubCard,
   LanguagueCard,
+  LinkedinCard,
   OnlineCard,
+  PlatziCard,
   Playgorund,
   ProjectsCard,
   Skills,
@@ -39,16 +42,18 @@ export default function Home() {
           <LanguagueCard />
           <ThemeCard />
           <BirthdayCard />
-          <OnlineCard />
+          <LinkedinCard />
           <SpotifyCard />
           <GithubCard />
           <Skills />
-          <TwitterCard />
+          <OnlineCard />
           <TimeCard />
+          <EnglishCard/>
           <EmailCard />
-          <TaplyCard />
           <ClonCard />
           <ProjectsCard />
+          <TwitterCard />
+          <PlatziCard />
         </div>
       </motion.div>
       <Script

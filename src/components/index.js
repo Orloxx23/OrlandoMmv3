@@ -16,7 +16,9 @@ import NightComponent from "./NightComponent";
 import ClonCard from "./ClonCard";
 import Chat from "./Chat";
 import ProjectsCard from "./ProjectsCard";
-import Layout from "./Layout";
+import LinkedinCard from "./LinkedinCard";
+import PlatziCard from "./PlatziCard";
+import EnglishCard from "./EnglishCard";
 
 export {
   OnlineCard,
@@ -37,5 +39,7 @@ export {
   ClonCard,
   Chat,
   ProjectsCard,
-  Layout,
+  LinkedinCard,
+  PlatziCard,
+  EnglishCard,
 };
