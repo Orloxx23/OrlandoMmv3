@@ -15,6 +15,8 @@ import me from "../../assets/images/me2.png";
 import { LanguagueCard } from "@/components";
 import "swiper/css";
 import "swiper/css/effect-cards";
+import { SiGithub } from "react-icons/si";
+import { FiExternalLink } from "react-icons/fi";
 
 export default function Projects() {
   let router = useRouter();
@@ -152,12 +154,13 @@ function ProjectCard({ project, index }) {
 
   const [showModal, setShowModal] = useState(false);
   const [isHover, setIsHover] = useState(false);
+  const [seeMore, setSeeMore] = useState(false);
 
   const colors = {
     personal: "#5183B4aa",
     practice: "#51B489aa",
     experiments: "#51B4B3aa",
-    recommended: "#FFCD00aa",
+    recommended: "#DDB71Aaa",
   };
 
   const onCloseModal = () => {
@@ -199,37 +202,6 @@ function ProjectCard({ project, index }) {
         onClick={onCloseModal}
       ></motion.div>
       {showModal && (
-        /*<motion.div
-          layoutId={project.id}
-          transition={{ duration: 0.3, delay: 0.1 }}
-          className={`fixed z-10 bg-[#${
-            colors[project.category]
-          }] w-[80%] md:w-[70%] h-[80%] top-[10%] left-[10%] md:left-[15%] rounded-3xl p-1`}
-          style={{ backgroundColor: colors[project.category] }}
-        >
-          <div className="relative flex flex-col md:flex-row-reverse w-full h-full bg-[#f8efff] dark:bg-[#1b0b29] rounded-3xl overflow-hidden">
-            <Image
-              src={project.images.main}
-              className="md:w-6/12 object-cover w-full h-full"
-              draggable="false"
-              alt={project.title}
-            />
-
-            <div className="p-4 md:p-8 md:w-6/12 overflow-y-auto h-full w-full">
-              <div className="flex justify-between">
-                <h1 className="text-4xl font-extrabold text-[#09030e] dark:text-[#f8efff] mb-4">
-                  {project.title}
-                </h1>
-                <div className="flex"></div>
-              </div>
-              <p className="text-2xl text-[#09030e] dark:text-[#f8efff]">
-                {i18n.language == "en"
-                  ? project.en?.description
-                  : project.es?.description}
-              </p>
-            </div>
-          </div>
-        </motion.div>*/
         <motion.div
           layout
           layoutId={project.id}
@@ -249,11 +221,12 @@ function ProjectCard({ project, index }) {
                 style={{ backgroundColor: colors[project.category] }}
               >
                 <div className="rounded-3xl w-full h-full bg-[#f8efff] dark:bg-[#09030e] p-4 md:p-8 overflow-y-scroll">
-                  <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
-                  <p className="text-lg">
+                  <p className="capitalize font-medium">{t(`projects.${project.category}`) + " / "}</p>
+                  <h1 className="text-3xl font-bold mb-4">{i18n.language == "en" ? project.en.title : project.es.title}</h1>
+                  <p layout className={`text-lg ${(project.es?.description.length > 0 || project.en?.description.length > 0) && "h-1/3"} overflow-y-scroll md:h-auto`}>
                     {i18n.language === "en"
-                      ? project.en.description
-                      : project.es.description}
+                      ? project?.en?.description
+                      : project?.es?.description}
                   </p>
                   <div className="flex gap-2 mt-4">
                     {project.technologies.map((tech) => (
@@ -266,13 +239,51 @@ function ProjectCard({ project, index }) {
                       </p>
                     ))}
                   </div>
+                  <div className="flex flex-col gap-2 mt-8">
+                    {project.website !== "" ? (
+                      <>
+                        <p className="flex items-center gap-2 font-semibold">
+                          <FiExternalLink /> Website
+                        </p>
+                        <a
+                          href={project.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline truncate"
+                        >
+                          {project.website}
+                        </a>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-2 mt-8">
+                    {project.github !== "" ? (
+                      <>
+                        <p className="flex items-center gap-2 font-semibold">
+                          <SiGithub /> Github
+                        </p>
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline truncate"
+                        >
+                          {project.github}
+                        </a>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </div>
               </motion.div>
             </SwiperSlide>
             <SwiperSlide>
               <motion.div
                 layout
-                className="w-full md:w-full md:h-full rounded-3xl p-4 bg-red-500"
+                className="w-full md:w-full md:h-full rounded-3xl p-4"
                 style={{ backgroundColor: colors[project.category] }}
               >
                 <Image
@@ -320,9 +331,10 @@ function ProjectCard({ project, index }) {
           <Image
             src={project.images.main}
             className="w-full h-full object-cover"
+            draggable={false}
           />
         </motion.div>
-        <p className="text-xl font-bold">{project.title}</p>
+        <p className="text-xl font-bold">{i18n.language == "en" ? project.en.title : project.es.title}</p>
         <p className="truncate text-lg">
           {i18n.language == "en"
             ? project.en?.description
