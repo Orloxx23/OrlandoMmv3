@@ -58,14 +58,14 @@ export const projects = [
     category: "experiments",
     es: {
       title: "Valorant para todos",
-      description: 'Este proyecto, que utiliza NodeJS y DiscordJS, es un bot de Discord que creé para mi grupo de amigos. El bot tiene varias características, como la capacidad de eliminar mensajes, mostrar memes aleatorios y bloquear canales de voz. Además, puede habilitar la función "Watch Together" y proporcionar ayuda cuando sea necesario. Este proyecto demuestra mis habilidades en desarrollo backend y trabajo con plataformas de terceros.'
+      description: 'Este proyecto web sencillo, creado con ReactJS y la API de YouTube, recopila una colección de videos para ayudar a los jugadores de Valorant a mejorar su juego. El sitio web permite a los usuarios acceder fácilmente a una variedad de videos instructivos y tutoriales relacionados con el juego. Este proyecto demuestra mis habilidades en desarrollo frontend, integración de API y diseño UX/UI.'
     },
     en: {
       title: "Valorant For all",
-      description: 'This project, which uses NodeJS and DiscordJS, is a Discord bot that I created for my group of friends. The bot has various features such as the ability to delete messages, display random memes, and block voice channels. Additionally, it can enable a "Watch Together" feature and provide help when needed. This project showcases my skills in backend development and working with third-party platforms.'
+      description: 'This simple web project, created using ReactJS and the YouTube API, compiles a collection of videos to help Valorant players improve their gameplay. The website allows users to easily access a variety of instructional videos and tutorials related to the game. This project showcases my skills in front-end development, API integration, and UX/UI design.'
     },
-    github: "https://github.com/Orloxx23/triunvirato-bot",
-    website: "",
+    github: "https://github.com/Orloxx23/valorantfa-client",
+    website: "https://valorantfa-client.vercel.app",
   },
   {
     id: 3,
@@ -155,12 +155,12 @@ export const projects = [
     technologies: ["ReactJS", "Youtube API", "NodeJS"],
     category: "practice",
     es: {
-      title: "Sitio web de Fusion eSports",
+      title: "Fusion eSports",
       description:
         "Creé un sitio web para Fusion Esports utilizando ReactJS, la API de YouTube y Swiper. El objetivo era que los seguidores puedan encontrar contenido del equipo, conocer a los jugadores y logros. Además, adquirí nuevos conocimientos en web scraping y creé una API propia para obtener y presentar datos de otros equipos. En general, este proyecto me permitió mejorar mis habilidades en diseño y desarrollo web, incluyendo el uso de herramientas como ReactJS, Swiper y la API de YouTube.",
     },
     en: {
-      title: "Fusion eSports website",
+      title: "Fusion eSports",
       description:
         "Created a website for Fusion Esports using ReactJS, the YouTube API, and Swiper. The goal was for fans to find team content, meet the players and achievements. Also, I gained new knowledge in web scraping and created my own API to get and present data from other teams. Overall, this project allowed me to improve my web design and development skills, including the use of tools like ReactJS, Swiper, and the YouTube API.",
     },
