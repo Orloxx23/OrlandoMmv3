@@ -228,11 +228,11 @@ function ProjectCard({ project, index }) {
                       ? project?.en?.description
                       : project?.es?.description}
                   </p>
-                  <div className="flex gap-2 mt-4">
+                  <div className="flex gap-2 mt-4 w-full overflow-x-scroll">
                     {project.technologies.map((tech) => (
                       <p
                         key={tech}
-                        className="py-2 px-4 rounded-3xl"
+                        className="text-xs md:text-base py-2 px-2 md:px-4 rounded-3xl"
                         style={{ backgroundColor: colors[project.category] }}
                       >
                         {tech}
@@ -280,18 +280,6 @@ function ProjectCard({ project, index }) {
                 </div>
               </motion.div>
             </SwiperSlide>
-            <SwiperSlide>
-              <motion.div
-                layout
-                className="w-full md:w-full md:h-full rounded-3xl p-4"
-                style={{ backgroundColor: colors[project.category] }}
-              >
-                <Image
-                  src={project.images.browser.light}
-                  className="w-full h-full rounded-3xl object-cover object-left-top"
-                />
-              </motion.div>
-            </SwiperSlide>
           </Swiper>
         </motion.div>
       )}
@@ -325,7 +313,7 @@ function ProjectCard({ project, index }) {
       >
         <motion.div
           className={`absolute bottom-0 overflow-hidden rounded-t-3xl transition-all duration-300 ease-in-out ${
-            isHover ? "w-[95%] h-[55%] left-[2.5%]" : "h-full w-full left-0"
+            isHover ? "w-[95%] h-[55%] left-[2.5%]" : "md:h-full md:w-full md:left-0 w-[95%] h-[50%] left-[2.5%]"
           }`}
         >
           <Image
@@ -340,9 +328,9 @@ function ProjectCard({ project, index }) {
             ? project.en?.description
             : project.es.description}
         </p>
-        <div className="flex gap-2 mt-4">
+        <div className="flex gap-2 mt-4 w-full overflow-x-scroll">
           {project.technologies.slice(0, 3).map((tech) => (
-            <p key={tech} className="py-2 px-4 bg-[#000000aa] rounded-3xl">
+            <p key={tech} className="text-xs md:text-base py-2 px-2 md:px-4 bg-[#000000aa] rounded-3xl">
               {tech}
             </p>
           ))}
