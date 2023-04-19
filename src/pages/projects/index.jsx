@@ -8,9 +8,13 @@ import { AiFillCaretUp, AiFillStar } from "react-icons/ai";
 import { BsArrowLeft } from "react-icons/bs";
 import { projects } from "@/data/projects";
 import { useRouter } from "next/router";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCards } from "swiper";
 
 import me from "../../assets/images/me2.png";
 import { LanguagueCard } from "@/components";
+import "swiper/css";
+import "swiper/css/effect-cards";
 
 export default function Projects() {
   let router = useRouter();
@@ -173,8 +177,14 @@ function ProjectCard({ project, index }) {
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = "hidden";
+      document.body.style.height = "100%";
+      document.body.style.width = "100%";
+      document.body.style.position = "fixed";
     } else {
       document.body.style.overflow = "unset";
+      document.body.style.height = "unset";
+      document.body.style.width = "unset";
+      document.body.style.position = "unset";
     }
   }, [showModal]);
 
@@ -189,7 +199,7 @@ function ProjectCard({ project, index }) {
         onClick={onCloseModal}
       ></motion.div>
       {showModal && (
-        <motion.div
+        /*<motion.div
           layoutId={project.id}
           transition={{ duration: 0.3, delay: 0.1 }}
           className={`fixed z-10 bg-[#${
@@ -219,6 +229,59 @@ function ProjectCard({ project, index }) {
               </p>
             </div>
           </div>
+        </motion.div>*/
+        <motion.div
+          layout
+          layoutId={project.id}
+          className="absolute z-10 w-[90%] md:w-[60%] h-[90%] md:h-[60%] top-[5%] md:top-[20%] left-[5%] md:left-[20%]"
+        >
+          <Swiper
+            effect={"cards"}
+            grabCursor={true}
+            loop={true}
+            modules={[EffectCards]}
+            className="w-full h-full flex justify-center items-center"
+          >
+            <SwiperSlide>
+              <motion.div
+                layout
+                className="w-full h-full rounded-3xl p-4 "
+                style={{ backgroundColor: colors[project.category] }}
+              >
+                <div className="rounded-3xl w-full h-full bg-[#f8efff] dark:bg-[#09030e] p-4 md:p-8 overflow-y-scroll">
+                  <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
+                  <p className="text-lg">
+                    {i18n.language === "en"
+                      ? project.en.description
+                      : project.es.description}
+                  </p>
+                  <div className="flex gap-2 mt-4">
+                    {project.technologies.map((tech) => (
+                      <p
+                        key={tech}
+                        className="py-2 px-4 rounded-3xl"
+                        style={{ backgroundColor: colors[project.category] }}
+                      >
+                        {tech}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <motion.div
+                layout
+                className="w-full md:w-full md:h-full rounded-3xl p-4 bg-red-500"
+                style={{ backgroundColor: colors[project.category] }}
+              >
+                <Image
+                  src={project.images.browser.light}
+                  className="w-full h-full rounded-3xl object-cover object-left-top"
+                />
+              </motion.div>
+            </SwiperSlide>
+          </Swiper>
         </motion.div>
       )}
       <motion.div
