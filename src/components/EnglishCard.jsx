@@ -15,7 +15,7 @@ export default function EnglishCard() {
       <div className="">
         {/* <Image src={birthday} alt="" width="100" /> */}
         <div className="flex justify-center items-center flex-col">
-          <p className="text-xs md:text-lg text-center uppercase font-base">
+          <p className="text-xs hidden md:block md:text-lg text-center uppercase font-base">
             {t("certificates.enlvl")}
           </p>
           <p className="text-4xl md:text-9xl font-bold">B2</p>

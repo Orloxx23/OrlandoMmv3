@@ -44,14 +44,14 @@ export default function Home() {
           <BirthdayCard />
           <LinkedinCard />
           <SpotifyCard />
-          <GithubCard />
+          <ProjectsCard />
           <Skills />
           <OnlineCard />
           <TimeCard />
           <EnglishCard/>
           <EmailCard />
           <ClonCard />
-          <ProjectsCard />
+          <GithubCard />
           <TwitterCard />
           <PlatziCard />
         </div>

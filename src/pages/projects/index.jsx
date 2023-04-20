@@ -17,6 +17,7 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import { SiGithub } from "react-icons/si";
 import { FiExternalLink } from "react-icons/fi";
+import Script from "next/script";
 
 export default function Projects() {
   let router = useRouter();
@@ -174,6 +175,8 @@ function ProjectCard({ project, index }) {
   useEffect(() => {
     if (router.query.project == project.url) {
       setShowModal(true);
+    } else {
+      setShowModal(false);
     }
   }, [router.query]);
 
@@ -220,10 +223,27 @@ function ProjectCard({ project, index }) {
                 className="w-full h-full rounded-3xl p-4 "
                 style={{ backgroundColor: colors[project.category] }}
               >
-                <div className="rounded-3xl w-full h-full bg-[#f8efff] dark:bg-[#09030e] p-4 md:p-8 overflow-y-scroll">
-                  <p className="capitalize font-medium">{t(`projects.${project.category}`) + " / "}</p>
-                  <h1 className="text-3xl font-bold mb-4">{i18n.language == "en" ? project.en.title : project.es.title}</h1>
-                  <p layout className={`text-lg ${(project.es?.description.length > 0 || project.en?.description.length > 0) && "h-1/3"} overflow-y-scroll md:h-auto`}>
+                
+                <div className="rrelative ounded-3xl w-full h-full bg-[#f8efff] dark:bg-[#09030e] p-4 md:p-8 overflow-y-scroll">
+                <div className="absolute right-6 top-6 md:right-10 md:top-10 cursor-pointer" onClick={onCloseModal}>
+                  <i className="fa-solid fa-xmark text-3xl"></i>
+                </div>
+                  <p className="capitalize font-medium">
+                    {t(`projects.${project.category}`) + " / "}
+                  </p>
+                  <h1 className="text-3xl font-bold mb-4">
+                    {i18n.language == "en"
+                      ? project.en.title
+                      : project.es.title}
+                  </h1>
+                  <p
+                    layout
+                    className={`text-lg ${
+                      (project.es?.description.length > 0 ||
+                        project.en?.description.length > 0) &&
+                      "h-1/3"
+                    } overflow-y-scroll md:h-auto`}
+                  >
                     {i18n.language === "en"
                       ? project?.en?.description
                       : project?.es?.description}
@@ -313,7 +333,9 @@ function ProjectCard({ project, index }) {
       >
         <motion.div
           className={`absolute bottom-0 overflow-hidden rounded-t-3xl transition-all duration-300 ease-in-out ${
-            isHover ? "w-[95%] h-[55%] left-[2.5%]" : "md:h-full md:w-full md:left-0 w-[95%] h-[50%] left-[2.5%]"
+            isHover
+              ? "w-[95%] h-[55%] left-[2.5%]"
+              : "md:h-full md:w-full md:left-0 w-[95%] h-[50%] left-[2.5%]"
           }`}
         >
           <Image
@@ -322,7 +344,9 @@ function ProjectCard({ project, index }) {
             draggable={false}
           />
         </motion.div>
-        <p className="text-xl font-bold">{i18n.language == "en" ? project.en.title : project.es.title}</p>
+        <p className="text-xl font-bold">
+          {i18n.language == "en" ? project.en.title : project.es.title}
+        </p>
         <p className="truncate text-lg">
           {i18n.language == "en"
             ? project.en?.description
@@ -330,12 +354,20 @@ function ProjectCard({ project, index }) {
         </p>
         <div className="flex gap-2 mt-4 w-full overflow-x-scroll">
           {project.technologies.slice(0, 3).map((tech) => (
-            <p key={tech} className="text-xs md:text-base py-2 px-2 md:px-4 bg-[#000000aa] rounded-3xl">
+            <p
+              key={tech}
+              className="text-xs md:text-base py-2 px-2 md:px-4 bg-[#000000aa] rounded-3xl"
+            >
               {tech}
             </p>
           ))}
         </div>
       </motion.div>
+
+      <Script
+        src="https://kit.fontawesome.com/00a734f883.js"
+        crossOrigin="anonymous"
+      ></Script>
     </>
   );
 }
