@@ -45,6 +45,10 @@ export default function Projects() {
   }
 
   useEffect(() => {
+    setProjectsFiltered(projects.sort(compare));
+  }, []);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
