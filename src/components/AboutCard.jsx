@@ -18,11 +18,11 @@ export default function AboutCard() {
         height="512"
         draggable="false"
       />
-      <div className="h-full md:w-8/12 absolute top-0 left-0 p-4 md:p-8 flex flex-col justify-end">
-        <h1 className="text-3xl md:text-xl lg:text-7xl font-bold text-white mb-4 md:mb-5">
+      <div className="h-full md:w-8/12 absolute top-0 left-0 p-4 md:p-8 flex flex-col justify-start  md:justify-end">
+        <h1 className="text-3xl md:text-xl lg:text-5xl font-bold text-white mb-4 md:mb-5">
           👋 {i18n.language === "es" ? "Hola, soy" : "Hi, I'm"} Orlando Mina
         </h1>
-        <h2 className="text-md md:text-lg lg:text-2xl text-white">
+        <p className="text-md md:text-lg lg:text-2xl text-white">
           {i18n.language === "es" ? (
             <>
               Soy <b>desarrollador frontend</b> con experiencia en <b>React</b>.
@@ -40,7 +40,7 @@ export default function AboutCard() {
               put my all into my work.
             </>
           )}
-        </h2>
+        </p>
       </div>
     </div>
   );
