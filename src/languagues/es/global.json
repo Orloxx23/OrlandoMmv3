@@ -11,6 +11,9 @@
         "since": "Desde"
     
     },
+    "chat":{
+        "greeting": "Hola, soy el clon de Orlando, ¿que quieres saber de mi?"
+    },
     "birthday":{
         "age": "edad",
         "years-old": "años",

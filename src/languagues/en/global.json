@@ -11,6 +11,9 @@
         "since": "Since"
     
     },
+    "chat":{
+        "greeting": "Hi, I'm Orlando's clone, what do you want to know about me?"
+    },
     "birthday":{
         "age": "age",
         "years-old": "years old",
