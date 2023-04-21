@@ -115,7 +115,7 @@ export default function SpotifyCard() {
         </p>
         <div className="flex mb-2 flex-col">
           <p>{isLoading && t("loading")}</p>
-          <p className="text-[#ffffff  w-full xl:text-xl lg:text-lg text-xs font-semibold truncate">
+          <p className="text-[#ffffff] w-full xl:text-xl lg:text-lg text-xs font-semibold truncate">
             {data?.name}
           </p>
           <p className="text-[#ffffff] w-full xl:text-xl lg:text-lg text-xs truncate">
