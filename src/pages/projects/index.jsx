@@ -24,7 +24,7 @@ export default function Projects() {
   const [t, i18n] = useTranslation("global");
 
   const [categoryActive, setCategoryActive] = useState(0);
-  const [projectsFiltered, setProjectsFiltered] = useState(projects);
+  const [projectsFiltered, setProjectsFiltered] = useState();
 
   const categories = [
     "all", // 0
@@ -34,18 +34,28 @@ export default function Projects() {
     "recommended", // 4
   ];
 
+  function compare(a, b) {
+    if (a.id < b.id) {
+      return 1;
+    } else if (a.id > b.id) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
     if (categoryActive == 0) {
-      setProjectsFiltered(projects);
+      setProjectsFiltered(projects.sort(compare));
     } else {
       setProjectsFiltered(
         projects.filter(
           (project) => project.category == categories[categoryActive]
-        )
+        ).sort(compare)
       );
     }
   }, [categoryActive]);
@@ -99,7 +109,7 @@ export default function Projects() {
           layout
           className="grid grid-cols-3 gap-2 md:grid-cols-3 md:gap-4 mb-5 container mx-auto xl:px-20 "
         >
-          {projectsFiltered.map((project, index) => (
+          {projectsFiltered?.reverse()?.map((project, index) => (
             <ProjectCard key={project.id} index={index} project={project} />
           ))}
         </motion.div>
