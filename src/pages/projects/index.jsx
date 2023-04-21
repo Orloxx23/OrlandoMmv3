@@ -370,7 +370,7 @@ function ProjectCard({ project, index }) {
           {project.technologies.slice(0, 3).map((tech) => (
             <p
               key={tech}
-              className="text-xs md:text-base py-2 px-2 md:px-4 bg-[#000000aa] rounded-3xl"
+              className="text-xs md:text-md py-2 px-2 md:px-4 bg-[#000000aa] rounded-3xl"
             >
               {tech}
             </p>
