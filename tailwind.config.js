@@ -18,6 +18,9 @@ module.exports = {
       scale: {
         200: "2",
       },
+      backgroundImage: {
+        noise: "url('../assets/images/noise.webp')",
+      }
     },
   },
   plugins: [],
