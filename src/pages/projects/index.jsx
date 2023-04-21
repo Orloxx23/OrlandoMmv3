@@ -238,7 +238,7 @@ function ProjectCard({ project, index }) {
                 style={{ backgroundColor: colors[project.category] }}
               >
                 
-                <div className="rrelative ounded-3xl w-full h-full bg-[#f8efff] dark:bg-[#09030e] p-4 md:p-8 overflow-y-scroll">
+                <div className="rrelative rounded-3xl w-full h-full bg-[#f8efff] dark:bg-[#09030e] p-4 md:p-8 overflow-y-scroll">
                 <div className="absolute right-6 top-6 md:right-10 md:top-10 cursor-pointer" onClick={onCloseModal}>
                   <i className="fa-solid fa-xmark text-3xl"></i>
                 </div>
