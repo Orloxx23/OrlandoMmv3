@@ -113,7 +113,7 @@ export default function Projects() {
           layout
           className="grid grid-cols-3 gap-2 md:grid-cols-3 md:gap-4 mb-5 container mx-auto xl:px-20 "
         >
-          {projectsFiltered?.reverse()?.map((project, index) => (
+          {projectsFiltered?.map((project, index) => (
             <ProjectCard key={project.id} index={index} project={project} />
           ))}
         </motion.div>
