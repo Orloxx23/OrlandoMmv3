@@ -38,5 +38,5 @@ a {
   opacity: 0.035;
   z-index: 1000;
   pointer-events: none;
-  background-image: url("../assets/images/noise.gif");
+  background-image: url("../assets/images/noise.webp");
 }
