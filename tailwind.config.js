@@ -19,7 +19,7 @@ module.exports = {
         200: "2",
       },
       backgroundImage: {
-        noise: "url('../assets/images/noise.webp')",
+        // noise: "url('../assets/images/noise.webp')",
       }
     },
   },
