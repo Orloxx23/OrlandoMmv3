@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-import me from "@/assets/images/me.png";
+import me from "@/assets/images/me.webp";
 import pet from "@/assets/images/me-pet.gif";
 import { Chat } from ".";
 

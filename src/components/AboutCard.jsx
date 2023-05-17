@@ -2,7 +2,7 @@ import React from "react";
 import styles from "@/styles/AboutCard.module.css";
 import Image from "next/image";
 
-import me from "@/assets/images/me.png";
+import me from "@/assets/images/me.webp";
 import { useTranslation } from "react-i18next";
 
 export default function AboutCard() {

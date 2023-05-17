@@ -5,7 +5,7 @@ import Typewriter from "typewriter-effect";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-import me from "@/assets/images/me.png";
+import me from "@/assets/images/me.webp";
 
 export default function Chat({ open, setOpen }) {
   // const [open, setOpen] = React.useState(false);
