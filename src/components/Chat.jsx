@@ -212,7 +212,7 @@ export default function Chat({ open, setOpen }) {
               className={`h-10 flex border-t-2 border-purple-500 dark:bg-[#ffffff36] bg-[#00000015] rounded-b-xl w-full items-start overflow-hidden`}
             >
               <textarea
-                className="p-2 flex h-full w-9/12 border-none b resize-none outline-none bg-[#00000000] break-words float-left"
+                className="p-2 flex h-full w-9/12 border-none b resize-none outline-none bg-[#00000000] break-words float-left textarea"
                 onFocus={() => setFocus(true)}
                 onBlur={() => setFocus(false)}
                 value={loading ? "..." : text}

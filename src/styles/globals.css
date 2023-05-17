@@ -59,3 +59,7 @@ a {
   pointer-events: none;
   background-image: url("/noise.gif");
 }
+
+.textarea::-webkit-scrollbar {
+  display: none;
+}
