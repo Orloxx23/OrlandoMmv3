@@ -60,7 +60,7 @@ async function getResponse(query, context) {
     messages: [
       {
         role: "system",
-        content: `${process.env.PERSONALITY} Only answer if you have the question has to do with the following information: ${context}. This is the conversation between you and the user: ${conversation.join(
+        content: `${process.env.PERSONALITY} Only answer if you have the question has to do with the following information: ${context}. Don't answer if you don't know the answer. This is the conversation between you and the user: ${conversation.join(
           ", "
         )}.`,
       },
