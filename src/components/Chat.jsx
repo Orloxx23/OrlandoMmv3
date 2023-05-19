@@ -75,16 +75,24 @@ export default function Chat({ open, setOpen }) {
       .then(function (response) {
         // console.log(response.data.message);
 
-        const regex = /{(.*)}/;
-        const matches = regex.exec(response.data.message);
-        const stringify = matches[1].replace(/'/g, '"');
-        const objectJson = JSON.parse("{" + stringify + "}");
+        try {
+          const regex = /{(.*)}/;
+          const matches = regex.exec(response.data.message);
+          const stringify = matches[1].replace(/'/g, '"');
+          const objectJson = JSON.parse("{" + stringify + "}");
 
-        res = objectJson;
+          res = objectJson;
 
         message = res.message;
         setEmotion(res.emotion);
         setLoading(false);
+        } catch (error) {
+          console.log(error);
+          message = response.data.message;
+          setEmotion("nervous");
+          setLoading(false);
+        }
+        
       })
       .catch(function (error) {
         console.log(error);
