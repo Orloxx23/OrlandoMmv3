@@ -78,7 +78,7 @@ export default function Chat({ open, setOpen }) {
         try {
           const regex = /{(.*)}/;
           const matches = regex.exec(response.data.message);
-          const stringify = matches[1].replace(/'/g, '"');
+          const stringify = matches[1].replace(/`/g, '"');
           const objectJson = JSON.parse("{" + stringify + "}");
 
           res = objectJson;
