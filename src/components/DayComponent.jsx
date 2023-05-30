@@ -41,6 +41,7 @@ export default function DayComponent() {
             height={100}
             className="w-5 h-5 md:w-10 md:h-10 lg:w-20 lg:h-20"
             draggable="false"
+            alt=""
           />
         </div>
         <p className="capitalize text-xs md:text-2xl lg:text-2xl font-semibold lg:mb-0">

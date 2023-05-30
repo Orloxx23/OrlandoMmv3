@@ -60,7 +60,7 @@ async function getResponse(query, context) {
     messages: [
       {
         role: "system",
-        content: `${process.env.PERSONALITY} Only answer if you have the question has to do with the following information: ${context}. Don't answer if you don't know the answer. This is the conversation between you and the user: ${conversation.join(
+        content: `${process.env.PERSONALITY} You don't make things up. you don't tell lies. Only answer if you have the question has to do with the following information and you only know this: ${context}. Don't answer if you don't know the answer. This is the conversation between you and the user: ${conversation.join(
           ", "
         )}.`,
       },
@@ -107,11 +107,13 @@ export default async function handler(req, res) {
     );
 
     let context = "";
-    newEmbeddings.slice(0, 5).forEach((element) => {
+    newEmbeddings.slice(0, 6).forEach((element) => {
       context += element.text + " ";
     });
 
     conversation.push("user: " + query);
+
+    console.log(context + "\n");
 
     await getResponse(query, context).then((response) => {
       conversation.push("bot: " + response);

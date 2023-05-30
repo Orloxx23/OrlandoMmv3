@@ -40,6 +40,7 @@ export default function NightComponent() {
             height={100}
             className="w-5 h-5 lg:w-20 lg:h-20"
             draggable="false"
+            alt=""
           />
         </div>
         <p className="capitalize text-xs md:text-xl lg:text-2xl font-semibold lg:mb-0">
