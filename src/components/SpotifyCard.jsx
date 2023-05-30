@@ -8,7 +8,7 @@ import styles from "@/styles/SpotifyCard.module.css";
 import noise from "@/assets/images/noise.gif";
 
 import { useTranslation } from "react-i18next";
-import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
+import { BsFillPauseFill, BsFillPlayFill, BsSpotify } from "react-icons/bs";
 
 export default function SpotifyCard() {
   const [isPlaying, setIsPlaying] = React.useState(false);
@@ -106,7 +106,7 @@ export default function SpotifyCard() {
           rel="noopener noreferrer"
           className="md:text-4xl text-[#62DBBE] dark:text-[#25ac8c] duration-500 hover:text-[#4cd1b2] dark:hover:text-[#3ca188] ease-in-out"
         >
-          <i className="fa-brands fa-spotify"></i>
+          <BsSpotify />
         </a>
       </div>
 
