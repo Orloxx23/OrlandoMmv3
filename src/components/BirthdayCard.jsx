@@ -7,7 +7,9 @@ export default function BirthdayCard() {
 
   const getAge = () => {
     let age = moment().diff(moment([2002, 5, 23]), "years");
-    return age;
+    let day = moment().date();
+    let month = moment().month() + 1;
+    return month >= 5 && day >= 23 ? age + 1 : age;
   };
 
   const getBirthday = () => {
