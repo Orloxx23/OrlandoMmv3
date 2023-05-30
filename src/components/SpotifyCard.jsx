@@ -8,6 +8,7 @@ import styles from "@/styles/SpotifyCard.module.css";
 import noise from "@/assets/images/noise.gif";
 
 import { useTranslation } from "react-i18next";
+import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
 
 export default function SpotifyCard() {
   const [isPlaying, setIsPlaying] = React.useState(false);
@@ -129,11 +130,9 @@ export default function SpotifyCard() {
           className={styles.audiovisual}
           onClick={handleState}
         >
-          <i
-            className={`fa-solid fa-${
-              isPlaying ? "pause" : "play"
-            } mr-2 text-white`}
-          ></i>
+          <div className=" text-white text-xl">
+            {isPlaying ? <BsFillPauseFill /> : <BsFillPlayFill />}
+          </div>
           <div className={styles.audiowire} id="audio1"></div>
           <div className={styles.audiowire} id="audio2"></div>
           <div className={styles.audiowire} id="audio3"></div>
