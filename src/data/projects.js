@@ -140,7 +140,7 @@ export const projects = [
         "This open-source project consists of a desktop application with a Node server and a mobile app that allows Valorant players to control the game from their mobile device. With this app, players can select their agent and manage their game room, including changing the game mode. This project showcases my skills in full-stack development, mobile development, and API integration.",
     },
     github: "",
-    website: "https://orloxx23.github.io/Taply-page/",
+    website: "https://taply.click",
   },
   {
     id: 6,
