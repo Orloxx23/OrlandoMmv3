@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import ConfettiExplosion from "react-confetti-explosion";
 
 import certificated from "@/assets/images/ej.webp";
+import { MdOpenInNew } from "react-icons/md";
 
 export default function PlatziCard() {
   const [t, i18n] = useTranslation("global");
@@ -32,7 +33,7 @@ export default function PlatziCard() {
           />
         )}
       </div>
-      <i className="fa-solid fa-arrow-up-right-from-square absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-white dark:text-[#ffffffaa]"></i>
+      <MdOpenInNew className="absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-xl text-white dark:text-[#ffffffaa]"/>
       <Image src={certificated} className="w-1/3 md:w-6/12" alt=""/>
       <div className="w-full">
         <h1 className="text-xs md:text-3xl font-bold text-white capitalize">

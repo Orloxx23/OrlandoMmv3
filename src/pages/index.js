@@ -54,10 +54,6 @@ export default function Home() {
           <PlatziCard />
         </div>
       </motion.div>
-      <Script
-        src="https://kit.fontawesome.com/00a734f883.js"
-        crossOrigin="anonymous"
-      ></Script>
     </>
   );
 }

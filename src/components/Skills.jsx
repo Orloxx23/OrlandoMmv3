@@ -14,6 +14,7 @@ import {
   SiReact,
   SiTailwindcss,
 } from "react-icons/si";
+import { DiJava } from "react-icons/di";
 
 export default function Skills() {
   return (
@@ -26,7 +27,7 @@ export default function Skills() {
       <SiElectron />
       <SiTailwindcss />
       <SiNodedotjs />
-      <i className="fa-brands fa-java"></i>
+      <DiJava />
       <SiFirebase />
       <SiFlutter />
       <SiGit/>

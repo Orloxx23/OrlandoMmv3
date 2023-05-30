@@ -4,6 +4,7 @@ import { SiGithub } from "react-icons/si";
 import { useTranslation } from "react-i18next";
 
 import github from "../assets/images/giphy.gif";
+import { MdOpenInNew } from "react-icons/md";
 
 export default function GithubCard() {
   const [t, i18n] = useTranslation("global");
@@ -22,7 +23,7 @@ export default function GithubCard() {
           height={280}
           alt=""
         />
-        <i className="fa-solid fa-arrow-up-right-from-square absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-white dark:text-[#ffffffaa]"></i>
+        <MdOpenInNew className="absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-xl text-white dark:text-[#ffffffaa]"/>
         <div className="w-full h-full flex flex-col justify-between">
           <SiGithub
             color="white"
