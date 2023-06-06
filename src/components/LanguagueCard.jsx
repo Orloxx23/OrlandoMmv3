@@ -17,6 +17,7 @@ export default function LanguagueCard() {
       setLanguage("en");
       changeLanguage("en");
     }
+    toggleLanguage();
   }, []);
 
   const toggleLanguage = () => {
