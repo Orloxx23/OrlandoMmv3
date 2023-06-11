@@ -73,7 +73,7 @@ export default function Chat({ open, setOpen }) {
         query: query,
       })
       .then(function (response) {
-        console.log(response.data.message);
+        // console.log(response.data.message);
 
         try {
           const regex = /{(.*)}/;
