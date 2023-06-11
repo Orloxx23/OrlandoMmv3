@@ -73,7 +73,7 @@ export default function Chat({ open, setOpen }) {
         query: query,
       })
       .then(function (response) {
-        // console.log(response.data.message);
+        console.log(response.data.message);
 
         try {
           const regex = /{(.*)}/;
@@ -239,7 +239,8 @@ export default function Chat({ open, setOpen }) {
                     : "text-white"
                 } hover:bg-[#da20ff1f]`}
               >
-                <i className="fa-regular fa-paper-plane"></i>
+                📤
+                {/* <i className="fa-regular fa-paper-plane"></i> */}
               </button>
             </motion.form>
           </motion.div>
