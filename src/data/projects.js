@@ -77,17 +77,17 @@ export const projects = [
         dark: todolistd,
       },
     },
-    technologies: ["ReactJS", "GPT-3", "OpenAI API"],
+    technologies: ["ReactJS"],
     category: "practice",
     es: {
-      title: "Lista de tareas (GPT-3)",
+      title: "Lista de tareas",
       description:
-        "Esta es una aplicación web de lista de tareas que creé mientras aprendía ReactJS en Platzi. Con el tiempo, decidí mejorarla integrando GPT-3, el cual genera consejos y sugerencias útiles basados en la tarea en cuestión. Este proyecto demuestra mis habilidades tanto en desarrollo front-end como en procesamiento de lenguaje natural.",
+        "Esta es una aplicación web de lista de tareas que creé mientras aprendía ReactJS en Platzi. Este proyecto demuestra mis habilidades tanto en desarrollo front-end.",
     },
     en: {
-      title: "Todo List (GPT-3)",
+      title: "Todo List",
       description:
-        "This is a task list web application that I created while learning ReactJS on Platzi. Over time, I decided to enhance it by integrating GPT-3, which generates helpful tips and advice based on the task at hand. This project showcases my skills in both front-end development and natural language processing.",
+        "This is a task list web application that I created while learning ReactJS on Platzi. This project showcases my skills in both front-end development.",
     },
     github: "https://github.com/Orloxx23/todolist",
     website: "https://orloxx23.github.io/todolist/",
