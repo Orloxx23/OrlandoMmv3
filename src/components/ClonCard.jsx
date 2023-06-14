@@ -21,7 +21,7 @@ export default function ClonCard() {
       <Chat open={open} setOpen={setOpen}/>
       <div
         onClick={handlerClick}
-        className="relative aspect-square top-0 left-0 flex flex-col justify-center items-center bg-purple-500 dark:bg-purple-500 rounded-3xl overflow-hidden col-span-1 hover:scale-105 transition duration-500 ease-in-out shadow-sm cursor-pointer"
+        className="relative aspect-square top-0 left-0 flex flex-col justify-center items-center bg-purple-500 dark:bg-purple-500 rounded-3xl overflow-hidden col-span-1 hover:scale-[103%] transition duration-500 ease-in-out shadow-sm cursor-pointer"
       >
         {showBadge && (
           <span className="absolute flex justify-center items-center top-2 text-xs md:text-xl right-2 md:top-8 md:right-8 text-[#00000071] dark:text-[#ffffff71]">

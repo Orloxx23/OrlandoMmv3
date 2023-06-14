@@ -41,16 +41,16 @@ export default function Home() {
           <ThemeCard />
           <BirthdayCard />
           <LinkedinCard />
-          <SpotifyCard />
           <ProjectsCard />
-          <Skills />
-          <OnlineCard />
-          <TimeCard />
-          <EnglishCard/>
-          <EmailCard />
-          <ClonCard />
           <GithubCard />
+          <Skills />
+          <EnglishCard/>
+          <SpotifyCard />
+          <OnlineCard />
+          <EmailCard />
           <TwitterCard />
+          <TimeCard />          
+          <ClonCard />
           <PlatziCard />
         </div>
       </motion.div>

@@ -13,7 +13,7 @@ export default function GithubCard() {
       href="https://github.com/orloxx23"
       target="_blank"
       rel="noopener noreferrer"
-      className=" rounded-3xl col-span-2 overflow-hidden cursor-pointer hover:scale-105 transition duration-300 ease-in-out"
+      className=" rounded-3xl col-span-2 overflow-hidden cursor-pointer hover:scale-[103%] transition duration-300 ease-in-out"
     >
       <div className="relative w-full h-full p-4 md:p-8 bg-[#00000077]">
         <Image

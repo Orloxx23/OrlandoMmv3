@@ -14,7 +14,7 @@ export default function Chat({ open, setOpen }) {
   const [chat, setChat] = React.useState([
     {
       user: "bot",
-      message: "Hola, soy el clon de Orlando, ¿que quieres saber de mi?",
+      message: "Hola, soy el clon de Orlando. ¿Qué te gustaría saber de mí?",
       animate: true,
     },
   ]);

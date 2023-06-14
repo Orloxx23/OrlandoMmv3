@@ -10,7 +10,7 @@ export default function EnglishCard() {
       href="https://www.efset.org/cert/Y5Zk3T"
       target="_blank"
       rel="noopener noreferrer"
-      className="text-white relative rounded-3xl flex overflow-hidden aspect-square shadow-sm bg-[#2ab9adb9] p-4 justify-center items-center hover:scale-105 transition duration-500 ease-in-out cursor-pointer"
+      className="text-white relative rounded-3xl flex overflow-hidden aspect-square shadow-sm bg-[#2ab9adb9] p-4 justify-center items-center hover:scale-[103%] transition duration-500 ease-in-out cursor-pointer"
     >
       <MdOpenInNew className="absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-xl text-white dark:text-[#ffffffaa]"/>
       <div className="">

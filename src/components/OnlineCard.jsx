@@ -6,6 +6,7 @@ import moment from "moment/moment";
 import "moment/locale/es";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
+import { BsDiscord } from "react-icons/bs";
 
 export default function OnlineCard() {
   const { data, isLoading } = useSWR(`/api/online`, (url) =>
@@ -52,9 +53,9 @@ export default function OnlineCard() {
     <div
       className={`text-white rounded-3xl flex relative overflow-hidden aspect-square shadow-sm ${bgClass}`}
     >
-      <div className="absolute inset-0 flex items-center justify-center text-xs md:text-2xl xl:text-3xl font-bold">
+      <div className="absolute inset-0 flex items-center justify-center text-md md:text-2xl xl:text-3xl font-bold">
         <div className="flex items-center gap-3">
-          <p>{status === "loading" ? t("loading") : t(`online.${status}`)}</p>
+          <p className="flex gap-1 md:gap-2 justify-center items-center"><BsDiscord /> {status === "loading" ? t("loading") : t(`online.${status}`)}</p>
         </div>
       </div>
 

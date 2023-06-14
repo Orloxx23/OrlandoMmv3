@@ -21,7 +21,7 @@ export default function PlatziCard() {
       rel="noopener noreferrer"
       id="container"
       onMouseEnter={handleHover}
-      className="relative flex items-center gap-4 p-3 md:p-7 lg:p-8 rounded-3xl md:col-span-2 col-span-2 row-span-1 overflow-hidden bg-[#96c93ec7] hover:scale-105 transition duration-300 ease-in-out"
+      className="relative flex items-center gap-4 p-3 md:p-7 lg:p-8 rounded-3xl md:col-span-2 col-span-2 row-span-1 overflow-hidden bg-[#96c93ec7] hover:scale-[103%] transition duration-300 ease-in-out"
     >
       <div className="absolute w-full h-full z-20 left-0 flex justify-center items-center pointer-events-none">
         {isExploding && (

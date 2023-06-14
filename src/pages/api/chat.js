@@ -4,7 +4,7 @@ import similarity from "compute-cosine-similarity/lib";
 import { collection, getDocs } from "firebase/firestore";
 
 let embeddings = [];
-let conversation = ["bot: Hola, soy el clon de Orlando, ¿que quieres saber de mi?"];
+let conversation = ["bot: Hola, soy el clon de Orlando. ¿Qué te gustaría saber de mí?"];
 
 async function getEmbeddings() {
   try {
