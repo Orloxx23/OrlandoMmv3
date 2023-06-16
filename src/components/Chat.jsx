@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { GrClose } from "react-icons/gr";
 
 import me from "@/assets/images/me.webp";
 
@@ -161,7 +162,8 @@ export default function Chat({ open, setOpen }) {
               className="absolute top-2 right-2 p-2 cursor-pointer"
               onClick={() => setOpen(false)}
             >
-              <i className="fa-solid fa-xmark"></i>
+              <GrClose className="dark:text-white text-black"/>
+              {/* <i className="fa-solid fa-xmark"></i> */}
             </div>
             <div className="flex gap-3 items-end">
               <div className="rounded-full  bg-purple-400 w-20 relative">
