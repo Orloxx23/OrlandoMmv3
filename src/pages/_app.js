@@ -45,7 +45,7 @@ export default function App({ Component, pageProps, router }) {
         });
     `}
       </Script>
-      <ThemeProvider attribute="class" enableSystem={false}>
+      <ThemeProvider attribute="class" enableSystem={true} defaultTheme="system">
         <I18nextProvider i18n={i18next}>
           <div className="noise bg-noise"></div>
           <AnimatePresence mode="wait">
