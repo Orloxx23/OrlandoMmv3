@@ -3,12 +3,18 @@ import styles from "@/styles/ThemeCard.module.css";
 import { useTheme } from "next-themes";
 
 export default function ThemeCard() {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
     if (theme === "system") {
       if (resolvedTheme === "light") {
+        setChecked(true);
+      } else {
+        setChecked(false);
+      }
+    } else {
+      if (theme === "light") {
         setChecked(true);
       } else {
         setChecked(false);
