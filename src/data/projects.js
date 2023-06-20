@@ -82,12 +82,12 @@ export const projects = [
     es: {
       title: "Lista de tareas",
       description:
-        "Esta es una aplicación web de lista de tareas que creé mientras aprendía ReactJS en Platzi. Este proyecto demuestra mis habilidades tanto en desarrollo front-end.",
+        "Esta es una aplicación web de lista de tareas que creé mientras aprendía ReactJS en Platzi. Este proyecto demuestra mis habilidades en desarrollo front-end.",
     },
     en: {
       title: "Todo List",
       description:
-        "This is a task list web application that I created while learning ReactJS on Platzi. This project showcases my skills in both front-end development.",
+        "This is a task list web application that I created while learning ReactJS on Platzi. This project showcases my skills in front-end development.",
     },
     github: "https://github.com/Orloxx23/todolist",
     website: "https://orloxx23.github.io/todolist/",
