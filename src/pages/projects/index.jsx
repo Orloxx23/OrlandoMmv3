@@ -77,7 +77,7 @@ export default function Projects() {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1 }}
-        className="flex flex-col m-5"
+        className="flex flex-col m-5 overflow-hidden"
       >
         <div className="grid grid-cols-3 gap-2 md:grid-cols-4 md:gap-4 my-5 container mx-auto xl:px-20">
           <div className="col-span-3 md:col-span-4 aspect-2/1 md:aspect-auto flex justify-between items-center bg-[#1c053a9c] dark:bg-[#af72ff56] rounded-3xl overflow-hidden">
@@ -95,7 +95,7 @@ export default function Projects() {
             />
           </div>
           <div className="col-span-3 md:col-span-4 bg-[#1c053a9c] dark:bg-[#af72ff56] h-16 rounded-3xl overflow-y-hidden relative">
-            <div className="flex flex-row justify-left md:justify-center items-center h-full ">
+            <div className="flex flex-row justify-left xl:justify-center items-center h-full overflow-y-hidden">
               {categories.map((category, index) => (
                 <ProjectButton
                   key={category}
@@ -154,7 +154,7 @@ function ProjectButton({
             <AiFillCaretUp />
           </motion.div>
         )}
-        <div className="flex">
+        <div className="flex md:text-[80%]">
           {t(`projects.${category}`)}
           {category === "recommended" && <AiFillStar size={15} />}
         </div>
