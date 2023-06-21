@@ -2,6 +2,10 @@ import vlrstats from "../assets/images/projects/vlrstats/vlrstats.png";
 import vlrstatsl from "../assets/images/projects/vlrstats/light.png";
 import vlrstatsd from "../assets/images/projects/vlrstats/dark.png";
 
+import orlandomm from "../assets/images/projects/orlandomm/orlandomm.png";
+
+import orlandommv2 from "../assets/images/projects/orlandommv2/orlandommv2.png";
+
 import fusion from "../assets/images/projects/fusion/fusion.png";
 import fusionl from "../assets/images/projects/fusion/light.png";
 import fusiond from "../assets/images/projects/fusion/dark.png";
@@ -46,6 +50,29 @@ export const projects = [
   },
   {
     id: 2,
+    url: "orlandomm",
+    images: {
+      main: orlandomm,
+      browser: {
+        light: orlandomm,
+        dark: orlandomm,
+      },
+    },
+    technologies: ["HTML", "CSS", "JavaScript"],
+    category: "personal",
+    es: {
+      title: "Sitio Web Personal v1",
+      description: 'Esta página web es una presentación personal que destaca mis habilidades, estudios y proyectos. Fue desarrollada utilizando HTML, CSS y JavaScript para crear una experiencia interactiva y atractiva para los visitantes.'
+    },
+    en: {
+      title: "Personal Website v1",
+      description: 'This website is a personal presentation that highlights my skills, studies, and projects. It was developed using HTML, CSS, and JavaScript to create an interactive and engaging experience for visitors.'
+    },
+    github: "https://github.com/Orloxx23/OrlandoMm",
+    website: "https://orloxx23.github.io/OrlandoMm/",
+  },
+  {
+    id: 3,
     url: "vfa",
     images: {
       main: vfa,
@@ -68,7 +95,7 @@ export const projects = [
     website: "https://valorantfa-client.vercel.app",
   },
   {
-    id: 3,
+    id: 4,
     url: "todo-list",
     images: {
       main: todolist,
@@ -93,7 +120,32 @@ export const projects = [
     website: "https://orloxx23.github.io/todolist/",
   },
   {
-    id: 4,
+    id: 5,
+    url: "orlandommv2",
+    images: {
+      main: orlandommv2,
+      browser: {
+        light: orlandommv2,
+        dark: orlandommv2,
+      },
+    },
+    technologies: ["ReactJS"],
+    category: "personal",
+    es: {
+      title: "Sitio web personal v2",
+      description:
+        "Esta página web personal es una representación detallada de mi perfil, estudios, experiencias y proyectos, y demuestra un notable avance en mis habilidades de desarrollo. Este proyecto es una prueba tangible de mi crecimiento en el campo del desarrollo web, y muestra mi capacidad para crear aplicaciones web modernas y atractivas utilizando tecnologías avanzadas como React.js.",
+    },
+    en: {
+      title: "Personal website v2",
+      description:
+        "This personal website is a detailed representation of my profile, studies, experiences, and projects, showcasing significant progress in my development skills. This project is a tangible proof of my growth in the field of web development, demonstrating my ability to create modern and appealing web applications using advanced technologies such as React.js.",
+    },
+    github: "https://github.com/Orloxx23/OrlandoMmv2",
+    website: "https://orlandommv2.vercel.app",
+  },
+  {
+    id: 6,
     url: "vlrstats",
     images: {
       main: vlrstats,
@@ -118,7 +170,7 @@ export const projects = [
     website: "https://vlrstats.vercel.app",
   },
   {
-    id: 5,
+    id: 7,
     url: "taply",
     images: {
       main: taply,
@@ -143,7 +195,7 @@ export const projects = [
     website: "https://taply.click",
   },
   {
-    id: 6,
+    id: 8,
     url: "fusion-esports",
     images: {
       main: fusion,
