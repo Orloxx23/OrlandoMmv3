@@ -57,9 +57,9 @@ export default function Projects() {
       setProjectsFiltered(projects.sort(compare));
     } else {
       setProjectsFiltered(
-        projects.filter(
-          (project) => project.category == categories[categoryActive]
-        ).sort(compare)
+        projects
+          .filter((project) => project.category == categories[categoryActive])
+          .sort(compare)
       );
     }
   }, [categoryActive]);
@@ -179,15 +179,19 @@ function ProjectCard({ project, index }) {
   };
 
   const onCloseModal = () => {
-    router.replace({
-      pathname: router.pathname,
-      query: {},
-    });
+    router.replace(
+      {
+        pathname: router.pathname,
+        query: {},
+      },
+      undefined,
+      { scroll: false }
+    );
     setShowModal(false);
   };
 
   useEffect(() => {
-    if (router.query.project == project.url) {
+    if (router.query.project === project.url) {
       setShowModal(true);
     } else {
       setShowModal(false);
@@ -199,12 +203,10 @@ function ProjectCard({ project, index }) {
       document.body.style.overflow = "hidden";
       document.body.style.height = "100%";
       document.body.style.width = "100%";
-      document.body.style.position = "fixed";
     } else {
       document.body.style.overflow = "unset";
       document.body.style.height = "unset";
       document.body.style.width = "unset";
-      document.body.style.position = "unset";
     }
   }, [showModal]);
 
@@ -222,7 +224,7 @@ function ProjectCard({ project, index }) {
         <motion.div
           layout
           layoutId={project.id}
-          className="absolute z-10 w-[90%] md:w-[60%] h-[90%] md:h-[60%] top-[5%] md:top-[20%] left-[5%] md:left-[20%]"
+          className="fixed z-10 w-[90%] md:w-[60%] h-[90%] md:h-[60%] top-[5%] md:top-[20%] left-[5%] md:left-[20%]"
         >
           <Swiper
             effect={"cards"}
@@ -237,11 +239,13 @@ function ProjectCard({ project, index }) {
                 className="w-full h-full rounded-3xl p-4 "
                 style={{ backgroundColor: colors[project.category] }}
               >
-                
                 <div className="rrelative rounded-3xl w-full h-full bg-[#f8efff] dark:bg-[#09030e] p-4 md:p-8 overflow-y-scroll">
-                <div className="absolute right-6 top-6 md:right-10 md:top-10 cursor-pointer" onClick={onCloseModal}>
-                  <i className="fa-solid fa-xmark text-3xl"></i>
-                </div>
+                  <div
+                    className="absolute right-6 top-6 md:right-10 md:top-10 cursor-pointer"
+                    onClick={onCloseModal}
+                  >
+                    <i className="fa-solid fa-xmark text-3xl"></i>
+                  </div>
                   <p className="capitalize font-medium">
                     {t(`projects.${project.category}`) + " / "}
                   </p>
@@ -327,7 +331,6 @@ function ProjectCard({ project, index }) {
         exit={{ opacity: 0, duration: 1 }}
         transition={{
           duration: 0.5,
-          delay: (index - 1) * 0.15,
           type: "spring",
         }}
         className={`relative col-span-3 md:col-span-1 aspect-square rounded-3xl overflow-hidden cursor-pointer p-4 pt-8 dark:text-white text-gray-50 shadow-xl ${
@@ -336,10 +339,14 @@ function ProjectCard({ project, index }) {
         style={{ backgroundColor: colors[project.category] }}
         onClick={() => {
           if (!showModal) {
-            router.push({
-              pathname: router.pathname,
-              query: { project: project.url },
-            });
+            router.push(
+              {
+                pathname: router.pathname,
+                query: { project: project.url },
+              },
+              undefined,
+              { scroll: false }
+            );
           }
         }}
         onMouseEnter={() => setIsHover(true)}
