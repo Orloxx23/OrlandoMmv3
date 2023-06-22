@@ -30,7 +30,7 @@ export default function Chat({ open, setOpen }) {
     surprised: "😲",
     confused: "😕",
     pokerface: "😐",
-    exited: "😁",
+    excited: "😁",
     scared: "😨",
     in_love: "😍",
     angry: "😠",
@@ -88,7 +88,7 @@ export default function Chat({ open, setOpen }) {
         setEmotion(res.emotion);
         setLoading(false);
         } catch (error) {
-          console.log(error);
+          // console.log(error);
           message = response.data.message;
           setEmotion("nervous");
           setLoading(false);
