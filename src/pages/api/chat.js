@@ -113,7 +113,9 @@ export default async function handler(req, res) {
 
     conversation.push("user: " + query);
 
-    console.log(context + "\n");
+    // console.log(context + "\n");
+    // console.log("");
+    // console.log(conversation.join("\n"));
 
     await getResponse(query, context).then((response) => {
       conversation.push("bot: " + response);
