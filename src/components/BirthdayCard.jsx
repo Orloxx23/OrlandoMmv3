@@ -6,9 +6,8 @@ export default function BirthdayCard() {
   const [t, i18n] = useTranslation("global");
 
   const getAge = () => {
-    let age = moment().diff(moment([2002, 5, 23]), "years");
-    let month = moment().month() + 1;
-    return month >= 5 ? age + 1 : age;
+    let age = moment().diff(moment([2002, 4, 23]), "years");
+    return age;
   };
 
   const getBirthday = () => {
