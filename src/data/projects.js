@@ -24,6 +24,8 @@ import vfad from "../assets/images/projects/vfa/dark.png";
 
 import triunvirato from "../assets/images/projects/triunvirato/triunvirato.jpeg";
 
+import vlr from "../assets/images/projects/vlr/vlr.png";
+
 export const projects = [
   {
     id: 1,
@@ -61,11 +63,11 @@ export const projects = [
     technologies: ["HTML", "CSS", "JavaScript"],
     category: "personal",
     es: {
-      title: "Sitio Web Personal v1",
+      title: "Sitio web personal v1",
       description: 'Esta página web es una presentación personal que destaca mis habilidades, estudios y proyectos. Fue desarrollada utilizando HTML, CSS y JavaScript para crear una experiencia interactiva y atractiva para los visitantes.'
     },
     en: {
-      title: "Personal Website v1",
+      title: "Personal website v1",
       description: 'This website is a personal presentation that highlights my skills, studies, and projects. It was developed using HTML, CSS, and JavaScript to create an interactive and engaging experience for visitors.'
     },
     github: "https://github.com/Orloxx23/OrlandoMm",
@@ -218,5 +220,30 @@ export const projects = [
     },
     github: "https://github.com/Orloxx23/fusionesports",
     website: "https://fusiongg.vercel.app",
+  },
+  {
+    id: 9,
+    url: "vlrggscraper",
+    images: {
+      main: vlr,
+      browser: {
+        light: vlr,
+        dark: vlr,
+      },
+    },
+    technologies: ["NextJS", "NodeJS"],
+    category: "practice",
+    es: {
+      title: "vlr.gg Scraper",
+      description:
+        "Este proyecto presenta una API que realiza scraping en vlr.gg, un popular sitio web de torneos de Valorant. La API permite a los usuarios obtener datos de torneos, estadísticas de jugadores y otra información de vlr.gg y utilizarla en sus aplicaciones. Se ha creado una página web dedicada para probar la funcionalidad de la API, y la propia API está alojada de forma pública para que cualquier persona pueda acceder a ella.",
+    },
+    en: {
+      title: "vlr.gg Scraper",
+      description:
+        "This project showcases an API that performs scraping on vlr.gg, a popular Valorant tournament website. The API allows users to retrieve tournament data, player statistics, and other information from vlr.gg and use it in their applications. A dedicated webpage is created to test the API's functionality, and the API itself is hosted publicly for anyone to access.",
+    },
+    github: "https://github.com/Orloxx23/vlrggscraper-api-ui",
+    website: "https://vlrggscraper-api.vercel.app",
   },
 ];
