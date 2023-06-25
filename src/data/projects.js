@@ -232,7 +232,7 @@ export const projects = [
       },
     },
     technologies: ["NextJS", "NodeJS"],
-    category: "practice",
+    category: "experiments",
     es: {
       title: "vlr.gg Scraper",
       description:
