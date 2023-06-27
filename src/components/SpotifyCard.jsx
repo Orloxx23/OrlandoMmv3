@@ -105,6 +105,7 @@ export default function SpotifyCard() {
           target="_blank"
           rel="noopener noreferrer"
           className="md:text-4xl text-[#62DBBE] dark:text-[#25ac8c] duration-500 hover:text-[#4cd1b2] dark:hover:text-[#3ca188] ease-in-out"
+          aria-label="Spotify"
         >
           <BsSpotify />
         </a>

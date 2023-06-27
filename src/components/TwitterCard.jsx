@@ -8,6 +8,7 @@ export default function TwitterCard() {
       href="https://twitter.com/orloxx23"
       target="_blank"
       rel="noopener noreferrer"
+      aria-label="Twitter"
     >
       <div className="flex flex-col justify-center items-center bg-[#11dbff9c] dark:bg-[#49d5ff56] rounded-3xl relative overflow-hidden col-span-1 aspect-square shadow-sm cursor-pointer hover:scale-[103%] transition duration-300 ease-in-out">
         <MdOpenInNew className="absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-xl text-white dark:text-[#ffffffaa]" />

@@ -17,6 +17,8 @@ export default function AboutCard() {
         width="512"
         height="512"
         draggable="false"
+        priority="true"
+        loading="lazy"
       />
       <div className="h-full md:w-8/12 absolute top-0 left-0 p-4 md:p-8 flex flex-col justify-start  md:justify-end">
         <h1 className="text-3xl md:text-xl lg:text-5xl font-bold text-white mb-4 md:mb-5">

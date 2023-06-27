@@ -43,8 +43,9 @@ export default function ThemeCard() {
             value={checked}
             checked={checked}
             onChange={handleChange}
+            name="theme"
           />
-          <label htmlFor="check-5"></label>
+          <label name="themelabel" htmlFor="check-5"></label>
         </div>
       </div>
     </div>
