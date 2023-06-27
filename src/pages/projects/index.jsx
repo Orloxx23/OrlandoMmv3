@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper";
 
-import me from "../../assets/images/me2.png";
+import me from "../../assets/images/me2.webp";
 import { LanguagueCard } from "@/components";
 import "swiper/css";
 import "swiper/css/effect-cards";

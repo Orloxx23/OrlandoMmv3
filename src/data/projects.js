@@ -1,30 +1,12 @@
-import vlrstats from "../assets/images/projects/vlrstats/vlrstats.png";
-import vlrstatsl from "../assets/images/projects/vlrstats/light.png";
-import vlrstatsd from "../assets/images/projects/vlrstats/dark.png";
-
-import orlandomm from "../assets/images/projects/orlandomm/orlandomm.png";
-
-import orlandommv2 from "../assets/images/projects/orlandommv2/orlandommv2.png";
-
-import fusion from "../assets/images/projects/fusion/fusion.png";
-import fusionl from "../assets/images/projects/fusion/light.png";
-import fusiond from "../assets/images/projects/fusion/dark.png";
-
-import todolist from "../assets/images/projects/todolist/todolist.png";
-import todolistl from "../assets/images/projects/todolist/light.png";
-import todolistd from "../assets/images/projects/todolist/dark.png";
-
-import taply from "../assets/images/projects/taply/taply.png";
-import taplyl from "../assets/images/projects/taply/light.png";
-import taplyd from "../assets/images/projects/taply/dark.png";
-
-import vfa from "../assets/images/projects/vfa/vfa.png";
-import vfal from "../assets/images/projects/vfa/light.png";
-import vfad from "../assets/images/projects/vfa/dark.png";
-
-import triunvirato from "../assets/images/projects/triunvirato/triunvirato.jpeg";
-
-import vlr from "../assets/images/projects/vlr/vlr.png";
+import vlrstats from "../assets/images/projects/vlrstats/vlrstats.webp";
+import orlandomm from "../assets/images/projects/orlandomm/orlandomm.webp";
+import orlandommv2 from "../assets/images/projects/orlandommv2/orlandommv2.webp";
+import fusion from "../assets/images/projects/fusion/fusion.webp";
+import todolist from "../assets/images/projects/todolist/todolist.webp";
+import taply from "../assets/images/projects/taply/taply.webp";
+import vfa from "../assets/images/projects/vfa/vfa.webp";
+import triunvirato from "../assets/images/projects/triunvirato/triunvirato.webp";
+import vlr from "../assets/images/projects/vlr/vlr.webp";
 
 export const projects = [
   {
@@ -32,20 +14,18 @@ export const projects = [
     url: "triunvirato-bot",
     images: {
       main: triunvirato,
-      browser: {
-        light: triunvirato,
-        dark: triunvirato,
-      },
     },
     technologies: ["NodeJS", "DiscordJS"],
     category: "experiments",
     es: {
       title: "Triunvirato Bot",
-      description: 'Este proyecto, que utiliza NodeJS y DiscordJS, es un bot de Discord que creé para mi grupo de amigos. El bot tiene varias características, como la capacidad de eliminar mensajes, mostrar memes aleatorios y bloquear canales de voz. Además, puede habilitar la función "Watch Together" y proporcionar ayuda cuando sea necesario. Este proyecto demuestra mis habilidades en desarrollo backend y trabajo con plataformas de terceros.'
+      description:
+        'Este proyecto, que utiliza NodeJS y DiscordJS, es un bot de Discord que creé para mi grupo de amigos. El bot tiene varias características, como la capacidad de eliminar mensajes, mostrar memes aleatorios y bloquear canales de voz. Además, puede habilitar la función "Watch Together" y proporcionar ayuda cuando sea necesario. Este proyecto demuestra mis habilidades en desarrollo backend y trabajo con plataformas de terceros.',
     },
     en: {
       title: "Triunvirato Bot",
-      description: 'This project, which uses NodeJS and DiscordJS, is a Discord bot that I created for my group of friends. The bot has various features such as the ability to delete messages, display random memes, and block voice channels. Additionally, it can enable a "Watch Together" feature and provide help when needed. This project showcases my skills in backend development and working with third-party platforms.'
+      description:
+        'This project, which uses NodeJS and DiscordJS, is a Discord bot that I created for my group of friends. The bot has various features such as the ability to delete messages, display random memes, and block voice channels. Additionally, it can enable a "Watch Together" feature and provide help when needed. This project showcases my skills in backend development and working with third-party platforms.',
     },
     github: "https://github.com/Orloxx23/triunvirato-bot",
     website: "",
@@ -55,20 +35,18 @@ export const projects = [
     url: "orlandomm",
     images: {
       main: orlandomm,
-      browser: {
-        light: orlandomm,
-        dark: orlandomm,
-      },
     },
     technologies: ["HTML", "CSS", "JavaScript"],
     category: "personal",
     es: {
       title: "Sitio web personal v1",
-      description: 'Esta página web es una presentación personal que destaca mis habilidades, estudios y proyectos. Fue desarrollada utilizando HTML, CSS y JavaScript para crear una experiencia interactiva y atractiva para los visitantes.'
+      description:
+        "Esta página web es una presentación personal que destaca mis habilidades, estudios y proyectos. Fue desarrollada utilizando HTML, CSS y JavaScript para crear una experiencia interactiva y atractiva para los visitantes.",
     },
     en: {
       title: "Personal website v1",
-      description: 'This website is a personal presentation that highlights my skills, studies, and projects. It was developed using HTML, CSS, and JavaScript to create an interactive and engaging experience for visitors.'
+      description:
+        "This website is a personal presentation that highlights my skills, studies, and projects. It was developed using HTML, CSS, and JavaScript to create an interactive and engaging experience for visitors.",
     },
     github: "https://github.com/Orloxx23/OrlandoMm",
     website: "https://orloxx23.github.io/OrlandoMm/",
@@ -78,20 +56,18 @@ export const projects = [
     url: "vfa",
     images: {
       main: vfa,
-      browser: {
-        light: vfal,
-        dark: vfad,
-      },
     },
     technologies: ["ReactJS", "Youtube API"],
     category: "experiments",
     es: {
       title: "Valorant para todos",
-      description: 'Este proyecto web sencillo, creado con ReactJS y la API de YouTube, recopila una colección de videos para ayudar a los jugadores de Valorant a mejorar su juego. El sitio web permite a los usuarios acceder fácilmente a una variedad de videos instructivos y tutoriales relacionados con el juego. Este proyecto demuestra mis habilidades en desarrollo frontend, integración de API y diseño UX/UI.'
+      description:
+        "Este proyecto web sencillo, creado con ReactJS y la API de YouTube, recopila una colección de videos para ayudar a los jugadores de Valorant a mejorar su juego. El sitio web permite a los usuarios acceder fácilmente a una variedad de videos instructivos y tutoriales relacionados con el juego. Este proyecto demuestra mis habilidades en desarrollo frontend, integración de API y diseño UX/UI.",
     },
     en: {
       title: "Valorant For all",
-      description: 'This simple web project, created using ReactJS and the YouTube API, compiles a collection of videos to help Valorant players improve their gameplay. The website allows users to easily access a variety of instructional videos and tutorials related to the game. This project showcases my skills in front-end development, API integration, and UX/UI design.'
+      description:
+        "This simple web project, created using ReactJS and the YouTube API, compiles a collection of videos to help Valorant players improve their gameplay. The website allows users to easily access a variety of instructional videos and tutorials related to the game. This project showcases my skills in front-end development, API integration, and UX/UI design.",
     },
     github: "https://github.com/Orloxx23/valorantfa-client",
     website: "https://valorantfa-client.vercel.app",
@@ -101,10 +77,6 @@ export const projects = [
     url: "todo-list",
     images: {
       main: todolist,
-      browser: {
-        light: todolistl,
-        dark: todolistd,
-      },
     },
     technologies: ["ReactJS"],
     category: "practice",
@@ -126,10 +98,6 @@ export const projects = [
     url: "orlandommv2",
     images: {
       main: orlandommv2,
-      browser: {
-        light: orlandommv2,
-        dark: orlandommv2,
-      },
     },
     technologies: ["ReactJS"],
     category: "personal",
@@ -151,10 +119,6 @@ export const projects = [
     url: "vlrstats",
     images: {
       main: vlrstats,
-      browser: {
-        light: vlrstatsl,
-        dark: vlrstatsd,
-      },
     },
     technologies: ["ReactJS", "Firebase"],
     category: "personal",
@@ -176,10 +140,6 @@ export const projects = [
     url: "taply",
     images: {
       main: taply,
-      browser: {
-        light: taplyl,
-        dark: taplyd,
-      },
     },
     technologies: ["React Native", "NodeJS", "ElectronJS"],
     category: "recommended",
@@ -201,10 +161,6 @@ export const projects = [
     url: "fusion-esports",
     images: {
       main: fusion,
-      browser: {
-        light: fusionl,
-        dark: fusiond,
-      },
     },
     technologies: ["ReactJS", "Youtube API", "NodeJS"],
     category: "practice",
@@ -226,10 +182,6 @@ export const projects = [
     url: "vlrggscraper",
     images: {
       main: vlr,
-      browser: {
-        light: vlr,
-        dark: vlr,
-      },
     },
     technologies: ["NextJS", "NodeJS"],
     category: "experiments",
