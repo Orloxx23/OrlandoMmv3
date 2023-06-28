@@ -46,7 +46,7 @@ export default function ThemeCard() {
             name="theme"
             aria-label="Theme"
           />
-          <label name="themelabel" htmlFor="check-5" for="check-5"></label>
+          <label name="themelabel" htmlFor="check-5"></label>
         </div>
       </div>
     </div>
