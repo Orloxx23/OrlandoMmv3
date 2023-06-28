@@ -44,8 +44,9 @@ export default function ThemeCard() {
             checked={checked}
             onChange={handleChange}
             name="theme"
+            aria-label="Theme"
           />
-          <label name="themelabel" htmlFor="check-5"></label>
+          <label name="themelabel" htmlFor="check-5" for="check-5"></label>
         </div>
       </div>
     </div>
