@@ -12,12 +12,14 @@ export default function AboutCard() {
       <div className={styles.water}></div>
       <Image
         src={me}
-        alt=""
+        alt="Orlando Mina"
         className="absolute bottom-0 -right-1/4 w-8/12 md:h-full md:auto object-cover -z-0 hidden md:flex"
         width="512"
         height="512"
         draggable="false"
-        loading="lazy"
+        placeholder="blur"
+        loading="eager"
+        priority
       />
       <div className="h-full md:w-8/12 absolute top-0 left-0 p-4 md:p-8 flex flex-col justify-start  md:justify-end">
         <h1 className="text-3xl md:text-xl lg:text-5xl font-bold text-white mb-4 md:mb-5">
