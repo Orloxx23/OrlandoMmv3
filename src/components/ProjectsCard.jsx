@@ -25,7 +25,7 @@ export default function ProjectsCard() {
         </p>
       </div>
       <div className="w-full h-full bg-[#1c053a9c] dark:bg-[#af72ff56] absolute">
-        <Image src={coding} className="w-full h-full object-cover opacity-40" alt=""/>
+        <Image src={coding} className="w-full h-full object-cover opacity-40" alt="" loading="lazy" />
       </div>
     </Link>
   );

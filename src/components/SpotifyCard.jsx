@@ -154,6 +154,7 @@ export default function SpotifyCard() {
         width={data?.album.images[0].width}
         height={data?.album.images[0].height}
         className={styles.image}
+        loading="lazy"
       />
     </div>
   );
