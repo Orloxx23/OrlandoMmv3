@@ -29,7 +29,8 @@
     "spotify-web-api-node": "^5.0.2",
     "swiper": "^9.2.0",
     "swr": "^2.1.2",
-    "typewriter-effect": "^2.19.0"
+    "typewriter-effect": "^2.19.0",
+    "usellm": "^0.13.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

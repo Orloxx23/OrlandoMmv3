@@ -6,23 +6,46 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { GrClose } from "react-icons/gr";
 
+import { useChat } from "usellm";
+import { useTheme } from "next-themes";
+import { useTranslation } from "react-i18next";
+
 import me from "@/assets/images/me.webp";
+import { BsArrowRight } from "react-icons/bs";
 
 export default function Chat({ open, setOpen }) {
   // const [open, setOpen] = React.useState(false);
   const [focus, setFocus] = React.useState(false);
-  const [text, setText] = React.useState("");
-  const [chat, setChat] = React.useState([
-    {
-      user: "bot",
-      message: "Hola, soy el clon de Orlando. ¿Qué te gustaría saber de mí?",
-      animate: true,
-    },
-  ]);
   const [loading, setLoading] = React.useState(false);
-  const [isTyping, setIsTyping] = React.useState(true);
   const [error, setError] = React.useState(false);
-  const [emotion, setEmotion] = React.useState("normal");
+  const [emotion, setEmotion] = React.useState("neutral");
+
+  const {
+    isLoading,
+    messages,
+    setMessages,
+    sendMessage,
+    callFunction,
+    sendFunctionOutput,
+    input,
+    setInput,
+  } = useChat({
+    agent: "orlandoclon",
+    initialMessages: [
+      {
+        role: "assistant",
+        content: "Hola, soy el clon de Orlando. ¿Qué te gustaría saber de mí?",
+      },
+    ],
+  });
+
+  async function handleCallClick(name, args) {
+    const output = await callFunction({
+      function: name,
+      arguments: args,
+    });
+    await sendFunctionOutput({ function: name, output });
+  }
 
   const emotions = {
     happy: "😄",
@@ -37,85 +60,24 @@ export default function Chat({ open, setOpen }) {
     neutral: "🙂",
     shy: "😳",
     nervous: "😅",
+    weird: "🤪",
   };
 
-  const chatRef = useChatScroll(chat);
+  const chatRef = useChatScroll(messages);
 
   const handleChange = (e) => {
     setText(e.target.value);
   };
 
-  const removeAnimation = (index) => {
-    const newChat = [...chat];
-    newChat[index].animate = false;
-    setChat(newChat);
-  };
-
   const handleSubmit = async (e) => {
     e?.preventDefault();
-    setLoading(true);
+    sendMessage();
+
     setFocus(false);
-
-    const query = text;
-    setText("");
-
-    if (text.trim() === "") {
-      setText("");
-      return;
-    }
-
-    setChat((prev) => [...prev, { user: "user", message: query }]);
-
-    let res;
-    let message = "";
-
-    await axios
-      .post("/api/chat", {
-        query: query,
-      })
-      .then(function (response) {
-        // console.log(response.data.message);
-
-        try {
-          const regex = /{(.*)}/;
-          const matches = regex.exec(response.data.message);
-          const stringify = matches[1].replace(/`/g, '"');
-          const objectJson = JSON.parse("{" + stringify + "}");
-
-          res = objectJson;
-
-        message = res.message;
-        setEmotion(res.emotion);
-        setLoading(false);
-        } catch (error) {
-          // console.log(error);
-          message = response.data.message;
-          setEmotion("nervous");
-          setLoading(false);
-        }
-        
-      })
-      .catch(function (error) {
-        console.log(error);
-        setLoading(false);
-        setError(true);
-        setIsTyping(false);
-      });
-
-    const newMessage = {
-      user: "bot",
-      message: message,
-      animate: true,
-    };
-
-    setChat((prev) => [...prev, newMessage]);
-
-    setIsTyping(true);
   };
 
   const commentEnterSubmit = (e) => {
     if (e.key === "Enter" && e.shiftKey == false) {
-      const data = { content: e.target.value };
       return handleSubmit();
     }
   };
@@ -127,16 +89,6 @@ export default function Chat({ open, setOpen }) {
       document.body.style.overflow = "auto";
     }
   }, [open]);
-
-  useEffect(() => {
-    if (isTyping) {
-      if (chatRef.current) {
-        setTimeout(() => {
-          chatRef.current.scrollTop = chatRef.current.scrollHeight;
-        }, 300);
-      }
-    }
-  }, [isTyping]);
 
   return (
     <>
@@ -162,7 +114,7 @@ export default function Chat({ open, setOpen }) {
               className="absolute top-2 right-2 p-2 cursor-pointer"
               onClick={() => setOpen(false)}
             >
-              <GrClose className="dark:text-white text-black"/>
+              <GrClose className="dark:text-white text-black" />
               {/* <i className="fa-solid fa-xmark"></i> */}
             </div>
             <div className="flex gap-3 items-end">
@@ -174,9 +126,9 @@ export default function Chat({ open, setOpen }) {
                     ? "🤔"
                     : focus
                     ? "😳"
-                    : isTyping
-                    ? emotions[emotion] || "😀"
-                    : "🙂"}
+                    : //: isTyping
+                      //? emotions[emotion] || "😀"
+                      emotions[emotion] || "🙂"}
                 </div>
                 <Image
                   className="rounded-full"
@@ -204,14 +156,16 @@ export default function Chat({ open, setOpen }) {
               ref={chatRef}
               className={`flex-1 flex-col pb-2 w-full gap-10 overflow-y-auto`}
             >
-              {chat.map((message, index) => (
+              {messages.map((message, index) => (
                 <Message
                   key={index}
                   index={index}
                   message={message}
                   setLoading={setLoading}
-                  removeAnimation={removeAnimation}
-                  setIsTyping={setIsTyping}
+                  setEmotion={setEmotion}
+                  messages={messages}
+                  setMessages={setMessages}
+                  callFunction={handleCallClick}
                 />
               ))}
             </div>
@@ -225,18 +179,18 @@ export default function Chat({ open, setOpen }) {
                 className="p-2 flex h-full w-9/12 border-none b resize-none outline-none bg-[#00000000] break-words float-left textarea"
                 onFocus={() => setFocus(true)}
                 onBlur={() => setFocus(false)}
-                value={loading ? "..." : text}
-                onChange={handleChange}
-                disabled={error || loading || isTyping}
+                value={isLoading ? "..." : input}
+                onChange={(e) => setInput(e.target.value)}
+                disabled={error || loading || isLoading}
                 form="chatForm"
                 onKeyPress={commentEnterSubmit}
                 required
               />
               <button
                 type="submit"
-                disabled={error || loading || isTyping || text.length === 0}
+                disabled={error || loading || input.length === 0}
                 className={`flex w-3/12 h-10 flex-col justify-center items-center ${
-                  error || loading || text.length === 0
+                  error || loading || input.length === 0
                     ? "text-gray-500"
                     : "text-white"
                 } hover:bg-[#da20ff1f]`}
@@ -252,40 +206,115 @@ export default function Chat({ open, setOpen }) {
   );
 }
 
-function Message({ message, index, removeAnimation, setLoading, setIsTyping }) {
+function Message({
+  index,
+  message,
+  messages,
+  setMessages,
+  setLoading,
+  setIsTyping,
+  setEmotion,
+  callFunction,
+}) {
+  const { role, content, function_call } = message;
+  const { name, args } = function_call || {};
+
+  const { setTheme } = useTheme();
+  const [t, i18n] = useTranslation("global");
+
+  const [text, setText] = React.useState("");
+
+  let router = useRouter();
+
+  // Assistant functions
+  function executeFunction(name, args) {
+    switch (name) {
+      case "changeTheme":
+        changeTheme(JSON.parse(args).theme);
+        break;
+      case "changeLanguage":
+        changeLanguage(JSON.parse(args).language);
+        break;
+      case "goToProjects":
+        router.push("/projects");
+        break;
+      default:
+        break;
+    }
+    callFunction(name, args);
+  }
+
+  function changeTheme(theme) {
+    setTheme(theme);
+  }
+
+  function changeLanguage(language) {
+    i18n.changeLanguage(language);
+    localStorage.setItem("language", language);
+  }
+
+  const processMessage = () => {
+    let message, res;
+    try {
+      const regex = /{(.*)}/;
+      const matches = regex.exec(content);
+      const stringify = matches[1].replace(/`/g, '"');
+      const objectJson = JSON.parse("{" + stringify + "}");
+
+      res = objectJson;
+
+      message = res.message;
+      setEmotion(res.emotion);
+      setLoading(false);
+    } catch (error) {
+      // console.log(error);
+      message = content;
+      setEmotion("nervous");
+
+      setLoading(false);
+    }
+    setTimeout(() => {
+      setEmotion("neutral");
+    }, 2000);
+    return message;
+  };
+
+  React.useEffect(() => {
+    if (content) {
+      setText(processMessage());
+    }
+  }, []);
+
   return (
     <div
       className={`relative flex w-full mt-4 ${
-        message.user === "user" ? "justify-end pl-16" : "justify-start pr-16"
-      }`}
+        role === "user" ? "justify-end pl-16" : "justify-start pr-16"
+      } ${role === "function" && "hidden"}`}
     >
-      {message.message && (
+      {role !== "function" && content && (
         <div
           className={`p-2 rounded-2xl text-[#000000aa] font-medium ${
-            message.user === "user" ? "bg-purple-300" : "bg-purple-500"
-          } ${message.message.includes(" ") ? "break-words" : "break-all"}`}
+            role === "user" ? "bg-purple-300" : "bg-purple-500"
+          } ${content.includes(" ") ? "break-words" : "break-all"}`}
         >
-          {message.user === "bot" && message.animate ? (
-            <Typewriter
-              options={{
-                delay: 50,
-                cursor: "",
-                loop: false,
-              }}
-              onInit={(typewriter) => {
-                typewriter
-                  .typeString(message.message)
-                  .callFunction(() => {
-                    removeAnimation(index);
-                    setLoading(false);
-                    setIsTyping(false);
-                  })
-                  .start();
-              }}
-            />
-          ) : (
-            message.message
-          )}
+          {text}
+        </div>
+      )}
+      {role === "assistant" && content === null && (
+        <div
+          className={`p-2 rounded-2xl text-[#000000aa] font-medium ${
+            role === "user" ? "bg-purple-300" : "bg-purple-500"
+          }`}
+        >
+          <button
+            className="group relative px-4 py-2 overflow-hidden rounded-2xl bg-white/10 text-sm md:text- font-bold text-white"
+            onClick={() => executeFunction(name, function_call.arguments)}
+          >
+            <span className="flex gap-2 justify-center items-center">
+              {t(`functions.${function_call.name}`)} <BsArrowRight size={20} />
+            </span>
+            <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
+          </button>
         </div>
       )}
     </div>

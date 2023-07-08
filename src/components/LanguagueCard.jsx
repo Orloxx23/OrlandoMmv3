@@ -36,6 +36,10 @@ export default function LanguagueCard() {
     localStorage.setItem("language", lng);
   };
 
+  useEffect(() => {
+    changeLanguage(i18n.language);
+  }, [i18n.language]);
+
   return (
     <div
       onClick={toggleLanguage}
@@ -45,8 +49,12 @@ export default function LanguagueCard() {
         {language}
       </p>
       <p className="font-bold transition duration-300 ease-in-out ">
-        <span className={language === "en" ? "text-purple-400" : "text-white"}>EN</span>{" "}
-        <span className={language === "es" ? "text-purple-400" : "text-white"}>ES</span>
+        <span className={language === "en" ? "text-purple-400" : "text-white"}>
+          EN
+        </span>{" "}
+        <span className={language === "es" ? "text-purple-400" : "text-white"}>
+          ES
+        </span>
       </p>
     </div>
   );
