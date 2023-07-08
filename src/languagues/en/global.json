@@ -1,40 +1,44 @@
 {
-    "title": "Orlando Mina | Frontend Developer",
-    "spotify": {
-        "current": "Recently listened"
-    },
-    "loading": "Loading...",
-    "online":{
-        "online": "Online",
-        "offline": "Offline",
-        "dnd": "Busy",
-        "since": "Since"
-    
-    },
-    "chat":{
-        "greeting": "Hi, I'm Orlando's clone, what do you want to know about me?"
-    },
-    "birthday":{
-        "age": "age",
-        "years-old": "years old",
-        "time": "days to my birthday"
-    },
-    "github": "My Github profile, where I upload my projects.",
-    "projectsandtest": {
-        "title": "Projects and tests",
-        "description": "Here you can find some of my projects, tests or experiments."
-    },
-    "projects": {
-        "title": "Projects",
-        "all": "All",
-        "personal": "Personal",
-        "practice": "Practice",
-        "experiments": "Experiments",
-        "recommended": "Recommended",
-        "courses": "Courses"
-    },
-    "certificates":{
-        "enlvl": "English level",
-        "platzi": "Full Stack Developer with javascript"
-    }
+  "title": "Orlando Mina | Frontend Developer",
+  "spotify": {
+    "current": "Recently listened"
+  },
+  "loading": "Loading...",
+  "online": {
+    "online": "Online",
+    "offline": "Offline",
+    "dnd": "Busy",
+    "since": "Since"
+  },
+  "chat": {
+    "greeting": "Hi, I'm Orlando's clone, what do you want to know about me?"
+  },
+  "birthday": {
+    "age": "age",
+    "years-old": "years old",
+    "time": "days to my birthday"
+  },
+  "github": "My Github profile, where I upload my projects.",
+  "projectsandtest": {
+    "title": "Projects and tests",
+    "description": "Here you can find some of my projects, tests or experiments."
+  },
+  "projects": {
+    "title": "Projects",
+    "all": "All",
+    "personal": "Personal",
+    "practice": "Practice",
+    "experiments": "Experiments",
+    "recommended": "Recommended",
+    "courses": "Courses"
+  },
+  "certificates": {
+    "enlvl": "English level",
+    "platzi": "Full Stack Developer with javascript"
+  },
+  "functions": {
+    "changeLanguage": "Change language",
+    "changeTheme": "Change theme",
+    "goToProjects": "Go to projects"
+  }
 }

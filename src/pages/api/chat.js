@@ -4,7 +4,9 @@ import similarity from "compute-cosine-similarity/lib";
 import { collection, getDocs } from "firebase/firestore";
 
 let embeddings = [];
-let conversation = ["bot: Hola, soy el clon de Orlando. ¿Qué te gustaría saber de mí?"];
+let conversation = [
+  "bot: Hola, soy el clon de Orlando. ¿Qué te gustaría saber de mí?",
+];
 
 async function getEmbeddings() {
   try {
@@ -18,7 +20,7 @@ async function getEmbeddings() {
       embeddings.push(element);
     }
   } catch (error) {
-    console.log(`Error getting documents: ${error}`);
+    console.error(`Error getting documents: ${error}`);
   }
 }
 
@@ -54,13 +56,15 @@ async function compare(text, element) {
 
 async function getResponse(query, context) {
   let data = JSON.stringify({
-    model: "gpt-3.5-turbo",
-    temperature: 0.7,
+    model: "gpt-3.5-turbo-0613",
+    temperature: 0.3,
     max_tokens: 150,
     messages: [
       {
         role: "system",
-        content: `${process.env.PERSONALITY} You don't make things up. you don't tell lies. Only answer if you have the question has to do with the following information and you only know this: ${context}. Don't answer if you don't know the answer. This is the conversation between you and the user: ${conversation.join(
+        content: `${
+          process.env.PERSONALITY
+        } You don't make things up. you don't tell lies. Only answer if you have the question has to do with the following information and you only know this: ${context}. Don't answer if you don't know the answer. This is the conversation between you and the user: ${conversation.join(
           ", "
         )}.`,
       },
@@ -69,6 +73,48 @@ async function getResponse(query, context) {
         content: query,
       },
     ],
+    functions: [
+      {
+        name: "changeTheme",
+        description: "Change the theme of the page (light or dark)",
+        parameters: {
+          type: "object",
+          properties: {
+            theme: {
+              type: "string",
+              description: "The theme to change to",
+            },
+          },
+        },
+      },
+      {
+        name: "changeLanguage",
+        description: "Change the language of the page (en or es)",
+        parameters: {
+          type: "object",
+          properties: {
+            language: {
+              type: "string",
+              description: "The language to change to",
+            },
+          },
+        },
+      },
+      {
+        name: "goToProjects",
+        description: "Go to the projects page",
+        parameters: {
+          type: "object",
+          properties: {
+            project: {
+              type: "string",
+              description: "The project to go to",
+            },
+          },
+        },
+      },
+    ],
+    function_call: "auto",
   });
 
   let config = {
@@ -84,7 +130,7 @@ async function getResponse(query, context) {
 
   const response = await axios.request(config);
 
-  return response.data.choices[0].message.content;
+  return response.data.choices[0].message;
 }
 
 export default async function handler(req, res) {
@@ -113,12 +159,8 @@ export default async function handler(req, res) {
 
     conversation.push("user: " + query);
 
-    // console.log(context + "\n");
-    // console.log("");
-    // console.log(conversation.join("\n"));
-
     await getResponse(query, context).then((response) => {
-      conversation.push("bot: " + response);
+      conversation.push("assistant: " + response);
       message = response;
     });
 
@@ -127,43 +169,4 @@ export default async function handler(req, res) {
     console.error(error);
     res.status(500).json({ message: "Error en la petición", error: error });
   }
-
-  // const options = {
-  //   method: "POST",
-  //   headers: {
-  //     "content-type": "application/json",
-  //     "X-RapidAPI-Key": process.env.RAPID_KEY,
-  //     "X-RapidAPI-Host": process.env.RAPID_HOST,
-  //   },
-  //   body: JSON.stringify({
-  //     model: "gpt-3.5-turbo",
-  //     temperature: 0.8,
-  //     max_tokens: 150,
-  //     messages: [
-  //       {
-  //         role: "system",
-  //         content:
-  //           process.env.PERSONALITY
-  //       },
-  //       { role: "user", content: query },
-  //     ],
-  //   }),
-  // };
-
-  // try {
-  //   await fetch("https://openai80.p.rapidapi.com/chat/completions", options)
-  //     .then((response) => response.json())
-  //     .then((response) => {
-  //       message = response?.choices[0]?.message?.content;
-  //       console.log("Peticion completada");
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //       res.status(500).json({ message: "Error en la petición", error: err });
-  //     });
-  // } catch (error) {
-  //   console.error(error);
-  //   res.status(500).json({ message: "Error en la petición", error: error });
-  // }
-  // res.status(200).json({ message: message });
 }

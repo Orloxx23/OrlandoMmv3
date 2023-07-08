@@ -1,40 +1,44 @@
 {
-    "title": "Orlando Mina | Desarrollador Frontend",
-    "spotify": {
-        "current": "Escuchado recientemente"
-    },
-    "loading": "Cargando...",
-    "online":{
-        "online": "En línea",
-        "offline": "Desconectado",
-        "dnd": "Ocupado",
-        "since": "Desde"
-    
-    },
-    "chat":{
-        "greeting": "Hola, soy el clon de Orlando, ¿que quieres saber de mi?"
-    },
-    "birthday":{
-        "age": "edad",
-        "years-old": "años",
-        "time": "dias para mi cumpleaños"
-    },
-    "github": "Mi perfil de Github, donde subo mis proyectos.",
-    "projectsandtest": {
-        "title": "Proyectos y pruebas",
-        "description": "Aquí puedes encontrar algunos de mis proyectos, pruebas o experimentos."
-    },
-    "projects": {
-        "title": "Proyectos",
-        "all": "Todos",
-        "personal": "Personales",
-        "practice": "Prácticas",
-        "experiments": "Experimentos",
-        "recommended": "Recomendados",
-        "courses": "Cursos"
-    },
-    "certificates": {
-        "enlvl": "Nivel de inglés",
-        "platzi": "Desarrollador full stack con javascript"
-    }
+  "title": "Orlando Mina | Desarrollador Frontend",
+  "spotify": {
+    "current": "Escuchado recientemente"
+  },
+  "loading": "Cargando...",
+  "online": {
+    "online": "En línea",
+    "offline": "Desconectado",
+    "dnd": "Ocupado",
+    "since": "Desde"
+  },
+  "chat": {
+    "greeting": "Hola, soy el clon de Orlando, ¿que quieres saber de mi?"
+  },
+  "birthday": {
+    "age": "edad",
+    "years-old": "años",
+    "time": "dias para mi cumpleaños"
+  },
+  "github": "Mi perfil de Github, donde subo mis proyectos.",
+  "projectsandtest": {
+    "title": "Proyectos y pruebas",
+    "description": "Aquí puedes encontrar algunos de mis proyectos, pruebas o experimentos."
+  },
+  "projects": {
+    "title": "Proyectos",
+    "all": "Todos",
+    "personal": "Personales",
+    "practice": "Prácticas",
+    "experiments": "Experimentos",
+    "recommended": "Recomendados",
+    "courses": "Cursos"
+  },
+  "certificates": {
+    "enlvl": "Nivel de inglés",
+    "platzi": "Desarrollador full stack con javascript"
+  },
+  "functions": {
+    "changeLanguage": "Cambiar idioma",
+    "changeTheme": "Cambiar tema",
+    "goToProjects": "Ir a los proyectos"
+  }
 }
