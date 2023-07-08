@@ -36,6 +36,10 @@ export default function LanguagueCard() {
     localStorage.setItem("language", lng);
   };
 
+  useEffect(() => {
+    changeLanguage(i18n.language);
+  }, [i18n.language]);
+
   return (
     <div
       onClick={toggleLanguage}

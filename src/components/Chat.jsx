@@ -7,6 +7,9 @@ import { useRouter } from "next/router";
 import { GrClose } from "react-icons/gr";
 
 import me from "@/assets/images/me.webp";
+import { useTranslation } from "react-i18next";
+import { BsArrowRight } from "react-icons/bs";
+import { useTheme } from "next-themes";
 
 export default function Chat({ open, setOpen }) {
   // const [open, setOpen] = React.useState(false);
@@ -14,8 +17,8 @@ export default function Chat({ open, setOpen }) {
   const [text, setText] = React.useState("");
   const [chat, setChat] = React.useState([
     {
-      user: "bot",
-      message: "Hola, soy el clon de Orlando. ¿Qué te gustaría saber de mí?",
+      role: "assistant",
+      content: "Hola, soy el clon de Orlando. ¿Qué te gustaría saber de mí?",
       animate: true,
     },
   ]);
@@ -23,6 +26,8 @@ export default function Chat({ open, setOpen }) {
   const [isTyping, setIsTyping] = React.useState(true);
   const [error, setError] = React.useState(false);
   const [emotion, setEmotion] = React.useState("normal");
+
+  const [q, setQ] = React.useState("");
 
   const emotions = {
     happy: "😄",
@@ -57,6 +62,7 @@ export default function Chat({ open, setOpen }) {
     setFocus(false);
 
     const query = text;
+    setQ(query);
     setText("");
 
     if (text.trim() === "") {
@@ -64,10 +70,12 @@ export default function Chat({ open, setOpen }) {
       return;
     }
 
-    setChat((prev) => [...prev, { user: "user", message: query }]);
+    setChat((prev) => [...prev, { role: "user", content: query }]);
 
     let res;
     let message = "";
+    let role;
+    let function_call;
 
     await axios
       .post("/api/chat", {
@@ -78,35 +86,50 @@ export default function Chat({ open, setOpen }) {
 
         try {
           const regex = /{(.*)}/;
-          const matches = regex.exec(response.data.message);
+          const matches = regex.exec(response.data.message.content);
           const stringify = matches[1].replace(/`/g, '"');
           const objectJson = JSON.parse("{" + stringify + "}");
 
           res = objectJson;
 
-        message = res.message;
-        setEmotion(res.emotion);
-        setLoading(false);
+          message = res.message;
+          setEmotion(res.emotion);
+          setLoading(false);
         } catch (error) {
           // console.log(error);
-          message = response.data.message;
+          message = response.data.message.content;
           setEmotion("nervous");
           setLoading(false);
         }
-        
+
+        role = response.data.message.role;
+        function_call = response.data.message.function_call;
       })
       .catch(function (error) {
-        console.log(error);
+        console.error(error);
         setLoading(false);
         setError(true);
         setIsTyping(false);
       });
 
-    const newMessage = {
-      user: "bot",
-      message: message,
-      animate: true,
-    };
+    let newMessage;
+
+    if (function_call) {
+      newMessage = {
+        role,
+        content: message,
+        animate: true,
+        function_call,
+      };
+    } else {
+      newMessage = {
+        role,
+        content: message,
+        animate: true,
+      };
+    }
+
+    // console.log(newMessage);
 
     setChat((prev) => [...prev, newMessage]);
 
@@ -162,7 +185,7 @@ export default function Chat({ open, setOpen }) {
               className="absolute top-2 right-2 p-2 cursor-pointer"
               onClick={() => setOpen(false)}
             >
-              <GrClose className="dark:text-white text-black"/>
+              <GrClose className="dark:text-white text-black" />
               {/* <i className="fa-solid fa-xmark"></i> */}
             </div>
             <div className="flex gap-3 items-end">
@@ -212,6 +235,9 @@ export default function Chat({ open, setOpen }) {
                   setLoading={setLoading}
                   removeAnimation={removeAnimation}
                   setIsTyping={setIsTyping}
+                  query={q}
+                  setEmotion={setEmotion}
+                  setChat={setChat}
                 />
               ))}
             </div>
@@ -252,29 +278,122 @@ export default function Chat({ open, setOpen }) {
   );
 }
 
-function Message({ message, index, removeAnimation, setLoading, setIsTyping }) {
+function Message({
+  message,
+  index,
+  removeAnimation,
+  setLoading,
+  setIsTyping,
+  setEmotion,
+  setChat,
+  query,
+}) {
+  const { content, role, function_call } = message;
+
+  const { setTheme } = useTheme();
+  const [t, i18n] = useTranslation("global");
+  let router = useRouter();
+
+  function executeFunction(name, args) {
+    // console.log(name, args);
+    switch (name) {
+      case "changeTheme":
+        changeTheme(query, JSON.parse(args).theme);
+        break;
+      case "changeLanguage":
+        changeLanguage(query, JSON.parse(args).language);
+        break;
+      case "goToProjects":
+        router.push("/projects");
+        break;
+      default:
+        break;
+    }
+
+    setLoading(false);
+    setIsTyping(false);
+    removeAnimation(index);
+  }
+
+  async function replyFunction(query, function_call, info) {
+    setLoading(true);
+    // console.log(query, function_call, info);
+    let res, role, message;
+    await axios
+      .post("/api/replyFunction", {
+        query,
+        function_call,
+        info,
+      })
+      .then(function (response) {
+        try {
+          const regex = /{(.*)}/;
+          const matches = regex.exec(response.data.message.content);
+          const stringify = matches[1].replace(/`/g, '"');
+          const objectJson = JSON.parse("{" + stringify + "}");
+
+          res = objectJson;
+
+          message = res.message;
+          setEmotion(res.emotion);
+          setLoading(false);
+        } catch (error) {
+          // console.error(error);
+          message = response.data.message.content;
+          setEmotion("nervous");
+          setLoading(false);
+        }
+
+        role = response.data.message.role;
+
+        const newMessage = {
+          role,
+          content: message,
+          animate: true,
+        };
+
+        // console.log(newMessage);
+
+        setChat((prev) => [...prev, newMessage]);
+
+        setIsTyping(true);
+      });
+  }
+
+  function changeTheme(query, theme) {
+    // console.log(query);
+    setTheme(theme);
+    replyFunction(query, function_call, `Theme changed to: ${theme}`);
+  }
+
+  function changeLanguage(query, language) {
+    i18n.changeLanguage(language);
+    localStorage.setItem("language", language);
+    replyFunction(query, function_call, `Language changed to: ${language}`);
+  }
+
   return (
     <div
       className={`relative flex w-full mt-4 ${
-        message.user === "user" ? "justify-end pl-16" : "justify-start pr-16"
+        role === "user" ? "justify-end pl-16" : "justify-start pr-16"
       }`}
     >
-      {message.message && (
+      {content && (
         <div
           className={`p-2 rounded-2xl text-[#000000aa] font-medium ${
-            message.user === "user" ? "bg-purple-300" : "bg-purple-500"
-          } ${message.message.includes(" ") ? "break-words" : "break-all"}`}
+            role === "user" ? "bg-purple-300" : "bg-purple-500"
+          } ${content.includes(" ") ? "break-words" : "break-all"}`}
         >
-          {message.user === "bot" && message.animate ? (
+          {role === "bot" || (role === "assistant" && message.animate) ? (
             <Typewriter
               options={{
-                delay: 50,
+                delay: 15,
                 cursor: "",
                 loop: false,
               }}
               onInit={(typewriter) => {
                 typewriter
-                  .typeString(message.message)
+                  .typeString(content || "")
                   .callFunction(() => {
                     removeAnimation(index);
                     setLoading(false);
@@ -284,8 +403,28 @@ function Message({ message, index, removeAnimation, setLoading, setIsTyping }) {
               }}
             />
           ) : (
-            message.message
+            <>{content}</>
           )}
+        </div>
+      )}
+      {content === null && (
+        <div
+          className={`p-2 rounded-2xl text-[#000000aa] font-medium ${
+            role === "user" ? "bg-purple-300" : "bg-purple-500"
+          }`}
+        >
+          <button
+            className="group relative px-4 py-2 overflow-hidden rounded-2xl bg-white/10 text-sm md:text- font-bold text-white"
+            onClick={() => {
+              executeFunction(function_call.name, function_call.arguments);
+            }}
+          >
+            <span className="flex gap-2 justify-center items-center">
+              {t(`functions.${function_call.name}`)}
+              <BsArrowRight size={20} />
+            </span>
+            <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
+          </button>
         </div>
       )}
     </div>
