@@ -164,6 +164,8 @@ export default async function handler(req, res) {
       message = response;
     });
 
+    // console.log(message)
+
     res.status(200).json({ message: message });
   } catch (error) {
     console.error(error);

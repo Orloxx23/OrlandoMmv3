@@ -345,12 +345,24 @@ function Message({
         }
 
         role = response.data.message.role;
+        const function_call_ = response.data.message.function_call;
 
-        const newMessage = {
-          role,
-          content: message,
-          animate: true,
-        };
+        let newMessage;
+
+        if (function_call_) {
+          newMessage = {
+            role,
+            content: message,
+            animate: true,
+            function_call: function_call_,
+          };
+        } else {
+          newMessage = {
+            role,
+            content: message,
+            animate: true,
+          };
+        }
 
         // console.log(newMessage);
 
@@ -360,16 +372,20 @@ function Message({
       });
   }
 
-  function changeTheme(query, theme) {
+  async function changeTheme(query, theme) {
     // console.log(query);
     setTheme(theme);
-    replyFunction(query, function_call, `Theme changed to: ${theme}`);
+    await replyFunction(query, function_call, `Theme changed to: ${theme}`);
   }
 
-  function changeLanguage(query, language) {
+  async function changeLanguage(query, language) {
     i18n.changeLanguage(language);
     localStorage.setItem("language", language);
-    replyFunction(query, function_call, `Language changed to: ${language}`);
+    await replyFunction(
+      query,
+      function_call,
+      `Language changed to: ${language}`
+    );
   }
 
   return (
@@ -416,11 +432,12 @@ function Message({
           <button
             className="group relative px-4 py-2 overflow-hidden rounded-2xl bg-white/10 text-sm md:text- font-bold text-white"
             onClick={() => {
-              executeFunction(function_call.name, function_call.arguments);
+              if (function_call)
+                executeFunction(function_call.name, function_call.arguments);
             }}
           >
             <span className="flex gap-2 justify-center items-center">
-              {t(`functions.${function_call.name}`)}
+              {function_call && t(`functions.${function_call.name}`)}
               <BsArrowRight size={20} />
             </span>
             <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
