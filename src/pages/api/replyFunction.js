@@ -8,7 +8,7 @@ async function getResponse(query, function_call, info) {
     messages: [
       {
         role: "system",
-        content: `${process.env.PERSONALITY}`,
+        content: process.env.PERSONALITY,
       },
       {
         role: "user",
@@ -16,7 +16,7 @@ async function getResponse(query, function_call, info) {
       },
       {
         role: "assistant",
-        content: "null",
+        content: null,
         function_call,
       },
       {
@@ -25,7 +25,7 @@ async function getResponse(query, function_call, info) {
         content: info,
       },
     ],
-    functions: [
+    /*functions: [
       {
         name: "changeTheme",
         description: "Change the theme of the page (light or dark)",
@@ -52,8 +52,7 @@ async function getResponse(query, function_call, info) {
           },
         },
       },
-    ],
-    function_call: "auto",
+    ],*/
   });
 
   let config = {
@@ -68,7 +67,6 @@ async function getResponse(query, function_call, info) {
   };
 
   const response = await axios.request(config);
-
   return response.data.choices[0].message;
 }
 
@@ -82,6 +80,8 @@ export default async function handler(req, res) {
     await getResponse(query, function_call, info).then((response) => {
       message = response;
     });
+
+    // console.log(message);
 
     res.status(200).json({ message: message });
   } catch (error) {
