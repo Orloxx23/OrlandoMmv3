@@ -32,7 +32,7 @@
 
 - **Weather Information:** Get real-time weather updates to plan your day and stay informed while browsing my website.
 
-- Chatbot:** Engage in a conversation with my chatbot if you feel like chatting or need more information about me.
+- **Chatbot:** Engage in a conversation with my chatbot if you feel like chatting or need more information about me. Customize the website by asking the chatbot, change theme and language.
 
 <!-- INSPIRATION -->
 
