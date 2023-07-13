@@ -2,7 +2,7 @@ import axios from "axios";
 
 async function getResponse(query, function_call, info) {
   let data = JSON.stringify({
-    model: "gpt-3.5-turbo-0613",
+    model: "gpt-3.5-turbo",
     temperature: 1,
     max_tokens: 150,
     messages: [
