@@ -56,7 +56,7 @@ async function compare(text, element) {
 
 async function getResponse(query, context) {
   let data = JSON.stringify({
-    model: "gpt-3.5-turbo-0613",
+    model: "gpt-4-0613",
     temperature: 0.3,
     max_tokens: 150,
     messages: [
