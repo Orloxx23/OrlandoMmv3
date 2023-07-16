@@ -7,6 +7,7 @@ import taply from "../assets/images/projects/taply/taply.webp";
 import vfa from "../assets/images/projects/vfa/vfa.webp";
 import triunvirato from "../assets/images/projects/triunvirato/triunvirato.webp";
 import vlr from "../assets/images/projects/vlr/vlr.webp";
+import inkfinity from "../assets/images/projects/inkfinity/inkfinity.webp";
 
 export const projects = [
   {
@@ -197,5 +198,26 @@ export const projects = [
     },
     github: "https://github.com/Orloxx23/vlrscraper-docs",
     website: "https://vlrggapi-docs.vercel.app",
+  },
+  {
+    id: 10,
+    url: "inkfinity",
+    images: {
+      main: inkfinity,
+    },
+    technologies: ["NextJS", "Tailwind"],
+    category: "practice",
+    es: {
+      title: "Inkfinity",
+      description:
+        "Inkfinity es un sitio web donde puedes explorar y añadir libros a tu lista de lectura. Utilizando React/Next.js y Tailwind, desarrollé esta prueba técnica para el evento de midudev. Con filtros por categoría, número de páginas y una función de búsqueda, encontrar tu libro favorito es fácil y rápido. La interfaz es intuitiva y responsive, brindando una experiencia de usuario fluida en cualquier dispositivo. Demuestro mis habilidades en desarrollo frontend al utilizar componentes en Reacty  estilos con Tailwind CSS.",
+    },
+    en: {
+      title: "Inkfinity",
+      description:
+        "Inkfinity is a website where you can browse and add books to your reading list. Using React/Next.js and Tailwind, I developed this technical test for the midudev event. With filters by category, number of pages and a search function, finding your favorite book is easy and fast. The interface is intuitive and responsive, providing a smooth user experience on any device. I demonstrate my frontend development skills by using components in Reacty styled with Tailwind CSS.",
+    },
+    github: "https://github.com/Orloxx23/pruebas-tecnicas/tree/main/pruebas/01-reading-list/orloxx23",
+    website: "https://inkfinity.vercel.app",
   },
 ];
