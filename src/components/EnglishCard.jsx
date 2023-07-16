@@ -14,7 +14,6 @@ export default function EnglishCard() {
     >
       <MdOpenInNew className="absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-xl text-white dark:text-[#ffffffaa]"/>
       <div className="">
-        {/* <Image src={birthday} alt="" width="100" /> */}
         <div className="flex justify-center items-center flex-col">
           <p className="text-xs hidden md:block md:text-lg text-center uppercase font-base">
             {t("certificates.enlvl")}
@@ -24,7 +23,6 @@ export default function EnglishCard() {
             EF SET
           </p>
         </div>
-        {/* <p className="text-sm hidden md:flex">{`${getBirthday()} ${t("birthday.time")}`}</p> */}
       </div>
     </a>
   );

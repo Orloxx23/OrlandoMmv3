@@ -36,9 +36,9 @@ export default function PlatziCard() {
       <MdOpenInNew className="absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-xl text-white dark:text-[#ffffffaa]"/>
       <Image src={certificated} className="w-1/3 md:w-6/12" alt=""/>
       <div className="w-full">
-        <h1 className="text-xs md:text-3xl font-bold text-white capitalize">
+        <p className="text-xs md:text-3xl font-bold text-white capitalize">
           {t("certificates.platzi")}
-        </h1>
+        </p>
         <p></p>
         <p className="text-white text-xs md:text-xl">Platzi - 2023</p>
       </div>

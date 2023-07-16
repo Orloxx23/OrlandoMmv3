@@ -31,7 +31,7 @@ export default function GithubCard() {
             className="text-xs md:text-5xl hidden md:flex"
           />
           <div className="">
-            <h1 className="text-white text-sm md:text-xl lg:text-3xl font-bold">Github</h1>
+            <h2 className="text-white text-sm md:text-xl lg:text-3xl font-bold">Github</h2>
             <p className="text-white text-sm md:text-md lg:text-2xl">{t("github")}</p>
           </div>
         </div>

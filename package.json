@@ -28,6 +28,7 @@
     "react-dom": "18.2.0",
     "react-i18next": "^12.2.0",
     "react-icons": "^4.8.0",
+    "rss-parser": "^3.13.0",
     "spotify-web-api-node": "^5.0.2",
     "swiper": "^9.2.0",
     "swr": "^2.1.2",

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import {
   AboutCard,
   BirthdayCard,
+  BlogCard,
   ClonCard,
   EmailCard,
   EnglishCard,
@@ -96,6 +97,7 @@ export default function Home() {
           <TimeCard />
           <ClonCard />
           <PlatziCard />
+          <BlogCard />
         </div>
       </motion.div>
     </>
