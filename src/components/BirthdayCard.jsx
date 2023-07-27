@@ -23,10 +23,6 @@ export default function BirthdayCard() {
     return birthday.diff(moment(), "days");
   };
 
-  useEffect(() => {
-    const item = localStorage.getItem("language");
-  }, [t, i18n]);
-
   return (
     <div className="text-white rounded-3xl flex relative overflow-hidden aspect-square shadow-sm bg-[#ff4848d3] p-4 justify-center items-center">
       <div className="">
