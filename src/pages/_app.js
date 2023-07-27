@@ -11,7 +11,7 @@ import Head from "next/head";
 import Script from "next/script";
 import Image from "next/image";
 
-import noise from "../assets/images/noise.webp"
+import noise from "../assets/images/noise.webp";
 
 i18next.init({
   interpolation: { escapeValue: false },
@@ -45,7 +45,16 @@ export default function App({ Component, pageProps, router }) {
         });
     `}
       </Script>
-      <ThemeProvider attribute="class" enableSystem={true} defaultTheme="system">
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1650152292222065"
+        crossorigin="anonymous"
+      ></Script>
+      <ThemeProvider
+        attribute="class"
+        enableSystem={true}
+        defaultTheme="system"
+      >
         <I18nextProvider i18n={i18next}>
           <div className="noise bg-noise"></div>
           <AnimatePresence mode="wait">
