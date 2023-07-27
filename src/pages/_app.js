@@ -9,9 +9,6 @@ import global_en from "@/languagues/en/global.json";
 import global_es from "@/languagues/es/global.json";
 import Head from "next/head";
 import Script from "next/script";
-import Image from "next/image";
-
-import noise from "../assets/images/noise.webp";
 
 function getLanguageFromLocalStorage() {
   const storedLanguage = localStorage.getItem("language");
