@@ -18,6 +18,7 @@ import LinkedinCard from "./LinkedinCard";
 import PlatziCard from "./PlatziCard";
 import EnglishCard from "./EnglishCard";
 import BlogCard from "./BlogCard";
+import ExpCard from "./ExpCard";
 
 export {
   OnlineCard,
@@ -40,4 +41,5 @@ export {
   PlatziCard,
   EnglishCard,
   BlogCard,
+  ExpCard,
 };

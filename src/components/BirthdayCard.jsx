@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
+import { CountUp } from "use-count-up";
 
 export default function BirthdayCard() {
   const [t, i18n] = useTranslation("global");
@@ -30,7 +31,7 @@ export default function BirthdayCard() {
           <p className="text-xs md:text-lg uppercase font">
             {t("birthday.age")}
           </p>
-          <p className="text-4xl md:text-8xl font-bold">{getAge()}</p>
+          <p className="text-4xl md:text-8xl font-bold"><CountUp isCounting end={getAge()} duration={4.5} /></p>
           <p className="text-xs md:text-xl uppercase font-semibold text-center">
             {t("birthday.years-old")}
           </p>

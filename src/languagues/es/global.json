@@ -39,6 +39,8 @@
   "functions": {
     "changeLanguage": "Cambiar idioma",
     "changeTheme": "Cambiar tema",
-    "goToProjects": "Ir a los proyectos"
-  }
+    "goToProjects": "Ir a los proyectos",
+    "noEnergy": "Dame energía"
+  },
+  "exp": "años de experiencia"
 }

@@ -10,6 +10,7 @@ import me from "@/assets/images/me.webp";
 import { useTranslation } from "react-i18next";
 import { BsArrowRight } from "react-icons/bs";
 import { useTheme } from "next-themes";
+import { i18n } from "../../next.config";
 
 export default function Chat({ open, setOpen }) {
   // const [open, setOpen] = React.useState(false);
@@ -110,6 +111,9 @@ export default function Chat({ open, setOpen }) {
         setLoading(false);
         setError(true);
         setIsTyping(false);
+        message = null;
+        role = "assistant";
+        function_call = { name: "noEnergy", params: {} };
       });
 
     let newMessage;
@@ -238,6 +242,7 @@ export default function Chat({ open, setOpen }) {
                   query={q}
                   setEmotion={setEmotion}
                   setChat={setChat}
+                  error={error}
                 />
               ))}
             </div>
@@ -287,6 +292,7 @@ function Message({
   setEmotion,
   setChat,
   query,
+  error,
 }) {
   const { content, role, function_call } = message;
 
@@ -305,6 +311,9 @@ function Message({
         break;
       case "goToProjects":
         router.push("/projects");
+        break;
+      case "noEnergy":
+        window.open("https://www.buymeacoffee.com/orloxx23", "_blank");
         break;
       default:
         break;
@@ -389,62 +398,101 @@ function Message({
   }
 
   return (
-    <div
-      className={`relative flex w-full mt-4 ${
-        role === "user" ? "justify-end pl-16" : "justify-start pr-16"
-      }`}
-    >
-      {content && (
-        <div
-          className={`p-2 rounded-2xl text-[#000000aa] font-medium ${
-            role === "user" ? "bg-purple-300" : "bg-purple-500"
-          } ${content.includes(" ") ? "break-words" : "break-all"}`}
-        >
-          {role === "bot" || (role === "assistant" && message.animate) ? (
-            <Typewriter
-              options={{
-                delay: 15,
-                cursor: "",
-                loop: false,
-              }}
-              onInit={(typewriter) => {
-                typewriter
-                  .typeString(content || "")
-                  .callFunction(() => {
-                    removeAnimation(index);
-                    setLoading(false);
-                    setIsTyping(false);
-                  })
-                  .start();
-              }}
-            />
-          ) : (
-            <>{content}</>
-          )}
-        </div>
-      )}
-      {content === null && (
-        <div
-          className={`p-2 rounded-2xl text-[#000000aa] font-medium ${
-            role === "user" ? "bg-purple-300" : "bg-purple-500"
-          }`}
-        >
-          <button
-            className="group relative px-4 py-2 overflow-hidden rounded-2xl bg-white/10 text-sm md:text- font-bold text-white"
-            onClick={() => {
-              if (function_call)
-                executeFunction(function_call.name, function_call.arguments);
-            }}
+    <>
+      <div
+        className={`relative flex w-full mt-4 ${
+          role === "user" ? "justify-end pl-16" : "justify-start pr-16"
+        }`}
+      >
+        {content && (
+          <div
+            className={`p-2 rounded-2xl text-[#000000aa] font-medium ${
+              role === "user" ? "bg-purple-300" : "bg-purple-500"
+            } ${content.includes(" ") ? "break-words" : "break-all"}`}
           >
-            <span className="flex gap-2 justify-center items-center">
-              {function_call && t(`functions.${function_call.name}`)}
-              <BsArrowRight size={20} />
-            </span>
-            <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
-          </button>
-        </div>
-      )}
-    </div>
+            {role === "bot" || (role === "assistant" && message.animate) ? (
+              <Typewriter
+                options={{
+                  delay: 15,
+                  cursor: "",
+                  loop: false,
+                }}
+                onInit={(typewriter) => {
+                  typewriter
+                    .typeString(content || "")
+                    .callFunction(() => {
+                      removeAnimation(index);
+                      setLoading(false);
+                      setIsTyping(false);
+                    })
+                    .start();
+                }}
+              />
+            ) : (
+              <>{content}</>
+            )}
+          </div>
+        )}
+        {content === null && !error && (
+          <div
+            className={`p-2 rounded-2xl text-[#000000aa] font-medium ${
+              role === "user" ? "bg-purple-300" : "bg-purple-500"
+            }`}
+          >
+            <button
+              className="group relative px-4 py-2 overflow-hidden rounded-2xl bg-white/10 text-sm md:text- font-bold text-white"
+              onClick={() => {
+                if (function_call)
+                  executeFunction(function_call.name, function_call.arguments);
+              }}
+            >
+              <span className="flex gap-2 justify-center items-center">
+                {function_call && t(`functions.${function_call.name}`)}
+                <BsArrowRight size={20} />
+              </span>
+              <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
+            </button>
+          </div>
+        )}
+        {content === null && error && (
+          <div
+            className={`p-2 rounded-2xl text-[#000000aa] font-medium ${
+              role === "user" ? "bg-purple-300" : "bg-purple-500"
+            }`}
+          >
+            {role === "bot" || (role === "assistant" && message.animate) ? (
+              <Typewriter
+                options={{
+                  delay: 15,
+                  cursor: "",
+                  loop: false,
+                }}
+                onInit={(typewriter) => {
+                  typewriter
+                    .typeString(
+                      i18n?.language === "es"
+                        ? "Creo que me he quedado sin energía. Escríbeme luego."
+                        : "I think I've run out of energy. Write to me later."
+                    )
+                    .callFunction(() => {
+                      removeAnimation(index);
+                      setLoading(false);
+                      setIsTyping(false);
+                    })
+                    .start();
+                }}
+              />
+            ) : (
+              <>
+                {i18n?.language === "es"
+                  ? "Creo que me he quedado sin energía. Escríbeme luego."
+                  : "I think I've run out of energy. Write to me later."}
+              </>
+            )}
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

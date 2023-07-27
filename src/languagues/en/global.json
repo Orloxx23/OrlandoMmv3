@@ -39,6 +39,8 @@
   "functions": {
     "changeLanguage": "Change language",
     "changeTheme": "Change theme",
-    "goToProjects": "Go to projects"
-  }
+    "goToProjects": "Go to projects",
+    "noEnergy": "Give me energy"
+  },
+  "exp": "years of experience"
 }

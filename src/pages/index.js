@@ -7,6 +7,7 @@ import {
   ClonCard,
   EmailCard,
   EnglishCard,
+  ExpCard,
   GithubCard,
   LanguagueCard,
   LinkedinCard,
@@ -89,7 +90,8 @@ export default function Home() {
           <ProjectsCard />
           <GithubCard />
           <Skills />
-          <EnglishCard />
+          <ExpCard />
+          {/* <EnglishCard /> */}
           <SpotifyCard />
           <OnlineCard />
           <EmailCard />
@@ -98,6 +100,7 @@ export default function Home() {
           <ClonCard />
           <PlatziCard />
           <BlogCard />
+          
         </div>
       </motion.div>
     </>
