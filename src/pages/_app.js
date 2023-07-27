@@ -48,11 +48,6 @@ export default function App({ Component, pageProps, router }) {
         });
     `}
       </Script>
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1650152292222065"
-        crossorigin="anonymous"
-      ></Script>
       <ThemeProvider
         attribute="class"
         enableSystem={true}
