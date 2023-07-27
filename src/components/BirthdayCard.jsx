@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
 import { CountUp } from "use-count-up";
@@ -22,6 +22,10 @@ export default function BirthdayCard() {
     let birthday = moment([year, 5, 23]);
     return birthday.diff(moment(), "days");
   };
+
+  useEffect(() => {
+    const item = localStorage.getItem("language");
+  }, [t, i18n]);
 
   return (
     <div className="text-white rounded-3xl flex relative overflow-hidden aspect-square shadow-sm bg-[#ff4848d3] p-4 justify-center items-center">
