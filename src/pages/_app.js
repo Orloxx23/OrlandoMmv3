@@ -9,18 +9,11 @@ import global_en from "@/languagues/en/global.json";
 import global_es from "@/languagues/es/global.json";
 import Head from "next/head";
 import Script from "next/script";
-
-function getLanguageFromLocalStorage() {
-  const storedLanguage = localStorage.getItem("language");
-  const supportedLanguages = ["en", "es"];
-  return supportedLanguages.includes(storedLanguage) ? storedLanguage : "en";
-}
-
-const initialLanguage = getLanguageFromLocalStorage();
+import { useEffect } from "react";
 
 i18next.init({
   interpolation: { escapeValue: false },
-  lng: initialLanguage,
+  lng: "en",
   resources: {
     en: {
       global: global_en,
@@ -32,6 +25,11 @@ i18next.init({
 });
 
 export default function App({ Component, pageProps, router }) {
+  useEffect(() => {
+    const languague = localStorage.getItem("languague");
+    i18next.changeLanguage(languague);
+  }, []);
+  
   return (
     <>
       <Script
