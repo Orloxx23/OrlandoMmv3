@@ -26,10 +26,10 @@ i18next.init({
 
 export default function App({ Component, pageProps, router }) {
   useEffect(() => {
-    const languague = localStorage.getItem("languague");
-    i18next.changeLanguage(languague);
+    const language = localStorage.getItem("language");
+    i18next.changeLanguage(language);
   }, []);
-  
+
   return (
     <>
       <Script
