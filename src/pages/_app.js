@@ -13,9 +13,17 @@ import Image from "next/image";
 
 import noise from "../assets/images/noise.webp";
 
+function getLanguageFromLocalStorage() {
+  const storedLanguage = localStorage.getItem("language");
+  const supportedLanguages = ["en", "es"];
+  return supportedLanguages.includes(storedLanguage) ? storedLanguage : "en";
+}
+
+const initialLanguage = getLanguageFromLocalStorage();
+
 i18next.init({
   interpolation: { escapeValue: false },
-  lng: "en",
+  lng: initialLanguage,
   resources: {
     en: {
       global: global_en,
