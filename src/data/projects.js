@@ -197,7 +197,7 @@ export const projects = [
         "This project showcases an API that performs scraping on vlr.gg, a popular Valorant tournament website. The API allows users to retrieve tournament data, player statistics, and other information from vlr.gg and use it in their applications. A dedicated webpage is created to test the API's functionality, and the API itself is hosted publicly for anyone to access.",
     },
     github: "https://github.com/Orloxx23/vlrscraper-docs",
-    website: "https://vlrggapi-docs.vercel.app",
+    website: "https://vlresports.vercel.app",
   },
   {
     id: 10,
