@@ -1,12 +1,29 @@
 import { db } from "@/firebase";
 import axios from "axios";
 import similarity from "compute-cosine-similarity/lib";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, addDoc, updateDoc } from "firebase/firestore";
 
 let embeddings = [];
 let conversation = [
-  "bot: Hola, soy el clon de Orlando. ¿Qué te gustaría saber de mí?",
+  "assistant: Hola, soy el clon de Orlando. ¿Qué te gustaría saber de mí?",
 ];
+
+let chatCollection = collection(db, "chats");
+let docId;
+
+async function createCollection() {
+  try {
+    const docRef = await addDoc(chatCollection, {
+      conversation: conversation,
+      timestamp: new Date(),
+    });
+    docId = docRef.id;
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
+}
+
+createCollection();
 
 async function getEmbeddings() {
   try {
@@ -160,8 +177,12 @@ export default async function handler(req, res) {
     conversation.push("user: " + query);
 
     await getResponse(query, context).then((response) => {
-      conversation.push("assistant: " + response);
+      conversation.push("assistant: " + response.content);
       message = response;
+
+      updateDoc(doc(db, "chats", docId), {
+        conversation: conversation,
+      });
     });
 
     // console.log(message)
