@@ -19,6 +19,7 @@ import PlatziCard from "./PlatziCard";
 import EnglishCard from "./EnglishCard";
 import BlogCard from "./BlogCard";
 import ExpCard from "./ExpCard";
+import ProjectLoader from "./ProjectLoader";
 
 export {
   OnlineCard,
@@ -42,4 +43,5 @@ export {
   EnglishCard,
   BlogCard,
   ExpCard,
+  ProjectLoader,
 };

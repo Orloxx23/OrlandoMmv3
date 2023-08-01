@@ -12,7 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper";
 
 import me from "../../assets/images/me2.webp";
-import { LanguagueCard } from "@/components";
+import { LanguagueCard, ProjectLoader } from "@/components";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import { SiGithub } from "react-icons/si";
@@ -170,6 +170,8 @@ function ProjectCard({ project, index }) {
   const [showModal, setShowModal] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const [seeMore, setSeeMore] = useState(false);
+
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const colors = {
     personal: "#5183B4aa",
@@ -359,10 +361,16 @@ function ProjectCard({ project, index }) {
               : "md:h-full md:w-full md:left-0 w-[95%] h-[50%] left-[2.5%]"
           }`}
         >
+          {isLoaded ? null : (
+            <div className="w-full h-full flex justify-center items-center absolute bg-black/60">
+              <ProjectLoader />
+            </div>
+          )}
           <Image
             src={project.images.main}
             className="w-full h-full object-cover"
             draggable={false}
+            onLoad={() => setIsLoaded(true)}
           />
         </motion.div>
         <p className="text-xl font-bold">
