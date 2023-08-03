@@ -129,13 +129,13 @@ export default function Projects() {
         >
           {isLoading ? (
             <>
-              <div className="aspect-square flex justify-center items-center">
+              <div className="col-span-3 md:col-span-1 aspect-square flex justify-center items-center">
                 <Loader />
               </div>
-              <div className="aspect-square flex justify-center items-center">
+              <div className="col-span-3 md:col-span-1 aspect-square flex justify-center items-center">
                 <Loader />
               </div>
-              <div className="aspect-square flex justify-center items-center">
+              <div className="col-span-3 md:col-span-1 aspect-square flex justify-center items-center">
                 <Loader />
               </div>
             </>
