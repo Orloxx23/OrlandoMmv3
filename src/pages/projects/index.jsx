@@ -6,13 +6,12 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { AiFillCaretUp, AiFillStar } from "react-icons/ai";
 import { BsArrowLeft } from "react-icons/bs";
-import { projects } from "@/data/projects";
 import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper";
 
 import me from "../../assets/images/me2.webp";
-import { LanguagueCard, ProjectLoader } from "@/components";
+import { LanguagueCard, Loader, ProjectLoader } from "@/components";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import { SiGithub } from "react-icons/si";
@@ -37,9 +36,9 @@ export default function Projects() {
   ];
 
   function compare(a, b) {
-    if (a.id < b.id) {
+    if (a.timestamp < b.timestamp) {
       return 1;
-    } else if (a.id > b.id) {
+    } else if (a.timestamp > b.timestamp) {
       return -1;
     } else {
       return 0;
@@ -49,13 +48,6 @@ export default function Projects() {
   const { data, isLoading } = useSWR("/api/projects", (url) =>
     axios.get(url).then((res) => res.data)
   );
-
-  useEffect(() => {
-    if (data) {
-      console.log(data);
-      setProjectsFiltered(data?.sort(compare));
-    }
-  }, [data]);
 
   useEffect(() => {
     setProjectsFiltered(data?.sort(compare));
@@ -126,9 +118,23 @@ export default function Projects() {
           layout
           className="grid grid-cols-3 gap-2 md:grid-cols-3 md:gap-4 mb-5 container mx-auto xl:px-20 "
         >
-          {projectsFiltered?.map((project, index) => (
-            <ProjectCard key={project.id} index={index} project={project} />
-          ))}
+          {isLoading ? (
+            <>
+              <div className="aspect-square flex justify-center items-center">
+                <Loader />
+              </div>
+              <div className="aspect-square flex justify-center items-center">
+                <Loader />
+              </div>
+              <div className="aspect-square flex justify-center items-center">
+                <Loader />
+              </div>
+            </>
+          ) : (
+            projectsFiltered?.map((project, index) => (
+              <ProjectCard key={project.id} index={index} project={project} />
+            ))
+          )}
         </motion.div>
       </motion.div>
     </>

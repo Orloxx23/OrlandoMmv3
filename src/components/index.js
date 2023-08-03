@@ -20,6 +20,7 @@ import EnglishCard from "./EnglishCard";
 import BlogCard from "./BlogCard";
 import ExpCard from "./ExpCard";
 import ProjectLoader from "./ProjectLoader";
+import Loader from "./Loader";
 
 export {
   OnlineCard,
@@ -44,4 +45,5 @@ export {
   BlogCard,
   ExpCard,
   ProjectLoader,
+  Loader,
 };
