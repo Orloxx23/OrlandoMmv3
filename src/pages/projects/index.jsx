@@ -50,8 +50,14 @@ export default function Projects() {
   );
 
   useEffect(() => {
-    setProjectsFiltered(data?.sort(compare));
-  }, []);
+    if (data) {
+      setProjectsFiltered(data?.sort(compare));
+    }
+  }, [data]);
+
+  // useEffect(() => {
+  //   setProjectsFiltered(data?.sort(compare));
+  // }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -91,6 +97,9 @@ export default function Projects() {
                 <BsArrowLeft />
               </Link>{" "}
               {t("projects.title")}
+              <p className="text-white uppercase font-bold text-2xl md:text-7xl opacity-20">
+                {projectsFiltered?.length}
+              </p>
             </h1>
             <Image
               src={me}
