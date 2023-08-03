@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,6 +18,8 @@ import "swiper/css/effect-cards";
 import { SiGithub } from "react-icons/si";
 import { FiExternalLink } from "react-icons/fi";
 import Script from "next/script";
+import axios from "axios";
+import useSWR from "swr";
 
 export default function Projects() {
   let router = useRouter();
@@ -44,8 +46,19 @@ export default function Projects() {
     }
   }
 
+  const { data, isLoading } = useSWR("/api/projects", (url) =>
+    axios.get(url).then((res) => res.data)
+  );
+
   useEffect(() => {
-    setProjectsFiltered(projects.sort(compare));
+    if (data) {
+      console.log(data);
+      setProjectsFiltered(data?.sort(compare));
+    }
+  }, [data]);
+
+  useEffect(() => {
+    setProjectsFiltered(data?.sort(compare));
   }, []);
 
   useEffect(() => {
@@ -54,11 +67,11 @@ export default function Projects() {
 
   useEffect(() => {
     if (categoryActive == 0) {
-      setProjectsFiltered(projects.sort(compare));
+      setProjectsFiltered(data?.sort(compare));
     } else {
       setProjectsFiltered(
-        projects
-          .filter((project) => project.category == categories[categoryActive])
+        data
+          ?.filter((project) => project.category == categories[categoryActive])
           .sort(compare)
       );
     }
@@ -367,14 +380,16 @@ function ProjectCard({ project, index }) {
             </div>
           )}
           <Image
-            src={project.images.main}
+            src={project.image}
             className="w-full h-full object-cover"
             draggable={false}
             onLoad={() => setIsLoaded(true)}
+            width={1280}
+            height={720}
           />
         </motion.div>
         <p className="text-xl font-bold">
-          {i18n.language == "en" ? project.en.title : project.es.title}
+          {i18n.language == "en" ? project.en.name : project.es.name}
         </p>
         <p className="truncate text-lg">
           {i18n.language == "en"
