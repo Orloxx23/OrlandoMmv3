@@ -40,7 +40,7 @@ export default function Home() {
         <meta name="generator" content="Next.js" />
         <meta
           name="keywords"
-          content="Next.js,React,JavaScript,Orlando,Mina,Madroñero,Madronero,CSS,HTML,Orloxx,Frontend,Developer,Web,Fullstack,"
+          content="Next.js,React,JavaScript,Orlando,Mina,Madroñero,Madronero,CSS,HTML,Orloxx,Frontend,Developer,Web,Fullstack,orlandomm,orlandomm.me,Orloxx23,Orlando Mina, Orlando Mina Madroñero"
         />
         <meta name="creator" content="Orlando Mina" />
         <meta
