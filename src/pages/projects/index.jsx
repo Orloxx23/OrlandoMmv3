@@ -281,8 +281,8 @@ function ProjectCard({ project, index }) {
                   </p>
                   <h1 className="text-3xl font-bold mb-4">
                     {i18n.language == "en"
-                      ? project.en.title
-                      : project.es.title}
+                      ? project.en.name
+                      : project.es.name}
                   </h1>
                   <p
                     layout
