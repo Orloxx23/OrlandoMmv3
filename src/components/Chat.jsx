@@ -11,15 +11,22 @@ import { useTranslation } from "react-i18next";
 import { BsArrowRight } from "react-icons/bs";
 import { useTheme } from "next-themes";
 import { i18n } from "../../next.config";
+import { MendableInPlace } from "@mendable/search";
 
 export default function Chat({ open, setOpen }) {
+  const [t, i18n] = useTranslation("global");
+
   // const [open, setOpen] = React.useState(false);
+  const [online, setOnline] = React.useState(false);
   const [focus, setFocus] = React.useState(false);
   const [text, setText] = React.useState("");
   const [chat, setChat] = React.useState([
     {
       role: "assistant",
-      content: "Hola, soy el clon de Orlando. ¿Qué te gustaría saber de mí?",
+      content:
+        i18n?.language === "en"
+          ? "I'm not currently available. I hope we can talk later."
+          : "Actualmente no estoy disponible. Espero que podamos hablar después",
       animate: true,
     },
   ]);
@@ -165,121 +172,177 @@ export default function Chat({ open, setOpen }) {
     }
   }, [isTyping]);
 
-  return (
-    <>
-      {open && (
-        <>
-          <motion.div
-            className="fixed inset-0 bg-[#00000085] z-20 cursor-pointer backdrop-blur-sm transition-all duration-500 ease-in-out"
-            initial={{ opacity: 0 }}
-            exit={{ opacity: 0 }}
-            defaultValue={{ opacity: 0 }}
-            animate={{ opacity: open ? 1 : 0 }}
-            onClick={() => setOpen(false)}
-          />
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            exit={{ opacity: 0, y: 100 }}
-            defaultValue={{ opacity: 0, y: 100 }}
-            animate={{ opacity: open ? 1 : 0, y: open ? 0 : 100 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="bg-[#f8efff] dark:bg-[#09030e] md:w-5/6 lg:w-2/6 w-5/6 h-5/6 fixed p-4 rounded-xl shadow-xl z-30 top-0.5 left-0.5 right-0.5 bottom-0.5 m-auto flex flex-col"
-          >
-            <div
-              className="absolute top-2 right-2 p-2 cursor-pointer"
+  const style = { height: "500px" }
+
+  if (online) {
+    return (
+      <>
+        {open && (
+          <>
+            <motion.div
+              className="fixed inset-0 bg-[#00000085] z-20 cursor-pointer backdrop-blur-sm transition-all duration-500 ease-in-out"
+              initial={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+              defaultValue={{ opacity: 0 }}
+              animate={{ opacity: open ? 1 : 0 }}
               onClick={() => setOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              exit={{ opacity: 0, y: 100 }}
+              defaultValue={{ opacity: 0, y: 100 }}
+              animate={{ opacity: open ? 1 : 0, y: open ? 0 : 100 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="bg-[#f8efff] dark:bg-[#09030e] md:w-5/6 lg:w-2/6 w-5/6 h-5/6 fixed p-4 rounded-xl shadow-xl z-30 top-0.5 left-0.5 right-0.5 bottom-0.5 m-auto flex flex-col"
             >
-              <GrClose className="dark:text-white text-black" />
-              {/* <i className="fa-solid fa-xmark"></i> */}
-            </div>
-            <div className="flex gap-3 items-end">
-              <div className="rounded-full  bg-purple-400 w-20 relative">
-                <div className="absolute rounded-full text-3xl h-7 w-7 flex justify-center items-center right-0 top-0 z-10">
-                  {error
-                    ? "😵"
-                    : loading
-                    ? "🤔"
-                    : focus
-                    ? "😳"
-                    : isTyping
-                    ? emotions[emotion] || "😀"
-                    : "🙂"}
-                </div>
-                <Image
-                  className="rounded-full"
-                  src={me}
-                  width={512}
-                  height={512}
-                  alt="me"
-                  draggable="false"
-                />
-              </div>
-              <div className="flex flex-col justify-center">
-                <p className="font-bold text-lg">Orlando Mina Clon</p>
-                <div className="flex items-center gap-1">
-                  <div
-                    className={`w-2 h-2 rounded-full ${
-                      error ? "bg-red-500" : "bg-green-500"
-                    }`}
-                  ></div>
-                  <p>{error ? "Offline" : "Online"}</p>
-                </div>
-              </div>
-            </div>
-            <div className="w-full bg-purple-500 h-0.5 mt-4"></div>
-            <div
-              ref={chatRef}
-              className={`flex-1 flex-col pb-2 w-full gap-10 overflow-y-auto`}
-            >
-              {chat.map((message, index) => (
-                <Message
-                  key={index}
-                  index={index}
-                  message={message}
-                  setLoading={setLoading}
-                  removeAnimation={removeAnimation}
-                  setIsTyping={setIsTyping}
-                  query={q}
-                  setEmotion={setEmotion}
-                  setChat={setChat}
-                  error={error}
-                />
-              ))}
-            </div>
-            <motion.form
-              layout
-              id="chatForm"
-              onSubmit={handleSubmit}
-              className={`h-10 flex border-t-2 border-purple-500 dark:bg-[#ffffff36] bg-[#00000015] rounded-b-xl w-full items-start overflow-hidden`}
-            >
-              <textarea
-                className="p-2 flex h-full w-9/12 border-none b resize-none outline-none bg-[#00000000] break-words float-left textarea"
-                onFocus={() => setFocus(true)}
-                onBlur={() => setFocus(false)}
-                value={loading ? "..." : text}
-                onChange={handleChange}
-                disabled={error || loading || isTyping}
-                form="chatForm"
-                onKeyPress={commentEnterSubmit}
-                required
-              />
-              <button
-                type="submit"
-                disabled={error || loading || isTyping || text.length === 0}
-                className={`flex w-3/12 h-10 flex-col justify-center items-center ${
-                  error || loading || text.length === 0
-                    ? "text-gray-500"
-                    : "text-white"
-                } hover:bg-[#da20ff1f]`}
+              <div
+                className="absolute top-2 right-2 p-2 cursor-pointer"
+                onClick={() => setOpen(false)}
               >
-                📤
-                {/* <i className="fa-regular fa-paper-plane"></i> */}
-              </button>
-            </motion.form>
-          </motion.div>
-        </>
-      )}
-    </>
+                <GrClose className="dark:text-white text-black" />
+                {/* <i className="fa-solid fa-xmark"></i> */}
+              </div>
+              <div className="flex gap-3 items-end">
+                <div className="rounded-full  bg-purple-400 w-20 relative">
+                  <div className="absolute rounded-full text-3xl h-7 w-7 flex justify-center items-center right-0 top-0 z-10">
+                    {error
+                      ? "😵"
+                      : loading
+                      ? "🤔"
+                      : focus
+                      ? "😳"
+                      : isTyping
+                      ? emotions[emotion] || "😀"
+                      : !online
+                      ? "😴"
+                      : "🙂"}
+                  </div>
+                  <Image
+                    className="rounded-full"
+                    src={me}
+                    width={512}
+                    height={512}
+                    alt="me"
+                    draggable="false"
+                  />
+                </div>
+                <div className="flex flex-col justify-center">
+                  <p className="font-bold text-lg">Orlando Mina Clon</p>
+                  <div className="flex items-center gap-1">
+                    <div
+                      className={`w-2 h-2 rounded-full ${
+                        error || !online ? "bg-red-500" : "bg-green-500"
+                      }`}
+                    ></div>
+                    <p>{error || !online ? "Offline" : "Online"}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full bg-purple-500 h-0.5 mt-4"></div>
+              <div
+                ref={chatRef}
+                className={`flex-1 flex-col pb-2 w-full gap-10 overflow-y-auto`}
+              >
+                {chat.map((message, index) => (
+                  <Message
+                    key={index}
+                    index={index}
+                    message={message}
+                    setLoading={setLoading}
+                    removeAnimation={removeAnimation}
+                    setIsTyping={setIsTyping}
+                    query={q}
+                    setEmotion={setEmotion}
+                    setChat={setChat}
+                    error={error}
+                  />
+                ))}
+              </div>
+              <motion.form
+                layout
+                id="chatForm"
+                onSubmit={handleSubmit}
+                className={`h-10 flex border-t-2 border-purple-500 dark:bg-[#ffffff36] bg-[#00000015] rounded-b-xl w-full items-start overflow-hidden`}
+              >
+                <textarea
+                  className="p-2 flex h-full w-9/12 border-none b resize-none outline-none bg-[#00000000] break-words float-left textarea"
+                  onFocus={() => setFocus(true)}
+                  onBlur={() => setFocus(false)}
+                  value={loading ? "..." : text}
+                  onChange={handleChange}
+                  disabled={error || loading || isTyping || !online}
+                  form="chatForm"
+                  onKeyPress={commentEnterSubmit}
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={error || loading || isTyping || text.length === 0}
+                  className={`flex w-3/12 h-10 flex-col justify-center items-center ${
+                    error || loading || text.length === 0
+                      ? "text-gray-500"
+                      : "text-white"
+                  } hover:bg-[#da20ff1f]`}
+                >
+                  📤
+                  {/* <i className="fa-regular fa-paper-plane"></i> */}
+                </button>
+              </motion.form>
+            </motion.div>
+          </>
+        )}
+      </>
+    );
+  } else {
+    return (
+      <>
+        {open && (
+          <>
+            <motion.div
+              className="fixed inset-0 bg-[#00000085] z-20 cursor-pointer backdrop-blur-sm transition-all duration-500 ease-in-out"
+              initial={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+              defaultValue={{ opacity: 0 }}
+              animate={{ opacity: open ? 1 : 0 }}
+              onClick={() => setOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              exit={{ opacity: 0, y: 100 }}
+              defaultValue={{ opacity: 0, y: 100 }}
+              animate={{ opacity: open ? 1 : 0, y: open ? 0 : 100 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="md:w-5/6 lg:w-2/6 w-5/6 min-h-min fixed mt-8 rounded-xl shadow-xl z-30 top-0.5 left-0.5 right-0.5 bottom-0.5 m-auto flex flex-col"
+            >
+              <div
+                className="absolute top-2 right-2 p-2 cursor-pointer"
+                onClick={() => setOpen(false)}
+              >
+                <GrClose className="dark:text-white text-black" />
+                {/* <i className="fa-solid fa-xmark"></i> */}
+              </div>
+              <MendableInPlace
+                anon_key={process.env.NEXT_PUBLIC_MENDABLE_KEY}
+                hintText={i18n.language === "es" ? "Pregunta aqui" : "Ask here"}
+                welcomeMessage={i18n.language === "es" ? "¿Que quieres saber de mi?" : "What do you want to know about me?"}
+                botIcon={<BotIcon />}
+                messageSettings={{
+                  prettySources: false,
+                  openSourcesInNewTab: true,
+                  
+                }}
+              />
+            </motion.div>
+          </>
+        )}
+      </>
+    );
+  }
+}
+
+function BotIcon(){
+  return(
+    <Image src={me} />
   );
 }
 
