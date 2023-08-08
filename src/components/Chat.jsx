@@ -17,7 +17,7 @@ export default function Chat({ open, setOpen }) {
   const [t, i18n] = useTranslation("global");
 
   // const [open, setOpen] = React.useState(false);
-  const [online, setOnline] = React.useState(false);
+  const [online, setOnline] = React.useState(true);
   const [focus, setFocus] = React.useState(false);
   const [text, setText] = React.useState("");
   const [chat, setChat] = React.useState([
@@ -25,8 +25,8 @@ export default function Chat({ open, setOpen }) {
       role: "assistant",
       content:
         i18n?.language === "en"
-          ? "I'm not currently available. I hope we can talk later."
-          : "Actualmente no estoy disponible. Espero que podamos hablar después",
+          ? "Hi, I'm Orlando's clone. What would you like to know about me?"
+          : "Hola, soy el clon de Orlando. ¿Qué te gustaría saber de mi?",
       animate: true,
     },
   ]);
@@ -172,7 +172,7 @@ export default function Chat({ open, setOpen }) {
     }
   }, [isTyping]);
 
-  const style = { height: "500px" }
+  const style = { height: "500px" };
 
   if (online) {
     return (
@@ -324,12 +324,15 @@ export default function Chat({ open, setOpen }) {
               <MendableInPlace
                 anon_key={process.env.NEXT_PUBLIC_MENDABLE_KEY}
                 hintText={i18n.language === "es" ? "Pregunta aqui" : "Ask here"}
-                welcomeMessage={i18n.language === "es" ? "¿Que quieres saber de mi?" : "What do you want to know about me?"}
+                welcomeMessage={
+                  i18n.language === "es"
+                    ? "¿Que quieres saber de mi?"
+                    : "What do you want to know about me?"
+                }
                 botIcon={<BotIcon />}
                 messageSettings={{
                   prettySources: false,
                   openSourcesInNewTab: true,
-                  
                 }}
               />
             </motion.div>
@@ -340,10 +343,8 @@ export default function Chat({ open, setOpen }) {
   }
 }
 
-function BotIcon(){
-  return(
-    <Image src={me} />
-  );
+function BotIcon() {
+  return <Image src={me} />;
 }
 
 function Message({
