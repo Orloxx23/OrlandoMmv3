@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { GrClose } from "react-icons/gr";
+import { IoMdClose } from "react-icons/io";
 
 import me from "@/assets/images/me.webp";
 import { useTranslation } from "react-i18next";
@@ -154,6 +154,18 @@ export default function Chat({ open, setOpen }) {
     }
   };
 
+  const onCloseModal = () => {
+    router.replace(
+      {
+        pathname: router.pathname,
+        query: {},
+      },
+      undefined,
+      { scroll: false }
+    );
+    setOpen(false);
+  };
+
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -174,18 +186,28 @@ export default function Chat({ open, setOpen }) {
 
   const style = { height: "500px" };
 
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.query.chat) {
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  }, [router.query]);
+
   if (online) {
     return (
       <>
         {open && (
           <>
             <motion.div
-              className="fixed inset-0 bg-[#00000085] z-20 cursor-pointer backdrop-blur-sm transition-all duration-500 ease-in-out"
+              className="fixed inset-0 bg-[#00000085] z-20 backdrop-blur-sm transition-all duration-500 ease-in-out"
               initial={{ opacity: 0 }}
               exit={{ opacity: 0 }}
               defaultValue={{ opacity: 0 }}
               animate={{ opacity: open ? 1 : 0 }}
-              onClick={() => setOpen(false)}
+              onClick={onCloseModal}
             />
             <motion.div
               initial={{ opacity: 0, y: 100 }}
@@ -197,10 +219,9 @@ export default function Chat({ open, setOpen }) {
             >
               <div
                 className="absolute top-2 right-2 p-2 cursor-pointer"
-                onClick={() => setOpen(false)}
+                onClick={onCloseModal}
               >
-                <GrClose className="dark:text-white text-black" />
-                {/* <i className="fa-solid fa-xmark"></i> */}
+                <IoMdClose className="dark:text-white text-black" />
               </div>
               <div className="flex gap-3 items-end">
                 <div className="rounded-full  bg-purple-400 w-20 relative">
@@ -284,8 +305,7 @@ export default function Chat({ open, setOpen }) {
                       : "text-white"
                   } hover:bg-[#da20ff1f]`}
                 >
-                  📤
-                  {/* <i className="fa-regular fa-paper-plane"></i> */}
+                  <i className="fa-regular fa-paper-plane"></i>
                 </button>
               </motion.form>
             </motion.div>

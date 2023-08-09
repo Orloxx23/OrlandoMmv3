@@ -5,15 +5,26 @@ import { GoBell } from "react-icons/go";
 import me from "@/assets/images/me.webp";
 import pet from "@/assets/images/me-pet.gif";
 import { Chat } from ".";
+import { useRouter } from "next/router";
 
 export default function ClonCard() {
+  const router = useRouter();
   const random = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
   const [showBadge, setShowBadge] = React.useState(true);
   const [open, setOpen] = React.useState(false);
 
   const handlerClick = () => {
     setShowBadge(false);
-    setOpen(true);
+    if (!open) {
+      router.push(
+        {
+          pathname: router.pathname,
+          query: { chat: true },
+        },
+        undefined,
+        { scroll: false }
+      );
+    }
   };
 
   return (

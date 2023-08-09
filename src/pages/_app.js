@@ -48,6 +48,7 @@ export default function App({ Component, pageProps, router }) {
         });
     `}
       </Script>
+      <Script src="https://kit.fontawesome.com/00a734f883.js" crossorigin="anonymous"></Script>
       <ThemeProvider
         attribute="class"
         enableSystem={true}
