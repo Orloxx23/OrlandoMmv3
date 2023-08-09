@@ -338,8 +338,7 @@ export default function Chat({ open, setOpen }) {
                 className="absolute top-2 right-2 p-2 cursor-pointer"
                 onClick={() => setOpen(false)}
               >
-                <GrClose className="dark:text-white text-black" />
-                {/* <i className="fa-solid fa-xmark"></i> */}
+                <IoMdClose className="dark:text-white text-black" />
               </div>
               <MendableInPlace
                 anon_key={process.env.NEXT_PUBLIC_MENDABLE_KEY}
