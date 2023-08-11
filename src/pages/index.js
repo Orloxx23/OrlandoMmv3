@@ -32,8 +32,7 @@ export default function Home() {
         <meta name="apple-mobile-web-app-status-bar" content="#3F275C" />
         <meta
           name="description"
-          content="Explore my Frontend Developer Portfolio | React, JavaScript, HTML, CSS | Aspiring Student Dev
-          Welcome to my captivating portfolio showcasing my journey as an aspiring Frontend Developer. Discover my expertise in crafting dynamic web experiences using cutting-edge technologies such as React, JavaScript, HTML, and CSS. Immerse yourself in my projects that reflect my dedication, creativity, and continuous learning as a student developer. Let's shape the future of the web together."
+          content="Discover my expertise in creating dynamic web experiences using technologies such as React, JavaScript, HTML and CSS. Dive into my projects that reflect my dedication, creativity and continuous learning as a development student."
         />
         <meta name="googlebot" content="notranslate" />
         <meta name="author" content="Orlando Mina" />
@@ -52,8 +51,7 @@ export default function Home() {
         <meta property="og:title" content="Orlando Mina | Frontend Developer" />
         <meta
           property="og:description"
-          content="Explore my Frontend Developer Portfolio | React, JavaScript, HTML, CSS | Aspiring Student Dev
-          Welcome to my captivating portfolio showcasing my journey as an aspiring Frontend Developer. Discover my expertise in crafting dynamic web experiences using cutting-edge technologies such as React, JavaScript, HTML, and CSS. Immerse yourself in my projects that reflect my dedication, creativity, and continuous learning as a student developer. Let's shape the future of the web together."
+          content="Discover my expertise in creating dynamic web experiences using technologies such as React, JavaScript, HTML and CSS. Dive into my projects that reflect my dedication, creativity and continuous learning as a development student."
         />
         <meta property="og:url" content="https://orlandomm.me/" />
         <meta
