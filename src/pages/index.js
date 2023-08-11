@@ -27,20 +27,21 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{t("title")}</title>
+        <title>Orlando Mina {t("title")}</title>
         <meta name="theme-color" content="#3F275C" />
         <meta name="apple-mobile-web-app-status-bar" content="#3F275C" />
         <meta
           name="description"
-          content="Orlando is a frontend developer with an interest in UX/UI design. He is an expert in HTML, CSS, JavaScript and React."
+          content="Explore my Frontend Developer Portfolio | React, JavaScript, HTML, CSS | Aspiring Student Dev
+          Welcome to my captivating portfolio showcasing my journey as an aspiring Frontend Developer. Discover my expertise in crafting dynamic web experiences using cutting-edge technologies such as React, JavaScript, HTML, and CSS. Immerse yourself in my projects that reflect my dedication, creativity, and continuous learning as a student developer. Let's shape the future of the web together."
         />
         <meta name="googlebot" content="notranslate" />
         <meta name="author" content="Orlando Mina" />
         <link rel="author" href="https://orlandomm.me" />
-        <meta name="generator" content="Next.js" />
+        <link rel="canonical" href="https://orlandomm.me" />
         <meta
           name="keywords"
-          content="Next.js,React,JavaScript,Orlando,Mina,Madroñero,Madronero,CSS,HTML,Orloxx,Frontend,Developer,Web,Fullstack,orlandomm,orlandomm.me,Orloxx23,Orlando Mina, Orlando Mina Madroñero"
+          content="Next.js,React,JavaScript,Orlando,Mina,Madroñero,Madronero,CSS,HTML,Orloxx,Frontend,Developer,Web,Fullstack,orlandomm,orlandomm.me,Orloxx23,Orlando Mina,Orlando Mina Madroñero,orlando,mina,madroñero,orlando mina,portfolio,portafolio,projects,proyectos,skills,habilidades,about,sobre,contact,contacto,contactame,contactame,contact me"
         />
         <meta name="creator" content="Orlando Mina" />
         <meta
@@ -51,7 +52,8 @@ export default function Home() {
         <meta property="og:title" content="Orlando Mina | Frontend Developer" />
         <meta
           property="og:description"
-          content="Orlando is a frontend developer with an interest in UX/UI design. He is an expert in HTML, CSS, JavaScript and React."
+          content="Explore my Frontend Developer Portfolio | React, JavaScript, HTML, CSS | Aspiring Student Dev
+          Welcome to my captivating portfolio showcasing my journey as an aspiring Frontend Developer. Discover my expertise in crafting dynamic web experiences using cutting-edge technologies such as React, JavaScript, HTML, and CSS. Immerse yourself in my projects that reflect my dedication, creativity, and continuous learning as a student developer. Let's shape the future of the web together."
         />
         <meta property="og:url" content="https://orlandomm.me/" />
         <meta
@@ -71,8 +73,14 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@Orloxx23" />
         <meta name="twitter:creator" content="@Orloxx23" />
-        <meta name="twitter:title" content="Orlando Mina | Frontend Developer" />
-        <meta name="twitter:image" content="https://github.com/Orloxx23/OrlandoMmv2/blob/main/src/assets/img/me.png?raw=true" />
+        <meta
+          name="twitter:title"
+          content="Orlando Mina | Frontend Developer"
+        />
+        <meta
+          name="twitter:image"
+          content="https://github.com/Orloxx23/OrlandoMmv2/blob/main/src/assets/img/me.png?raw=true"
+        />
       </Head>
       <motion.div
         initial={{ opacity: 0, y: -2000 }}
@@ -100,7 +108,6 @@ export default function Home() {
           <ClonCard />
           <PlatziCard />
           <BlogCard />
-          
         </div>
       </motion.div>
     </>
