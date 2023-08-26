@@ -1,7 +1,14 @@
 import { db } from "@/firebase";
+import { strict_output } from "@/utils/gpt";
 import axios from "axios";
 import similarity from "compute-cosine-similarity/lib";
-import { collection, getDocs, doc, addDoc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  addDoc,
+  updateDoc,
+} from "firebase/firestore";
 
 let embeddings = [];
 let conversation = [
@@ -71,7 +78,25 @@ async function compare(text, element) {
   return result;
 }
 
-async function getResponse(query, context) {
+async function getResponse2(query, context) {
+  const response = await strict_output(
+    `${
+      process.env.PERSONALITY
+    }. responds in JSON format. emotions: happy, sad, surprised, confused, pokerface, excited, scared, in_love, angry, neutral, shy, nervous
+    You don't make things up. you don't tell lies. Only answer if you have the question has to do with the following information and you only know this: ${context}. Don't answer if you don't know the answer. This is the conversation between you and the user: ${conversation.join(
+      ", "
+    )}.`,
+    query,
+    {
+      emotion: "emotion",
+      message: "answer",
+    }
+  );
+
+  return response;
+}
+
+/*async function getResponse(query, context) {
   let data = JSON.stringify({
     model: "gpt-4-0613",
     temperature: 0.5,
@@ -148,7 +173,7 @@ async function getResponse(query, context) {
   const response = await axios.request(config);
 
   return response.data.choices[0].message;
-}
+}*/
 
 export default async function handler(req, res) {
   try {
@@ -173,11 +198,12 @@ export default async function handler(req, res) {
     newEmbeddings.slice(0, 6).forEach((element) => {
       context += element.text + " ";
     });
+    // console.log("context:", context);
 
     conversation.push("user: " + query);
 
-    await getResponse(query, context).then((response) => {
-      conversation.push("assistant: " + response.content);
+    await getResponse2(query, context).then((response) => {
+      conversation.push("assistant: " + response.message);
       message = response;
 
       updateDoc(doc(db, "chats", docId), {
@@ -187,7 +213,7 @@ export default async function handler(req, res) {
 
     // console.log(message)
 
-    res.status(200).json({ message: message });
+    res.status(200).json({ message });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error en la petición", error: error });

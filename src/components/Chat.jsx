@@ -93,25 +93,17 @@ export default function Chat({ open, setOpen }) {
         // console.log(response.data.message);
 
         try {
-          const regex = /{(.*)}/;
-          const matches = regex.exec(response.data.message.content);
-          const stringify = matches[1].replace(/`/g, '"');
-          const objectJson = JSON.parse("{" + stringify + "}");
-
-          res = objectJson;
-
-          message = res.message;
-          setEmotion(res.emotion);
+          message = response.data.message.message;
+          setEmotion(response.data.message.emotion);
           setLoading(false);
         } catch (error) {
           // console.log(error);
-          message = response.data.message.content;
+          message = response.data.message.message;
           setEmotion("nervous");
           setLoading(false);
         }
 
-        role = response.data.message.role;
-        function_call = response.data.message.function_call;
+        role = "assistant";
       })
       .catch(function (error) {
         console.error(error);
