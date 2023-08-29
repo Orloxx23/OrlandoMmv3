@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Orlando Mina {t("title")}</title>
+        <title>Orlando Mina | Frontend Developer</title>
         <meta name="theme-color" content="#3F275C" />
         <meta name="apple-mobile-web-app-status-bar" content="#3F275C" />
         <meta

@@ -78,7 +78,7 @@ export default function Projects() {
   return (
     <>
       <Head>
-        <title>Orlando Mina {`| ${t("projects.title")}`}</title>
+        <title>Orlando Mina | Projects</title>
       </Head>
       <div className="hidden">
         <LanguagueCard />
