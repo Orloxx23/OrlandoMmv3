@@ -50,14 +50,14 @@ export default function ValorantCard() {
     <a
       href="https://tracker.gg/valorant/profile/riot/Nikkeey%2360HZ/overview"
       target="_blank"
-      className="text-white flex flex-col group rounded-3xl overflow-hidden md:overflow-visible relative col-span-1 aspect-square shadow-sm cursor-pointer hover:scale-[103%] transition duration-300 ease-in-out"
+      className="text-white flex flex-col group rounded-3xl overflow-hidden md:overflow-hidden relative col-span-1 aspect-square shadow-sm cursor-pointer hover:scale-[103%] transition duration-300 ease-in-out"
       style={gradientStyle}
       onClick={handlePlay}
     >
       <audio src={data?.agent?.audio} id="agent-audio"></audio>
       <img
         src={data?.agent?.image}
-        className="hidden md:block absolute md:-left-16 2xl:-left-24 scale-[1] bottom-0 z-[5] group-hover:scale-[1.2] transition duration-300 ease-in-out delay-[50ms]"
+        className="hidden md:block absolute md:-left-16 2xl:-left-24 scale-[2.5] -bottom-36 z-[5] group-hover:scale-[2.7] transition duration-300 ease-in-out delay-[50ms]"
       />
       <div className="rounded-tl-3xl rounded-tr-3xl overflow-hidden w-full relative z-[3]">
         <img src={data?.card?.wide} className="object-cover" />
