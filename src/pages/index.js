@@ -21,6 +21,7 @@ import {
   TwitterCard,
 } from "@/components";
 import { useTranslation } from "react-i18next";
+import ValorantCard from "@/components/ValorantCard";
 
 export default function Home() {
   const [t, i18n] = useTranslation("global");
@@ -97,15 +98,16 @@ export default function Home() {
           <GithubCard />
           <Skills />
           <ExpCard />
-          {/* <EnglishCard /> */}
           <SpotifyCard />
           <OnlineCard />
           <EmailCard />
           <TwitterCard />
           <TimeCard />
           <ClonCard />
+          <ValorantCard />
+          <EnglishCard />
+          {/* <BlogCard /> */}
           <PlatziCard />
-          <BlogCard />
         </div>
       </motion.div>
     </>
