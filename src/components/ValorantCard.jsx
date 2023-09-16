@@ -57,7 +57,7 @@ export default function ValorantCard() {
       <audio src={data?.agent?.audio} id="agent-audio"></audio>
       <img
         src={data?.agent?.image}
-        className="hidden md:block absolute md:-left-16 2xl:-left-24 scale-[2.5] -bottom-36 z-[5] group-hover:scale-[2.7] transition duration-300 ease-in-out delay-[50ms]"
+        className="hidden md:block absolute md:-left-16 2xl:-left-24 scale-[1.9] -bottom-36 z-[5] group-hover:scale-[2.1] transition duration-300 ease-in-out delay-[60ms]"
       />
       <div className="rounded-tl-3xl rounded-tr-3xl overflow-hidden w-full relative z-[3]">
         <img src={data?.card?.wide} className="object-cover" />

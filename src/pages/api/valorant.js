@@ -37,7 +37,13 @@ const handler = async (req, res) => {
   playerinfo.rank.icon = rank.data.images.large;
   playerinfo.rank.name = rank.data.currenttierpatched;
 
-  const agent = await getMostPlayedCharacter("latam", "Nikkeey", "60hz", 20, languageCode);
+  const agent = await getMostPlayedCharacter(
+    "latam",
+    "Nikkeey",
+    "60hz",
+    20,
+    languageCode
+  );
   playerinfo.agent.image = agent?.portrait;
   playerinfo.agent.background = agent?.background;
   playerinfo.agent.backgroundGradient = agent?.backgroundGradient;
@@ -100,9 +106,13 @@ async function getMostPlayedCharacter(region, name, tag, size, languageCode) {
       }
 
       if (mostFrequentCharacter) {
+        const agentId =
+          mostFrequentCharacter == "ded3520f-4264-bfed-162d-b080e2abccf9"
+            ? "320b2a48-4d9b-a075-30f1-1f93a9b638fa"
+            : mostFrequentCharacter;
         // Fetch data for the most frequent character
         const agentResponse = await axios.get(
-          `https://valorant-api.com/v1/agents/${mostFrequentCharacter}?language=${languageCode}`
+          `https://valorant-api.com/v1/agents/${agentId}?language=${languageCode}`
         );
         const agent = agentResponse.data;
 
