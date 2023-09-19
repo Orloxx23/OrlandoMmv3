@@ -122,7 +122,7 @@ async function getMostPlayedCharacter(region, name, tag, size, languageCode) {
           portrait: agent.data.bustPortrait,
           background: agent.data.background,
           backgroundGradient: agent.data.backgroundGradientColors,
-          audio: agent.data.voiceLine.mediaList[0].wave,
+          audio: agent.data.voiceLine?.mediaList[0].wave,
         };
 
         // Return the result

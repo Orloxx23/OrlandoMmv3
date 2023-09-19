@@ -25,8 +25,8 @@ export default function ValorantCard() {
 
   React.useEffect(() => {
     if (data) {
-      const colors = data.agent.backgroundGradient.map((color) => `#${color}`);
-      const colorjoin = colors.join(", ");
+      const colors = data.agent?.backgroundGradient?.map((color) => `#${color}`);
+      const colorjoin = colors?.join(", ");
       const gradientStyle = {
         background: `linear-gradient(to bottom, ${colorjoin})`,
       };
