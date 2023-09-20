@@ -1,55 +1,61 @@
 import axios from "axios";
 
 const handler = async (req, res) => {
-  const language = req.body.params.language;
-  const languageCode = language === "en" ? "en-US" : "es-MX";
+  try {
+    const language = req.body.params.language;
+    const languageCode = language === "en" ? "en-US" : "es-MX";
 
-  let playerinfo = {
-    name: "",
-    tag: "",
-    level: "",
-    card: "",
-    rank: {
-      icon: "",
+    let playerinfo = {
       name: "",
-    },
-    agent: {
-      image: "",
-      background: "",
-      backgroundGradient: [],
-      audio: "",
-    },
-  };
+      tag: "",
+      level: "",
+      card: "",
+      rank: {
+        icon: "",
+        name: "",
+      },
+      agent: {
+        image: "",
+        background: "",
+        backgroundGradient: [],
+        audio: "",
+      },
+    };
 
-  const info = await fetch(
-    "https://api.henrikdev.xyz/valorant/v1/account/Nikkeey/60hz"
-  ).then((res) => res.json());
+    const info = await fetch(
+      "https://api.henrikdev.xyz/valorant/v1/account/Nikkeey/60hz"
+    ).then((res) => res.json());
 
-  const rank = await fetch(
-    "https://api.henrikdev.xyz/valorant/v1/mmr/latam/Nikkeey/60hz"
-  ).then((res) => res.json());
+    if(info.status === 400) return res.status(400).json({ statusCode: 400, message: "Not able to connect to API" });
 
-  playerinfo.name = info.data.name;
-  playerinfo.tag = info.data.tag;
-  playerinfo.level = info.data.account_level;
-  playerinfo.card = info.data.card;
+    const rank = await fetch(
+      "https://api.henrikdev.xyz/valorant/v1/mmr/latam/Nikkeey/60hz"
+    ).then((res) => res.json());
 
-  playerinfo.rank.icon = rank.data.images.large;
-  playerinfo.rank.name = rank.data.currenttierpatched;
+    playerinfo.name = info.data?.name;
+    playerinfo.tag = info.data?.tag;
+    playerinfo.level = info.data?.account_level;
+    playerinfo.card = info.data?.card;
 
-  const agent = await getMostPlayedCharacter(
-    "latam",
-    "Nikkeey",
-    "60hz",
-    20,
-    languageCode
-  );
-  playerinfo.agent.image = agent?.portrait;
-  playerinfo.agent.background = agent?.background;
-  playerinfo.agent.backgroundGradient = agent?.backgroundGradient;
-  playerinfo.agent.audio = agent?.audio;
+    playerinfo.rank.icon = rank.data?.images.large;
+    playerinfo.rank.name = rank.data?.currenttierpatched;
 
-  res.status(200).json(playerinfo);
+    const agent = await getMostPlayedCharacter(
+      "latam",
+      "Nikkeey",
+      "60hz",
+      20,
+      languageCode
+    );
+    playerinfo.agent.image = agent?.portrait;
+    playerinfo.agent.background = agent?.background;
+    playerinfo.agent.backgroundGradient = agent?.backgroundGradient;
+    playerinfo.agent.audio = agent?.audio;
+
+    res.status(200).json(playerinfo);
+  } catch (error) {
+    res.status(500).json({ statusCode: 500, message: error.message });
+  }
 };
 
 /**
