@@ -17,7 +17,10 @@ export default function ValorantCard() {
           language: "es",
         },
       })
-      .then((res) => res.data)
+      .then((res) => {
+        setAvailable(true);
+        return res.data;
+      })
       .catch((err) => {
         setAvailable(false);
       })
