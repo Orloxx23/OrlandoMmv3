@@ -37,11 +37,11 @@ export default function Home() {
         />
         <meta name="googlebot" content="notranslate" />
         <meta name="author" content="Orlando Mina" />
-        <link rel="author" href="https://orlandomm.me" />
-        <link rel="canonical" href="https://orlandomm.me" />
+        <link rel="author" href="https://orlandomm.net" />
+        <link rel="canonical" href="https://orlandomm.net" />
         <meta
           name="keywords"
-          content="Next.js,React,JavaScript,Orlando,Mina,Madroñero,Madronero,CSS,HTML,Orloxx,Frontend,Developer,Web,Fullstack,orlandomm,orlandomm.me,Orloxx23,Orlando Mina,Orlando Mina Madroñero,orlando,mina,madroñero,orlando mina,portfolio,portafolio,projects,proyectos,skills,habilidades,about,sobre,contact,contacto,contactame,contactame,contact me"
+          content="Next.js,React,JavaScript,Orlando,Mina,Madroñero,Madronero,CSS,HTML,Orloxx,Frontend,Developer,Web,Fullstack,orlandomm,orlandomm.net,Orloxx23,Orlando Mina,Orlando Mina Madroñero,orlando,mina,madroñero,orlando mina,portfolio,portafolio,projects,proyectos,skills,habilidades,about,sobre,contact,contacto,contactame,contactame,contact me,orlandomm.me"
         />
         <meta name="creator" content="Orlando Mina" />
         <meta
@@ -54,7 +54,7 @@ export default function Home() {
           property="og:description"
           content="Discover my expertise in creating dynamic web experiences using technologies such as React, JavaScript, HTML and CSS. Dive into my projects that reflect my dedication, creativity and continuous learning as a development student."
         />
-        <meta property="og:url" content="https://orlandomm.me/" />
+        <meta property="og:url" content="https://orlandomm.net/" />
         <meta
           property="og:site_name"
           content="Orlando Mina, Frontend Developer"

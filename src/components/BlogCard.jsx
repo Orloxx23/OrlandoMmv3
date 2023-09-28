@@ -5,7 +5,7 @@ import Parser from "rss-parser";
 
 export default function BlogCard() {
   const parser = new Parser();
-  const rssFeedUrl = "https://blog.orlandomm.me/rss.xml";
+  const rssFeedUrl = "https://blog.orlandomm.net/rss.xml";
 
   const [articles, setArticles] = useState([]);
 
@@ -28,7 +28,7 @@ export default function BlogCard() {
   return (
     <>
       <a
-        href="https://blog.orlandomm.me"
+        href="https://blog.orlandomm.net"
         className="flex md:hidden flex-col justify-center items-center bg-[#1c053a9c] dark:bg-[#af72ff56] rounded-3xl relative overflow-hidden col-span-1 aspect-square shadow-sm cursor-pointer hover:scale-[103%] transition duration-300 ease-in-out"
       >
         <MdArticle className="text-5xl" />
@@ -38,11 +38,11 @@ export default function BlogCard() {
         <div className="flex justify-between">
           <h2 className="font-bold text-xl">Blog</h2>
           <a
-            href="https://blog.orlandomm.me"
+            href="https://blog.orlandomm.net"
             className="flex items-center gap-1"
             aria-label="Blog"
           >
-            blog.orlandomm.me <MdOpenInNew />
+            blog.orlandomm.net <MdOpenInNew />
           </a>
         </div>
         <div className="w-full flex gap-4 flex-col overflow-y-auto">

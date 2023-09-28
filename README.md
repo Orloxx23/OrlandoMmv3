@@ -10,7 +10,7 @@
   <p align="center">
     Discover my skills and learn more about me!
     <br />
-    <a href="https://orlandomm.me">orlandomm.me</a>
+    <a href="https://orlandomm.net">orlandomm.net</a>
   </p>
 </p>
 
