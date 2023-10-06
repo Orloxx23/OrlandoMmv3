@@ -48,7 +48,10 @@ export default function App({ Component, pageProps, router }) {
         });
     `}
       </Script>
-      <Script src="https://kit.fontawesome.com/00a734f883.js" crossorigin="anonymous"></Script>
+      <Script
+        src="https://kit.fontawesome.com/00a734f883.js"
+        crossorigin="anonymous"
+      ></Script>
       <ThemeProvider
         attribute="class"
         enableSystem={true}
@@ -69,6 +72,7 @@ export default function App({ Component, pageProps, router }) {
               />
               <link rel="icon" href="/io.ico" />
             </Head>
+
             <Component {...pageProps} key={router.route} />
           </AnimatePresence>
         </I18nextProvider>
