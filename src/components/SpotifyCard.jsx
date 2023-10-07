@@ -97,6 +97,10 @@ export default function SpotifyCard() {
     }
   }, [data]);
 
+  useEffect(() => {
+    document.getElementById("music").volume = 0.5;
+  }, []);
+
   return (
     <div className="relative flex flex-col justify-between p-3 md:p-7 lg:p-8 rounded-3xl md:col-span-2 col-span-2 row-span-1 overflow-hidden bg-[#0000008f]">
       <div className="absolute invisible md:visible md:static">

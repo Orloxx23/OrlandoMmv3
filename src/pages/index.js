@@ -21,7 +21,6 @@ import {
   TwitterCard,
 } from "@/components";
 import ValorantCard from "@/components/ValorantCard";
-import Scroll from "@/components/Scroll";
 
 export default function Home() {
   return (
@@ -80,37 +79,36 @@ export default function Home() {
           content="https://github.com/Orloxx23/OrlandoMmv2/blob/main/src/assets/img/me.png?raw=true"
         />
       </Head>
-      <Scroll>
-        <motion.div
-          initial={{ opacity: 0, y: -2000 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 100, duration: 1 }}
-          transition={{ duration: 2.5, delay: 0.5, type: "spring" }}
-          className="flex flex-col m-5"
-        >
-          <div className="grid grid-cols-3 gap-2 md:grid-cols-4 md:gap-4 my-5 container mx-auto xl:px-20">
-            <AboutCard />
-            <LanguagueCard />
-            <ThemeCard />
-            <BirthdayCard />
-            <LinkedinCard />
-            <ProjectsCard />
-            <GithubCard />
-            <Skills />
-            <ExpCard />
-            <SpotifyCard />
-            <OnlineCard />
-            <EmailCard />
-            <TwitterCard />
-            <TimeCard />
-            <ClonCard />
-            <ValorantCard />
-            <EnglishCard />
-            {/* <BlogCard /> */}
-            <PlatziCard />
-          </div>
-        </motion.div>
-      </Scroll>
+
+      <motion.div
+        initial={{ opacity: 0, y: -2000 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 100, duration: 1 }}
+        transition={{ duration: 2.5, delay: 0.5, type: "spring" }}
+        className="flex flex-col m-5"
+      >
+        <div className="grid grid-cols-3 gap-2 md:grid-cols-4 md:gap-4 my-5 container mx-auto xl:px-20">
+          <AboutCard />
+          <LanguagueCard />
+          <ThemeCard />
+          <BirthdayCard />
+          <LinkedinCard />
+          <ProjectsCard />
+          <GithubCard />
+          <Skills />
+          <ExpCard />
+          <SpotifyCard />
+          <OnlineCard />
+          <EmailCard />
+          <TwitterCard />
+          <TimeCard />
+          <ClonCard />
+          <ValorantCard />
+          <EnglishCard />
+          {/* <BlogCard /> */}
+          <PlatziCard />
+        </div>
+      </motion.div>
     </>
   );
 }
