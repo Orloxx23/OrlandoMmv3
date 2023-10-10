@@ -82,8 +82,8 @@ async function getResponse2(query, context) {
   const response = await strict_output(
     `${
       process.env.PERSONALITY
-    }. responds in JSON format. emotions: happy, sad, surprised, confused, pokerface, excited, scared, in_love, angry, neutral, shy, nervous
-    You don't make things up. you don't tell lies. Only answer if you have the question has to do with the following information and you only know this: ${context}. Don't answer if you don't know the answer. This is the conversation between you and the user: ${conversation.join(
+    }. responds in JSON format. emotions: happy, sad, surprised, confused, pokerface, excited, scared, in_love, angry, neutral, shy, nervous.
+    Only answer if you have the question has to do with the following information and you only know this: ${context}. Don't answer if you don't know the answer. If the user asks you for help, ask them questions to obtain more details and ask for their email or contact method. This is the conversation between you and the user: ${conversation.join(
       ", "
     )}.`,
     query,
