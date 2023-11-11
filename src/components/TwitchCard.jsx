@@ -59,11 +59,7 @@ export default function TwitchCard() {
       body: JSON.stringify({ token }),
     });
     const data = await res.json();
-    console.log(
-      data?.stream?.data[0]?.thumbnail_url
-        ?.replace("{width}", "1280")
-        .replace("height", "720")
-    );
+
     return data;
   };
 
@@ -86,7 +82,7 @@ export default function TwitchCard() {
       {isLoading && (
         <div
           className={`
-        absolute top-0 p-4 md:p-8 left-0 w-full h-full bg-purple-600 flex justify-center items-center 
+        absolute top-0 p-4 md:p-8 left-0 w-full h-full bg-purple-600 flex justify-center items-center z-20
         ${isLoading ? "opacity-100" : "opacity-0"}
         transition-all duration-500 ease-in-out
         `}
@@ -96,6 +92,7 @@ export default function TwitchCard() {
             width="128"
             height="128"
             viewBox="0 0 24 24"
+            className="animate-pulse"
           >
             <path
               fill="#ffffff"
@@ -109,7 +106,7 @@ export default function TwitchCard() {
         <Link
           href="https://www.twitch.tv/orlando2m"
           target="_blank"
-          className="w-full"
+          className="w-fit"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -162,9 +159,6 @@ export default function TwitchCard() {
               alt="Twitch Offline"
               className="w-[102px] h-[67px] md:h-[148px] md:w-[280px] opacity-100 absolute"
             />
-            <p className="relative z-[2] font-black text-2xl text-red-white tracking-widest w-full h-full bg-black/80 mix-blend-multiply flex justify-center items-center">
-              OFFLINE
-            </p>
           </div>
         )}
       </div>
