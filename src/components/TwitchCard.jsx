@@ -36,9 +36,9 @@ export default function TwitchCard() {
 
     const cookieOptions = {
       expires: new Date(new Date().getTime() + data.expires_in * 1000),
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      httpOnly: process.env.NODE_ENV === "production",
+      secure: true,
+      //sameSite: "strict",
+      httpOnly: true,
     };
 
     Cookies.set("access_token", data.access_token, cookieOptions);
