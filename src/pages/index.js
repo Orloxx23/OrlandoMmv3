@@ -21,6 +21,7 @@ import {
   TwitterCard,
 } from "@/components";
 import ValorantCard from "@/components/ValorantCard";
+import TwitchCard from "@/components/TwitchCard";
 
 export default function Home() {
   return (
@@ -101,12 +102,13 @@ export default function Home() {
           <OnlineCard />
           <EmailCard />
           <TwitterCard />
-          <TimeCard />
+          {/* <TimeCard /> */}
+          <TwitchCard />
           {/* <ClonCard /> */}
           <ValorantCard />
-          {/* <EnglishCard /> */}
-          <BlogCard />
-          <PlatziCard />
+          <EnglishCard />
+          {/* <BlogCard /> */}
+          {/* <PlatziCard /> */}
         </div>
       </motion.div>
     </>

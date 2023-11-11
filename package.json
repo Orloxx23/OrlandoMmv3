@@ -20,10 +20,12 @@
     "firebase": "^9.20.0",
     "framer-motion": "^10.11.2",
     "i18next": "^22.4.14",
+    "js-cookie": "^3.0.5",
     "moment": "^2.29.4",
     "next": "13.3.0",
     "next-sitemap": "^4.1.8",
     "next-themes": "^0.2.1",
+    "openai": "^3.3.0",
     "react": "18.2.0",
     "react-confetti-explosion": "^2.1.2",
     "react-dom": "18.2.0",
@@ -34,8 +36,7 @@
     "swiper": "^9.2.0",
     "swr": "^2.1.2",
     "typewriter-effect": "^2.19.0",
-    "use-count-up": "^3.0.1",
-    "openai": "^3.3.0"
+    "use-count-up": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
