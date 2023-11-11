@@ -59,7 +59,11 @@ export default function TwitchCard() {
       body: JSON.stringify({ token }),
     });
     const data = await res.json();
-
+    console.log(
+      data?.stream?.data[0]?.thumbnail_url
+        ?.replace("{width}", "1280")
+        .replace("height", "720")
+    );
     return data;
   };
 
@@ -130,17 +134,39 @@ export default function TwitchCard() {
             {data?.user?.status == 401 ? "" : data?.user?.data[0]?.description}
           </p>
         </div>
-        <div className="absolute top-4 right-4 md:top-8 md:right-8 z-[1] ">
-          <iframe
-            src="https://player.twitch.tv/?channel=orlando2m&parent=www.orlandomm.net"
-            frameborder="0"
-            allowFullScreen="true"
-            scrolling="no"
-            height={37 * 4}
-            width={62 * 4}
-            className="w-[102px] h-[67px] md:h-[148px] md:w-[280px]"
-          ></iframe>
-        </div>
+        {data?.stream?.status == 401 ? (
+          ""
+        ) : data?.stream?.data[0]?.type == "live" ? (
+          <div className="absolute top-4 right-4 md:top-8 md:right-8 z-[1] w-[102px] h-[67px] md:h-[148px] md:w-[280px]">
+            <iframe
+              src="https://player.twitch.tv/?channel=elspreen&parent=www.orlandomm.net"
+              frameborder="0"
+              allowFullScreen="true"
+              scrolling="no"
+              height={37 * 4}
+              width={62 * 4}
+              className="w-[102px] h-[67px] md:h-[148px] md:w-[280px]"
+            ></iframe>
+            {/* <img
+              src={data?.stream?.data[0]?.thumbnail_url
+                ?.replace("{width}", "1280")
+                .replace("height", "720")}
+              alt=""
+              className="absolute w-[102px] h-[67px] md:h-[148px] md:w-[280px] top-0"
+            /> */}
+          </div>
+        ) : (
+          <div className="w-[102px] h-[67px] md:h-[148px] md:w-[280px] absolute top-4 right-4 md:top-8 md:right-8 z-[1]  flex justify-center items-center">
+            <img
+              src={data?.user?.data[0]?.offline_image_url}
+              alt="Twitch Offline"
+              className="w-[102px] h-[67px] md:h-[148px] md:w-[280px] opacity-100 absolute"
+            />
+            <p className="relative z-[2] font-black text-2xl text-red-white tracking-widest w-full h-full bg-black/80 mix-blend-multiply flex justify-center items-center">
+              OFFLINE
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

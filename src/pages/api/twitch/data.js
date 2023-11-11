@@ -1,6 +1,6 @@
 const getStream = async (headers) => {
   const response = await fetch(
-    "https://api.twitch.tv/helix/streams?user_login=orlando2m",
+    "https://api.twitch.tv/helix/streams?user_login=elspreen",
     {
       method: "GET",
       headers: headers,
@@ -14,7 +14,7 @@ const getStream = async (headers) => {
 
 const getUser = async (headers) => {
   const response = await fetch(
-    "https://api.twitch.tv/helix/users?login=orlando2m",
+    "https://api.twitch.tv/helix/users?login=elspreen",
     {
       method: "GET",
       headers: headers,
