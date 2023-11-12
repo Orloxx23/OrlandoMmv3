@@ -124,9 +124,13 @@ export default function TwitchCard() {
         <div className="w-full">
           {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
           {/* <h2 className="text-white text-2xl font-bold">Twitch</h2> */}
-          <h2 className="text-white text-md md:text-xl font-bold">
-            {data?.user?.status == 401 ? "" : data?.user?.data[0]?.display_name}
-          </h2>
+          <Link href="https://www.twitch.tv/orlando2m" target="_blank">
+            <h2 className="text-white text-md md:text-xl font-bold">
+              {data?.user?.status == 401
+                ? ""
+                : data?.user?.data[0]?.display_name}
+            </h2>
+          </Link>
           <p className="text-white text-md hidden md:block">
             {data?.user?.status == 401 ? "" : data?.user?.data[0]?.description}
           </p>
