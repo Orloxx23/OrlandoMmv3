@@ -106,8 +106,8 @@ export default function Home() {
           <ClonCard />
           <ValorantCard />
           <EnglishCard />
-          <TwitchCard />
-          <BlogCard />
+          {/* <TwitchCard /> */}
+          {/* <BlogCard /> */}
           <PlatziCard />
         </div>
       </motion.div>
