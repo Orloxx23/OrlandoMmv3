@@ -136,12 +136,12 @@ export default function TwitchCard() {
         ) : data?.stream?.data[0]?.type == "live" ? (
           <div className="absolute top-4 right-4 md:top-8 md:right-8 z-[1] w-[102px] h-[67px] md:h-[148px] md:w-[280px]">
             <iframe
-              src="https://player.twitch.tv/?channel=tenz&parent=www.orlandomm.net"
+              src="https://player.twitch.tv/?channel=orlando2m&parent=www.orlandomm.net"
               frameborder="0"
               allowFullScreen="true"
               scrolling="no"
               height={37 * 4}
-              width={62 * 4}
+              width={62 * 3}
               className="w-[102px] h-[67px] md:h-[148px] md:w-[280px]"
             ></iframe>
             {/* <img
