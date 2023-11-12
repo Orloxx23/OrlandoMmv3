@@ -102,13 +102,13 @@ export default function Home() {
           <OnlineCard />
           <EmailCard />
           <TwitterCard />
-          {/* <TimeCard /> */}
-          <TwitchCard />
-          {/* <ClonCard /> */}
+          <TimeCard />
+          <ClonCard />
           <ValorantCard />
           <EnglishCard />
-          {/* <BlogCard /> */}
-          {/* <PlatziCard /> */}
+          <TwitchCard />
+          <BlogCard />
+          <PlatziCard />
         </div>
       </motion.div>
     </>
