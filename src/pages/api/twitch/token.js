@@ -9,7 +9,7 @@ const getAuth = async () => {
     `https://id.twitch.tv/oauth2/token?client_id=${client_id}&client_secret=${client_secret}&grant_type=client_credentials`,
     {
       method: "POST",
-      cache: "no-cache",
+      // cache: "no-cache",
     }
   );
   const data = await response.json();

@@ -4,7 +4,7 @@ const getStream = async (headers) => {
     {
       method: "GET",
       headers: headers,
-      cache: "no-cache",
+      // cache: "no-cache",
     }
   );
 
@@ -18,7 +18,7 @@ const getUser = async (headers) => {
     {
       method: "GET",
       headers: headers,
-      cache: "no-cache",
+      // cache: "no-cache",
     }
   );
 
