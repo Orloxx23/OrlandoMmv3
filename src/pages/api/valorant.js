@@ -26,7 +26,10 @@ const handler = async (req, res) => {
       "https://api.henrikdev.xyz/valorant/v1/account/Nikkeey/60hz"
     ).then((res) => res.json());
 
-    if(info.status === 400) return res.status(400).json({ statusCode: 400, message: "Not able to connect to API" });
+    if (info.status === 400)
+      return res
+        .status(400)
+        .json({ statusCode: 400, message: "Not able to connect to API" });
 
     const rank = await fetch(
       "https://api.henrikdev.xyz/valorant/v1/mmr/latam/Nikkeey/60hz"
@@ -90,15 +93,27 @@ async function getMostPlayedCharacter(region, name, tag, size, languageCode) {
       // Create an object to count the frequency of each character
       const characterCounts = {};
 
-      // Iterate through the filtered data and count characters
-      filteredData.forEach((item) => {
-        const characterId = item.stats.character.id;
-        if (characterCounts[characterId]) {
-          characterCounts[characterId]++;
-        } else {
-          characterCounts[characterId] = 1;
-        }
-      });
+      if (filteredData.length === 0) {
+        // Iterate through the filtered data and count characters
+        jsonData.data.forEach((item) => {
+          const characterId = item.stats.character.id;
+          if (characterCounts[characterId]) {
+            characterCounts[characterId]++;
+          } else {
+            characterCounts[characterId] = 1;
+          }
+        });
+      } else {
+        // Iterate through the filtered data and count characters
+        filteredData.forEach((item) => {
+          const characterId = item.stats.character.id;
+          if (characterCounts[characterId]) {
+            characterCounts[characterId]++;
+          } else {
+            characterCounts[characterId] = 1;
+          }
+        });
+      }
 
       // Find the most frequent character
       let mostFrequentCharacter = null;
