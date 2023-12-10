@@ -11,6 +11,7 @@ import {
   GithubCard,
   LanguagueCard,
   LinkedinCard,
+  Notifications,
   OnlineCard,
   PlatziCard,
   ProjectsCard,
@@ -19,9 +20,9 @@ import {
   ThemeCard,
   TimeCard,
   TwitterCard,
+  ValorantCard
 } from "@/components";
-import ValorantCard from "@/components/ValorantCard";
-import TwitchCard from "@/components/TwitchCard";
+
 
 export default function Home() {
   return (
@@ -106,9 +107,9 @@ export default function Home() {
           {/* <ClonCard /> */}
           <ValorantCard />
           {/* <EnglishCard /> */}
-          {/* <TwitchCard /> */}
           {/* <BlogCard /> */}
           {/* <PlatziCard /> */}
+          <Notifications />
         </div>
       </motion.div>
     </>

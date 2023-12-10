@@ -21,6 +21,8 @@ import BlogCard from "./BlogCard";
 import ExpCard from "./ExpCard";
 import ProjectLoader from "./ProjectLoader";
 import Loader from "./Loader";
+import ValorantCard from "./ValorantCard";
+import Notifications from "./Notifications";
 
 export {
   OnlineCard,
@@ -46,4 +48,6 @@ export {
   ExpCard,
   ProjectLoader,
   Loader,
+  ValorantCard,
+  Notifications,
 };
