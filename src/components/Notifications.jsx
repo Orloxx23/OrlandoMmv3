@@ -25,13 +25,13 @@ export default function Notifications() {
     },
   ];
   return (
-    <div className="fixed bottom-5 right-5 flex flex-col left-5 md:left-auto md:w-[512px] z-50">
+    <div className="fixed bottom-5 right-5 flex flex-col left-5 md:left-auto md:w-[512px] z-50 pointer-events-none">
       {notifications.map((notification, index) => (
         <motion.div
           key={notification.id}
           initial={{ opacity: 0, x: "100%" }}
           animate={{ opacity: 1, x: show ? 0 : "150%" }}
-          className="w-full flex flex-col md:flex-row p-4 rounded-md shadow-md text-black bg-white items-center"
+          className="w-full flex flex-col md:flex-row p-4 rounded-md shadow-md text-black bg-white items-center pointer-events-auto"
         >
           <button
             className="absolute top-2 right-2 z-10"
