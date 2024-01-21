@@ -1,5 +1,7 @@
 import "@/styles/globals.css";
 
+import { Analytics } from '@vercel/analytics/react';
+
 import i18next from "i18next";
 import { I18nextProvider } from "react-i18next";
 import { ThemeProvider } from "next-themes";
@@ -75,6 +77,7 @@ export default function App({ Component, pageProps, router }) {
             </Head>
 
             <Component {...pageProps} key={router.route} />
+            <Analytics />
           </AnimatePresence>
         </I18nextProvider>
       </ThemeProvider>
