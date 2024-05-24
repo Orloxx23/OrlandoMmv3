@@ -104,9 +104,9 @@ export default function Home() {
           <EmailCard />
           <TwitterCard />
           <TimeCard />
-          <ClonCard />
+          {/* <ClonCard /> */}
           {/* <ValorantCard /> */}
-          {/* <EnglishCard /> */}
+          <EnglishCard />
           {/* <BlogCard /> */}
           {/* <PlatziCard /> */}
           <Notifications />
