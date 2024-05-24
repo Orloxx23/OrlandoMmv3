@@ -9,6 +9,9 @@ import {
   addDoc,
   updateDoc,
 } from "firebase/firestore";
+import { generateObject } from "ai";
+import { openai } from "@ai-sdk/openai";
+import { z } from "zod";
 
 let embeddings = [];
 let conversation = [
@@ -78,10 +81,28 @@ async function compare(text, element) {
   return result;
 }
 
+async function getResponse3(query, context) {
+  const { object: response } = await generateObject({
+    model: openai("gpt-4o"),
+    system:
+      `${process.env.PERSONALITY
+      }. responds in JSON format. emotions: happy, sad, surprised, confused, pokerface, excited, scared, in_love, angry, neutral, shy, nervous.
+    Only answer if you have the question has to do with the following information and you only know this: ${context}. Don't answer if you don't know the answer. If the user asks you for help, ask them questions to obtain more details and ask for their email or contact method. This is the conversation between you and the user: ${conversation.join(
+        ", "
+      )}.`,
+    prompt: query,
+    schema: z.object({
+      emotion: z.string().describe("emotions: happy, sad, surprised, confused, pokerface, excited, scared, in_love, angry, neutral, shy, nervous."),
+      message: z.string().describe("message in first person as Orlando would respond based on the context."),
+    }),
+  });
+
+  return response;
+}
+
 async function getResponse2(query, context) {
   const response = await strict_output(
-    `${
-      process.env.PERSONALITY
+    `${process.env.PERSONALITY
     }. responds in JSON format. emotions: happy, sad, surprised, confused, pokerface, excited, scared, in_love, angry, neutral, shy, nervous.
     Only answer if you have the question has to do with the following information and you only know this: ${context}. Don't answer if you don't know the answer. If the user asks you for help, ask them questions to obtain more details and ask for their email or contact method. This is the conversation between you and the user: ${conversation.join(
       ", "
@@ -202,7 +223,7 @@ export default async function handler(req, res) {
 
     conversation.push("user: " + query);
 
-    await getResponse2(query, context).then((response) => {
+    await getResponse3(query, context).then((response) => {
       conversation.push("assistant: " + response.message);
       message = response;
 

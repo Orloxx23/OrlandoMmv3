@@ -11,7 +11,7 @@ async function strict_output(
   output_format,
   default_category = "",
   output_value_only = false,
-  model = "gpt-3.5-turbo",
+  model = "gpt-4o",
   temperature = 0.5,
   num_tries = 3,
   verbose = false
