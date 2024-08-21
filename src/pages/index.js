@@ -109,7 +109,7 @@ export default function Home() {
           <EnglishCard />
           {/* <BlogCard /> */}
           {/* <PlatziCard /> */}
-          <Notifications />
+          {/* <Notifications /> */}
         </div>
       </motion.div>
     </>
